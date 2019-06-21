@@ -17,3 +17,6 @@ C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\obj\Debug\ProjectOnion.
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\obj\Debug\ProjectOnion.csproj.CopyComplete
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\obj\Debug\ProjectOnion.exe
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\obj\Debug\ProjectOnion.pdb
+C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlibMonoGame.dll
+C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlibMonoGame.pdb
+C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\WhitePixel.xnb

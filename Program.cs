@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MBBSlib.MonoGame;
+using System;
 
 namespace ProjectOnion
 {
@@ -13,7 +14,7 @@ namespace ProjectOnion
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new GameMain(new MainScene()))
                 game.Run();
         }
     }
