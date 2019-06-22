@@ -28,6 +28,16 @@ namespace ProjectOnion
             }
             GameMain.RegisterRenderer(this);
         }
+        public Tile GetTile(Microsoft.Xna.Framework.Vector2 pos)
+        {
+            return GetTile((int)pos.X, (int)pos.Y);
+        }
+        public Tile GetTile(int x, int y)
+        {
+            if (x < 0 || y < 0) return null;
+            if (x > Width || y > Height) return null;
+            return map[x, y];
+        }
 
         public void Draw(SpriteBatch sprite)
         {

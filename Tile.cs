@@ -15,7 +15,7 @@ namespace ProjectOnion
         public readonly int X, Y;
 
         public bool IsFloor = false;
-
+        public MountedObject mountedObject { get; protected set; }
         public Tile(int x, int y)
         {
             X = x;
@@ -26,6 +26,11 @@ namespace ProjectOnion
         internal void Draw(SpriteBatch sprite)
         {
             sprite.Draw(this.sprite, new TileRectangle(X,Y), Color.White);
+        }
+        //TODO:
+        public void PlaceObject(MountedObject mounted)
+        {
+            mountedObject = mounted;
         }
     }
 }
