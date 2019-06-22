@@ -1,4 +1,5 @@
-﻿using MBBSlib.MonoGame;
+﻿using MBBSlib;
+using MBBSlib.MonoGame;
 using System;
 
 namespace ProjectOnion

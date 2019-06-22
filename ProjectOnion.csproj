@@ -42,14 +42,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BuildController.cs" />
     <Compile Include="MainScene.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="TileRectangle.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MBBSlib">
+      <HintPath>..\..\MBBS\MBBSlib\MBBSlib\MBBSlib\bin\Debug\netstandard2.0\MBBSlib.dll</HintPath>
+    </Reference>
     <Reference Include="MBBSlibMonoGame">
       <HintPath>..\..\MBBS\MBBSlib\MBBSlib\MBBSlibMonoGame\bin\Debug\netstandard2.0\MBBSlibMonoGame.dll</HintPath>
     </Reference>

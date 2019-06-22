@@ -14,6 +14,8 @@ namespace ProjectOnion
         public Sprite sprite;
         public readonly int X, Y;
 
+        public bool IsFloor = false;
+
         public Tile(int x, int y)
         {
             X = x;
@@ -23,7 +25,7 @@ namespace ProjectOnion
 
         internal void Draw(SpriteBatch sprite)
         {
-            sprite.Draw(this.sprite, new Rectangle(X * World.TileSize + World.Offset + (int)Input.cameraOffset.X, Y * World.TileSize + World.Offset + (int)Input.cameraOffset.Y, World.TileSize, World.TileSize), Color.White);
+            sprite.Draw(this.sprite, new TileRectangle(X,Y), Color.White);
         }
     }
 }

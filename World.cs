@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOnion
 {
-    class World : IDrawable, IUpdateable
+    class World : IDrawable
     {
         public readonly int Height, Width;
         public Tile[,] map;
@@ -27,7 +27,6 @@ namespace ProjectOnion
                 }
             }
             GameMain.RegisterRenderer(this);
-            GameMain.RegisterUpdate(this);
         }
 
         public void Draw(SpriteBatch sprite)
@@ -36,11 +35,6 @@ namespace ProjectOnion
             {
                 tile.Draw(sprite);
             }
-        }
-
-        public void Update()
-        {
-            MouseController.HandleDeltaMouse();
         }
     }
 }

@@ -5,8 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/WhitePixel.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/blip.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
