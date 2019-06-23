@@ -1,16 +1,20 @@
-﻿namespace ProjectOnion
+﻿using System;
+
+namespace ProjectOnion
 {
 	internal class Job
 	{
-		private Tile tile;
+		public Tile tile;
 		public bool IsOnTile = true;
 		private float workTime;
 		public IJobEvents jobEvents;
-		public Job(Tile tile, IJobEvents jobEvents, float workTime = 1f)
+		public int jobLayer;
+		public Job(Tile tile, IJobEvents jobEvents, float workTime = 1f, int jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
 			this.workTime = workTime;
+			this.jobLayer = jobLayer;
 		}
 		public void Work(float deltaWork)
 		{
@@ -20,6 +24,23 @@
 				jobEvents.OnJobCompleted();
 			}
 		}
-
+		public bool isDispoded;
+		internal void Dispose()
+		{
+			isDispoded = true;
+		}
+		//FIXME
+		public override bool Equals(object obj)
+		{
+			if(obj is Job job)
+			{
+				if (tile.X == job.tile.X && tile.Y == job.tile.Y)
+				{
+					if(job.jobLayer == this.jobLayer)
+						return true;
+				}
+			}
+			return false;
+		}
 	}
 }

@@ -31,6 +31,7 @@ namespace ProjectOnion
 				Debugger.OpenConsole();
 			}
 			Debugger.ExecuteCommands();
+			QueueBuilder.Update();
 		}
 		public void Draw(SpriteBatch sprite)
 		{

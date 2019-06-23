@@ -1,4 +1,5 @@
-﻿using MBBSlib.MonoGame;
+﻿using System.Diagnostics;
+using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
@@ -29,13 +30,9 @@ namespace ProjectOnion
 		}
 		public Tile GetTile(int x, int y)
 		{
-			if (x < 0 || y < 0)
+			if (x < 0 || y < 0 || x >= Width || y >= Height)
 			{
-				return null;
-			}
-
-			if (x > Width || y > Height)
-			{
+				Debug.WriteLine($"Returning null at {x}, {y}");
 				return null;
 			}
 

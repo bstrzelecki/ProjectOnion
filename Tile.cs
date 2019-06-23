@@ -9,6 +9,7 @@ namespace ProjectOnion
 		public Sprite sprite;
 		public readonly int X, Y;
 
+		public float movementCost = 1f;
 		public bool IsFloor = false;
 		public MountedObject mountedObject { get; protected set; }
 		public Tile(int x, int y)

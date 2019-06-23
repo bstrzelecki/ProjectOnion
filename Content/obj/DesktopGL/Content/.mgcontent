@@ -4,9 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/bp.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/floor.png</File>
     <File>C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/WhitePixel.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

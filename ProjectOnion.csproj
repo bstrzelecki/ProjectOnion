@@ -45,12 +45,15 @@
     <Compile Include="BuildController.cs" />
     <Compile Include="IJobEvents.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="JobEvents.cs" />
     <Compile Include="JobQueue.cs" />
     <Compile Include="MainScene.cs" />
     <Compile Include="MountedObject.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueBuilder.cs" />
+    <Compile Include="ShapeUtils.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileRectangle.cs" />
     <Compile Include="World.cs" />

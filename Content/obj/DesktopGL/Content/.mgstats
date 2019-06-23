@@ -1,2 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/bp.png","C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/bin/DesktopGL/Content/bp.xnb","TextureProcessor","Texture2DContent",213,341,0.352989
+"C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/floor.png","C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/bin/DesktopGL/Content/floor.xnb","TextureProcessor","Texture2DContent",287,16469,0.0040005
 "C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/WhitePixel.png","C:/Users/mabat/source/repos/ProjectNewOnion/ProjectOnion/Content/bin/DesktopGL/Content/WhitePixel.xnb","TextureProcessor","Texture2DContent",146,89,0.2548256

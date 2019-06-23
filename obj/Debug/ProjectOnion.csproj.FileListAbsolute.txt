@@ -22,3 +22,5 @@ C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\De
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\WhitePixel.xnb
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.dll
 C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.pdb
+C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\bp.xnb
+C:\Users\mabat\source\repos\ProjectNewOnion\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\floor.xnb
