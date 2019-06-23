@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MBBSlib.MonoGame;
+﻿using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
-	class JobEvents
+	internal class JobEvents
 	{
 	}
-	class FloorPlaceJob : IJobEvents
+
+	internal class FloorPlaceJob : IJobEvents
 	{
 		private Tile tile;
 		private Sprite sprite;
@@ -24,8 +20,9 @@ namespace ProjectOnion
 			this.movementCostReduction = movementCostReduction;
 			bp = new BlueprintData(new Vector2(tile.X, tile.Y), sprite, new Sprite("bp"));
 		}
-		BlueprintData bp;
-		bool initialized = false;
+
+		private BlueprintData bp;
+		private bool initialized = false;
 		public BlueprintData GetBlueprintData()
 		{
 			return bp;
@@ -33,7 +30,7 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-			
+
 		}
 
 		public void OnJobCompleted()
@@ -45,7 +42,7 @@ namespace ProjectOnion
 
 		public void OnJobSuspended()
 		{
-			
+
 		}
 	}
 }

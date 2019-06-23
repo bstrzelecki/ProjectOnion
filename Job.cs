@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectOnion
+﻿namespace ProjectOnion
 {
 	internal class Job
 	{
@@ -32,12 +30,14 @@ namespace ProjectOnion
 		//FIXME
 		public override bool Equals(object obj)
 		{
-			if(obj is Job job)
+			if (obj is Job job)
 			{
 				if (tile.X == job.tile.X && tile.Y == job.tile.Y)
 				{
-					if(job.jobLayer == this.jobLayer)
+					if (job.jobLayer == this.jobLayer)
+					{
 						return true;
+					}
 				}
 			}
 			return false;

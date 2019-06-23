@@ -75,7 +75,7 @@ namespace ProjectOnion
 		#region DrawThings
 		private void DrawObject(Vector2 bp)
 		{
-			if (bp.Y > MainScene.world.Height || bp.X > MainScene.world.Width)
+			if (bp.Y >= MainScene.world.Height || bp.X >= MainScene.world.Width)
 			{
 				return;
 			}

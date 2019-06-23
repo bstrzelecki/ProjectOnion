@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
-	class ShapeUtils
+	internal class ShapeUtils
 	{
 		public static void DrawArea(Vector2 start, Vector2 end, Action<Vector2> DrawObject)
 		{
@@ -23,9 +19,9 @@ namespace ProjectOnion
 				end.Y = start.Y;
 				start.Y = b;
 			}
-			for (int x = (int)start.X; x <= end.X; x++)
+			for (int x = (int)start.X; x < end.X; x++)
 			{
-				for (int y = (int)start.Y; y <= end.Y; y++)
+				for (int y = (int)start.Y; y < end.Y; y++)
 				{
 					DrawObject(new Vector2(x, y));
 				}
@@ -60,11 +56,6 @@ namespace ProjectOnion
 					DrawObject(new Vector2(x, origin.Y));
 				}
 			}
-		}
-
-		internal static void DrawArea(Vector2 start, object get)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
