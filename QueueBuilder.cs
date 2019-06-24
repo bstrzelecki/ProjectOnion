@@ -44,10 +44,11 @@ namespace ProjectOnion
 				}
 				ShapeUtils.DrawArea(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject);
 			}
-			if(Input.IsMouseKeyUp(0))
+			if (Input.IsMouseKeyUp(0))
 			{
 				_start = Vector2.Zero;
-				foreach (Job job in toAdd) {
+				foreach (Job job in toAdd)
+				{
 					JobQueue.AddJob(job);
 				}
 			}
