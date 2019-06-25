@@ -21,6 +21,8 @@ namespace ProjectOnion
 			GameMain.RegisterUpdate(this);
 			world = new World(16, 16);
 			new BuildController();
+			new Character();
+
 		}
 		public void Update()
 		{

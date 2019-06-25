@@ -8,7 +8,7 @@ namespace ProjectOnion
 	{
 		public Sprite sprite;
 		public readonly int X, Y;
-
+		public Vector2 Position { get { return new Vector2(X, Y); } }
 		public float movementCost = 1f;
 		public bool IsFloor = false;
 		public MountedObject mountedObject { get; protected set; }

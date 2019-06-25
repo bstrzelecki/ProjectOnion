@@ -6,9 +6,11 @@
   <SourceFiles>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/bp.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/floor.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectOnion/Content/pChar.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/WhitePixel.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

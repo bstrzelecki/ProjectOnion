@@ -19,11 +19,15 @@ namespace ProjectOnion
 
 		public static implicit operator Rectangle(TileRectangle rect)
 		{
-			return new Rectangle(rect.X * World.TileSize + World.Offset + (int)Input.cameraOffset.X, rect.Y * World.TileSize + World.Offset + (int)Input.cameraOffset.Y, World.TileSize, World.TileSize);
+			return new Rectangle(GetCorner(new Vector2(rect.X,rect.Y)).ToPoint(), GetSize().ToPoint());
 		}
 		public static Vector2 GetCorner(Vector2 pos)
 		{
 			return new Vector2(pos.X * World.TileSize + World.Offset + (int)Input.cameraOffset.X, pos.Y * World.TileSize + World.Offset + (int)Input.cameraOffset.Y);
+		}
+		public static Vector2 GetSize()
+		{
+			return new Vector2(World.TileSize, World.TileSize);
 		}
 	}
 }

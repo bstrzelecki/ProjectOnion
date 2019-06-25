@@ -48,3 +48,4 @@ C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csproj.CoreCompi
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csproj.CopyComplete
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.exe
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.pdb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\pChar.xnb
