@@ -45,13 +45,18 @@ namespace ProjectOnion
 
 				BlueprintData data = job.jobEvents.GetBlueprintData();
 				sprite.Draw(data.objectSprite, new TileRectangle(data.position), Color.White);
-				Vector2 cornerPos = ((Rectangle)new TileRectangle(data.position)).Location.ToVector2();
-				int i = 0;
-				foreach (Sprite blip in data.blips)
-				{
-					sprite.Draw(blip, new Rectangle((int)cornerPos.X + 8 * i, (int)cornerPos.Y, 8, 8), Color.White);
-					i++;
-				}
+				DrawBlips(sprite, data);
+			}
+		}
+
+		private static void DrawBlips(SpriteBatch sprite, BlueprintData data)
+		{
+			Vector2 cornerPos = TileRectangle.GetCorner(data.position);
+			int i = 0;
+			foreach (Sprite blip in data.blips)
+			{
+				sprite.Draw(blip, new Rectangle((int)cornerPos.X + blip.Texture.Width * i, (int)cornerPos.Y, 8, 8), Color.White);
+				i++;
 			}
 		}
 	}

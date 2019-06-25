@@ -21,5 +21,9 @@ namespace ProjectOnion
 		{
 			return new Rectangle(rect.X * World.TileSize + World.Offset + (int)Input.cameraOffset.X, rect.Y * World.TileSize + World.Offset + (int)Input.cameraOffset.Y, World.TileSize, World.TileSize);
 		}
+		public static Vector2 GetCorner(Vector2 pos)
+		{
+			return new Vector2(pos.X * World.TileSize + World.Offset + (int)Input.cameraOffset.X, pos.Y * World.TileSize + World.Offset + (int)Input.cameraOffset.Y);
+		}
 	}
 }

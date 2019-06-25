@@ -6,8 +6,6 @@ namespace ProjectOnion
 {
 	internal class World : IDrawable
 	{
-
-		//VS commit test
 		public readonly int Height, Width;
 		public Tile[,] map;
 		public static int Offset = 0;

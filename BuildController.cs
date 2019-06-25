@@ -42,9 +42,9 @@ namespace ProjectOnion
 			{
 				if (_start == Vector2.Zero)
 				{
-					_start = (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
+					_start = GetMouseOnTilePosition();
 				}
-				Vector2 bp = (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
+				Vector2 bp = GetMouseOnTilePosition();
 				switch (buildMode)
 				{
 					case BuildMode.Free:
@@ -70,6 +70,11 @@ namespace ProjectOnion
 				blips.Clear();
 			}
 
+		}
+
+		private static Vector2 GetMouseOnTilePosition()
+		{
+			return (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
 		}
 
 		#region DrawThings

@@ -12,22 +12,10 @@ namespace ProjectOnion
 		private static List<Job> toAdd = new List<Job>();
 		public static void PlaceObject(Vector2 pos)
 		{
-			if (MainScene.world.GetTile(pos) == null)
+			if (MainScene.world.GetTile(pos) == null || MainScene.world.GetTile(pos).IsFloor)
 			{
 				return;
 			}
-
-			if (MainScene.world.GetTile(pos).IsFloor)
-			{
-				return;
-			}
-
-			//List <Job> jobs = JobQueue.GetJobsAtPosition(pos);
-			//foreach(Job j in jobs)
-			//{
-			//	if (j.jobEvents is FloorPlaceJob)
-			//		j.Dispose();
-			//}
 
 			Job job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJob(MainScene.world.GetTile(pos), new Sprite("floor")));
 			toAdd.Add(job);
