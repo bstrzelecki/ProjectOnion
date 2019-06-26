@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +11,18 @@ namespace ProjectOnion
 		public Tile[,] map;
 		public static int Offset = 0;
 		public static int TileSize = 64;
+		public float[,] GetPathfindingGraph()
+		{
+			float[,] p = new float[Height, Width];
+			for (int i = 0; i < Height; i++)
+			{
+				for (int j = 0; j < Width; j++)
+				{
+					p[i, j] = map[i,j].movementCost;
+				}
+			}
+			return p;
+		}
 		public World(int height, int width)
 		{
 			Height = height;
