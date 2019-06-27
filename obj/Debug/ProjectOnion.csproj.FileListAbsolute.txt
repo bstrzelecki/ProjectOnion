@@ -49,3 +49,5 @@ C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csproj.CopyCompl
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.exe
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.pdb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\pChar.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\ProjectOnion.exe.config
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.dll
