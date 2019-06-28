@@ -37,7 +37,7 @@ namespace ProjectOnion
 		public void Draw(SpriteBatch sprite)
 		{
 			sprite.Draw(img, new Rectangle((dest != null)?(Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Color.White);
-			foreach (var point in new Pathfinding(MainScene.world.GetPathfindingGraph()).GetPath(new MBBSlib.AI.Point(0, 0), new MBBSlib.AI.Point(14, 14)))
+			foreach (var point in new Pathfinding(MainScene.world.GetPathfindingGraph()).GetPath(new MBBSlib.AI.Point(0, 15), new MBBSlib.AI.Point(15, 15)))
 			{
 				sprite.Draw(new Sprite("blip"), new TileRectangle(new Vector2(point.X,point.Y)), Color.White);
 			}

@@ -22,7 +22,9 @@ namespace ProjectOnion
 		}
 
 		private BlueprintData bp;
+#pragma warning disable CS0414 // The field 'FloorPlaceJob.initialized' is assigned but its value is never used
 		private bool initialized = false;
+#pragma warning restore CS0414 // The field 'FloorPlaceJob.initialized' is assigned but its value is never used
 		public BlueprintData GetBlueprintData()
 		{
 			return bp;

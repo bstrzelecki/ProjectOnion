@@ -6,8 +6,12 @@ namespace ProjectOnion
 {
 	internal class QueueBuilder
 	{
+#pragma warning disable CS0649 // Field 'QueueBuilder.toBuild' is never assigned to, and will always have its default value null
 		public static MountedObject toBuild;
+#pragma warning restore CS0649 // Field 'QueueBuilder.toBuild' is never assigned to, and will always have its default value null
+#pragma warning disable CS0649 // Field 'QueueBuilder.buildMode' is never assigned to, and will always have its default value
 		public static BuildMode buildMode;
+#pragma warning restore CS0649 // Field 'QueueBuilder.buildMode' is never assigned to, and will always have its default value
 
 		private static List<Job> toAdd = new List<Job>();
 		public static void PlaceObject(Vector2 pos)
