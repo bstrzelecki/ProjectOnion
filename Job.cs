@@ -1,8 +1,8 @@
-﻿namespace ProjectOnion
+﻿using System;
+
+namespace ProjectOnion
 {
-#pragma warning disable CS0659 // 'Job' overrides Object.Equals(object o) but does not override Object.GetHashCode()
-	internal class Job
-#pragma warning restore CS0659 // 'Job' overrides Object.Equals(object o) but does not override Object.GetHashCode()
+	internal class Job : IDisposable
 	{
 		public Tile tile;
 		public bool IsOnTile = true;
@@ -22,12 +22,13 @@
 			if (workTime < 0)
 			{
 				jobEvents.OnJobCompleted();
+				this.Dispose();
 			}
 		}
-		public bool isDispoded;
-		internal void Dispose()
+		public bool IsDisposed;
+		public void Dispose()
 		{
-			isDispoded = true;
+			IsDisposed = true;
 		}
 		//FIXME
 		public override bool Equals(object obj)

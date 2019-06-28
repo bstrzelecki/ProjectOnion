@@ -30,15 +30,16 @@ namespace ProjectOnion
 			Job j;
 			do
 			{
+				if (jobQueue.Count == 0) return null;
 				j = jobQueue.Dequeue();
-			} while (j.isDispoded || j == null);
-			return jobQueue.Dequeue();
+			} while (j.IsDisposed || j == null);
+			return j;
 		}
 		public static void DrawBlueprints(SpriteBatch sprite)
 		{
 			foreach (Job job in jobQueue)
 			{
-				if (job.isDispoded)
+				if (job.IsDisposed)
 				{
 					continue;
 				}
