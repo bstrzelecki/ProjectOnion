@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MBBSlib;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
@@ -9,6 +10,7 @@ namespace ProjectOnion
 	internal class BuildController : MBBSlib.MonoGame.IUpdateable, MBBSlib.MonoGame.IDrawable
 	{
 		private List<Vector2> blips = new List<Vector2>();
+		public Func<Vector2, bool> TileValidator { get; set; } = (v) => true;
 		public BuildController()
 		{
 			GameMain.RegisterUpdate(this);
@@ -31,7 +33,7 @@ namespace ProjectOnion
 		{
 			foreach (Vector2 blip in blips)
 			{
-				sprite.Draw(new Sprite("blip"), new TileRectangle(blip), Color.White);
+				sprite.Draw(new Sprite("blip"), new TileRectangle(blip), TileValidator(blip)?Color.White:Color.Red);
 			}
 		}
 		public static BuildMode buildMode = BuildMode.None;

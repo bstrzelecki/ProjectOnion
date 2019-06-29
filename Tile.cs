@@ -21,12 +21,15 @@ namespace ProjectOnion
 
 		internal void Draw(SpriteBatch sprite)
 		{
-			sprite.Draw(this.sprite, new TileRectangle(X, Y), Color.White);
+			if(!mountedObject.IsOpaque)
+				sprite.Draw(this.sprite, new TileRectangle(X, Y), Color.White);
+			mountedObject.Draw(sprite);
 		}
 		//TODO:
 		public void PlaceObject(MountedObject mounted)
 		{
 			mountedObject = mounted;
+			mountedObject.AssignPosition(Position);
 		}
 	}
 }

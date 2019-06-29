@@ -1,13 +1,21 @@
 ﻿using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class MountedObject
+	internal class MountedObject : MBBSlib.MonoGame.IDrawable
 	{
 		public bool IsOpaque = false;
-#pragma warning disable CS0649 // Field 'MountedObject.sprite' is never assigned to, and will always have its default value null
 		public Sprite sprite;
-#pragma warning restore CS0649 // Field 'MountedObject.sprite' is never assigned to, and will always have its default value null
-
+		private Vector2 _positon;
+		public void AssignPosition(Vector2 pos)
+		{
+			_positon = pos;
+		}
+		public void Draw(SpriteBatch sprite)
+		{
+			sprite.Draw(this.sprite, new TileRectangle(_positon), Color.White);
+		}
 	}
 }
