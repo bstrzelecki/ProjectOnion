@@ -21,7 +21,7 @@ namespace ProjectOnion
 				return;
 			}
 
-			Job job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJob(MainScene.world.GetTile(pos), new Sprite("floor")));
+			Job job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")));
 			toAdd.Add(job);
 		}
 		private static Vector2 _start;

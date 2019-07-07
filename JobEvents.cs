@@ -6,13 +6,13 @@ namespace ProjectOnion
 	internal class JobEvents
 	{
 	}
-	class FurniturePlaceJob : IJobEvents
+	class FurniturePlaceJobEvent : IJobEvents
 	{
 		private Tile tile;
 		private MountedObject mountedObject;
 		private float movementCostReduction;
 		private BlueprintData bp;
-		public FurniturePlaceJob(Tile tile, MountedObject mountedObject, float mcr = 0f)
+		public FurniturePlaceJobEvent(Tile tile, MountedObject mountedObject, float mcr = 0f)
 		{
 			this.tile = tile;
 			this.mountedObject = mountedObject;
@@ -40,13 +40,13 @@ namespace ProjectOnion
 			
 		}
 	}
-	internal class FloorPlaceJob : IJobEvents
+	internal class FloorPlaceJobEvent : IJobEvents
 	{
 		private Tile tile;
 		private Sprite sprite;
 		private float movementCostReduction;
 
-		public FloorPlaceJob(Tile tile, Sprite sprite, float movementCostReduction = 0f)
+		public FloorPlaceJobEvent(Tile tile, Sprite sprite, float movementCostReduction = 0f)
 		{
 			this.tile = tile;
 			this.sprite = sprite;
