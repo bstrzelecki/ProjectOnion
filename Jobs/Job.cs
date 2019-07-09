@@ -9,12 +9,14 @@ namespace ProjectOnion
 		private float workTime;
 		public IJobEvents jobEvents;
 		public int jobLayer;
-		public Job(Tile tile, IJobEvents jobEvents, float workTime = 1f, int jobLayer = 0)
+		public bool onTile;
+		public Job(Tile tile, IJobEvents jobEvents,bool onTile = true, float workTime = 1f, int jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
+			this.onTile = onTile;
 		}
 		public void Work(float deltaWork)
 		{
@@ -44,6 +46,16 @@ namespace ProjectOnion
 				}
 			}
 			return false;
+		}
+
+		public override string ToString()
+		{
+			return base.ToString();
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 	}
 }

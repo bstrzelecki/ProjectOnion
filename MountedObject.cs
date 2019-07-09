@@ -8,6 +8,7 @@ namespace ProjectOnion
 	{
 		public bool IsOpaque = false;
 		public Sprite sprite;
+		public float moveCost = 0;
 		private Vector2 _positon;
 		public void AssignPosition(Vector2 pos)
 		{

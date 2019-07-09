@@ -43,22 +43,25 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BuildController.cs" />
+    <Compile Include="Builders\Architect.cs" />
+    <Compile Include="Builders\BuildController.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="IJobEvents.cs" />
-    <Compile Include="Job.cs" />
-    <Compile Include="JobEvents.cs" />
-    <Compile Include="JobQueue.cs" />
+    <Compile Include="Jobs\IJobEvents.cs" />
+    <Compile Include="Jobs\Job.cs" />
+    <Compile Include="Jobs\JobEvents.cs" />
+    <Compile Include="Jobs\JobQueue.cs" />
     <Compile Include="MainScene.cs" />
     <Compile Include="MountedObject.cs" />
     <Compile Include="MouseController.cs" />
-    <Compile Include="PlaceJob.cs" />
+    <Compile Include="MultiSprite.cs" />
+    <Compile Include="NewFurniture.cs" />
+    <Compile Include="Jobs\PlaceJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueueBuilder.cs" />
-    <Compile Include="ShapeUtils.cs" />
+    <Compile Include="Builders\QueueBuilder.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileRectangle.cs" />
+    <Compile Include="Furnitures\Wall.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,8 +69,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MBBSlib\MBBSlib\MBBSlib\bin\Debug\netstandard2.0\MBBSlib.dll</HintPath>
     </Reference>
-    <Reference Include="MBBSlibMonoGame">
-      <HintPath>..\..\MBBS\MBBSlib\MBBSlib\MBBSlibMonoGame\bin\Debug\netstandard2.0\MBBSlibMonoGame.dll</HintPath>
+    <Reference Include="MBBSlib.MonoGame">
+      <HintPath>..\MBBSlib\MBBSlib\MBBSlibMonoGame\bin\Debug\netstandard2.0\MBBSlib.MonoGame.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>

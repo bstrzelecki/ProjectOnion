@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MBBSlib.AI;
 using MBBSlib.MonoGame;
 
@@ -36,28 +37,41 @@ namespace ProjectOnion
 		public void Update()
 		{
 			if ((path == null || path.Count == 0) && currentJob == null)
+				GetPath();
+
+			if (currentJob == null) return;
+
+			if (!currentJob.onTile && dest == currentJob.tile)
 			{
-				var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
-				currentJob = JobQueue.GetJob();
-				if (currentJob == null) return;
-				path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
-				path.Reverse();
+				if (path != null)
+				{
+					path.Clear();
+					path = null;
+				}
+				currentJob.Work(1);
 			}
+
+			if(tile == currentJob.tile)
+			{
+				currentJob.Work(1);
+			}
+
 			if (path != null && path.Count != 0 && dest == null)
 			{
 				Point tilePos = path[0];
 				path.RemoveAt(0);
 				SetDestination(MainScene.world.GetTile(tilePos.X,tilePos.Y));
 			}
-			if(tile == currentJob.tile)
+
+			if (currentJob.IsDisposed)
 			{
-				currentJob.Work(1);
-			}
-			if (currentJob == null || currentJob.IsDisposed)
-			{
+				if (!currentJob.onTile && dest == currentJob.tile) dest = null;
 				currentJob = null;
 			}
+
+
 			if (dest == null) return;
+			if (!currentJob.onTile && dest == currentJob.tile) return;
 			if (moveCompleted >= 1f)
 			{
 				tile = dest;
@@ -65,7 +79,25 @@ namespace ProjectOnion
 				moveCompleted = 0;
 				return;
 			}
-			moveCompleted += moveSpeed * 0.1f;
+			moveCompleted += (moveSpeed * 0.1f);
+
+		}
+
+		private void GetPath()
+		{
+			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
+
+			currentJob = JobQueue.GetJob();
+			if (currentJob == null) return;
+
+			path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
+			path.Reverse();
+			if ((from n in path where MainScene.world.GetTile(n.X,n.Y).IsInMovable select n).Count() > 0) {
+				JobQueue.AddJob(currentJob);
+				currentJob = null;
+				path.Clear();
+				return;
+			}
 		}
 	}
 }

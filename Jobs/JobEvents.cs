@@ -10,13 +10,11 @@ namespace ProjectOnion
 	{
 		private Tile tile;
 		private MountedObject mountedObject;
-		private float movementCostReduction;
 		private BlueprintData bp;
-		public FurniturePlaceJobEvent(Tile tile, MountedObject mountedObject, float mcr = 0f)
+		public FurniturePlaceJobEvent(Tile tile, MountedObject mountedObject)
 		{
 			this.tile = tile;
 			this.mountedObject = mountedObject;
-			this.movementCostReduction = mcr;
 			bp = new BlueprintData(new Vector2(tile.X, tile.Y), mountedObject.sprite, new Sprite("bp"));
 		}
 		public BlueprintData GetBlueprintData()
@@ -32,7 +30,6 @@ namespace ProjectOnion
 		public void OnJobCompleted()
 		{
 			tile.PlaceObject(mountedObject);
-			tile.movementCost += movementCostReduction;
 		}
 
 		public void OnJobSuspended()
