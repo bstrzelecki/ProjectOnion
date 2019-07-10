@@ -32,7 +32,7 @@ namespace ProjectOnion
 			{
 				if (jobQueue.Count == 0) return null;
 				j = jobQueue.Dequeue();
-			} while (j.IsDisposed || j == null);
+			} while (j.IsDisposed);
 			return j;
 		}
 		public static void DrawBlueprints(SpriteBatch sprite)

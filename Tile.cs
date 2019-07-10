@@ -12,7 +12,7 @@ namespace ProjectOnion
 		public Vector2 Position { get { return new Vector2(X, Y); } }
 		public float movementCost = 1f;
 		public bool IsFloor = false;
-		public bool IsInMovable = false;
+		public bool IsInmovable = false;
 		public MountedObject mountedObject { get; protected set; }
 		public Tile(int x, int y)
 		{
@@ -54,7 +54,7 @@ namespace ProjectOnion
 		{
 			mountedObject = mounted;
 			movementCost += mountedObject.moveCost;
-			if (mountedObject.moveCost == float.MaxValue) IsInMovable = true;
+			if (mountedObject.moveCost == float.MaxValue) IsInmovable = true;
 			mountedObject.AssignPosition(Position);
 		}
 	}

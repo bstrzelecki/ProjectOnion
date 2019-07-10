@@ -26,6 +26,7 @@ namespace ProjectOnion
 		}
 		public void SetDestination(Tile d)
 		{
+			moveCompleted = 0;
 			dest = d;
 		}
 		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
@@ -39,39 +40,22 @@ namespace ProjectOnion
 			if ((path == null || path.Count == 0) && currentJob == null)
 				GetPath();
 
-			if (currentJob == null) return;
 
-			if (!currentJob.onTile && dest == currentJob.tile)
-			{
-				if (path != null)
-				{
-					path.Clear();
-					path = null;
-				}
-				currentJob.Work(1);
-			}
-
-			if(tile == currentJob.tile)
-			{
-				currentJob.Work(1);
-			}
-
+			DoWork();
 			if (path != null && path.Count != 0 && dest == null)
 			{
 				Point tilePos = path[0];
 				path.RemoveAt(0);
 				SetDestination(MainScene.world.GetTile(tilePos.X,tilePos.Y));
 			}
-
-			if (currentJob.IsDisposed)
-			{
-				if (!currentJob.onTile && dest == currentJob.tile) dest = null;
-				currentJob = null;
-			}
-
-
 			if (dest == null) return;
-			if (!currentJob.onTile && dest == currentJob.tile) return;
+			if (dest.IsInmovable)
+			{
+				dest = null;
+				return;
+			}
+			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;
+			
 			if (moveCompleted >= 1f)
 			{
 				tile = dest;
@@ -82,7 +66,36 @@ namespace ProjectOnion
 			moveCompleted += (moveSpeed * 0.1f);
 
 		}
+		private void DoWork()
+		{
+			if (currentJob == null)
+			{
+				return;
+			}
+			if (!currentJob.onTile && dest == currentJob.tile)
+			{
+				path = null;
+				currentJob.Work(1);
+			}
+			if(!currentJob.onTile && tile.GetNeighbourTiles().Contains(currentJob.tile))
+			{
+				path = null;
+				dest = null;
+				currentJob.Work(1);
+			}
+			if (currentJob.onTile && tile == currentJob.tile)
+			{
+				currentJob.Work(1);
+			}
 
+
+			if (currentJob.IsDisposed)
+			{
+				if (!currentJob.onTile && dest == currentJob.tile) dest = null;
+				currentJob = null;
+				return;
+			}
+		}
 		private void GetPath()
 		{
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
@@ -92,7 +105,7 @@ namespace ProjectOnion
 
 			path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
 			path.Reverse();
-			if ((from n in path where MainScene.world.GetTile(n.X,n.Y).IsInMovable select n).Count() > 0) {
+			if ((from n in path where MainScene.world.GetTile(n.X,n.Y).IsInmovable select n).Count() > 0) {
 				JobQueue.AddJob(currentJob);
 				currentJob = null;
 				path.Clear();

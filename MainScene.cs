@@ -22,6 +22,7 @@ namespace ProjectOnion
 			world = new World(16, 16);
 			new BuildController();
 			new Character();
+			new Character();
 
 		}
 		public void Update()
