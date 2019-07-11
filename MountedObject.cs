@@ -1,4 +1,5 @@
-﻿using MBBSlib.MonoGame;
+﻿using System;
+using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +11,7 @@ namespace ProjectOnion
 		public Sprite sprite;
 		public float moveCost = 0;
 		private Vector2 _positon;
+		public Action OnNeighbourChanged; 
 		public void AssignPosition(Vector2 pos)
 		{
 			_positon = pos;
