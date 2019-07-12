@@ -11,7 +11,8 @@ namespace ProjectOnion
 		public Sprite sprite;
 		public float moveCost = 0;
 		private Vector2 _positon;
-		public Action OnNeighbourChanged; 
+		public Action OnNeighbourChanged;
+		public Action OnPlaced;
 		public void AssignPosition(Vector2 pos)
 		{
 			_positon = pos;
