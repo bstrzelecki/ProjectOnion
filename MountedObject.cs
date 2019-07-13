@@ -13,6 +13,7 @@ namespace ProjectOnion
 		private Vector2 _positon;
 		public Action OnNeighbourChanged;
 		public Action OnPlaced;
+		public Action OnRemoved;
 		public void AssignPosition(Vector2 pos)
 		{
 			_positon = pos;
