@@ -21,9 +21,11 @@ namespace ProjectOnion
 			Job job = null;
 			if (buildType == BuildType.Floor)
 			{
+				if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
 				job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")));
 			} else if (buildType == BuildType.Furniture)
 			{
+				if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
 				job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false);
 			}
 			toAdd.Add(job);

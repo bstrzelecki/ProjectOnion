@@ -11,6 +11,8 @@ namespace ProjectOnion
 	{
 		protected override void SetProperties()
 		{
+			obj.displayName = "Wall";
+			obj.registryName = "wall";
 			obj.sprite = new MultiSprite("wall");
 			obj.moveCost = float.MaxValue;
 			obj.objectEvents = new WallEvent(obj);

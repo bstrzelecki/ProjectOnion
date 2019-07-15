@@ -18,5 +18,17 @@ namespace ProjectOnion
 			SetProperties();
 			return obj;
 		}
+		public override bool Equals(object obj)
+		{
+			if(obj is NewFurniture nf)
+			{
+				return GetFurniture().registryName == nf.GetFurniture().registryName;
+			}
+			if(obj is MountedObject mo)
+			{
+				return GetFurniture().registryName == mo.registryName;
+			}
+			return false;
+		}
 	}
 }

@@ -1,10 +1,13 @@
 ﻿using System;
+using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class Job : IDisposable
+	internal class Job : IDisposable, IDrawable
 	{
 		public Tile tile;
+		public Character Owner { get; set; }
 		public bool IsOnTile = true;
 		private float workTime;
 		public IJobEvents jobEvents;
@@ -18,12 +21,19 @@ namespace ProjectOnion
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
 		}
+
+		internal void Register()
+		{
+			GameMain.RegisterPriorityRenderer(this);
+		}
+
 		public void Work(float deltaWork)
 		{
 			workTime -= deltaWork;
 			if (workTime < 0)
 			{
 				jobEvents.OnJobCompleted();
+				GameMain.UnregisterRenderer(this);
 				this.Dispose();
 			}
 		}
@@ -47,7 +57,28 @@ namespace ProjectOnion
 			}
 			return false;
 		}
+		public void Draw(SpriteBatch sprite)
+		{
+			if (IsDisposed)
+			{
+				return;
+			}
 
+			BlueprintData data = jobEvents.GetBlueprintData();
+			sprite.Draw(data.objectSprite, new TileRectangle(data.position), Microsoft.Xna.Framework.Color.White);
+			DrawBlips(sprite, data);
+		}
+		private static void DrawBlips(SpriteBatch sprite, BlueprintData data)
+		{
+			Microsoft.Xna.Framework.Vector2 cornerPos = TileRectangle.GetCorner(data.position);
+			int i = 0;
+			foreach (Sprite blip in data.blips)
+			{
+				sprite.Draw(blip, new Microsoft.Xna.Framework.Rectangle((int)cornerPos.X + blip.Texture.Width * i, (int)cornerPos.Y, 8, 8), Microsoft.Xna.Framework.Color.White);
+				i++;
+			}
+		}
+		#region side-overrides
 		public override string ToString()
 		{
 			return base.ToString();
@@ -57,5 +88,6 @@ namespace ProjectOnion
 		{
 			return base.GetHashCode();
 		}
+		#endregion
 	}
 }

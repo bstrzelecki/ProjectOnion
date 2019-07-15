@@ -11,6 +11,7 @@ namespace ProjectOnion
 		private Tile tile;
 		private MountedObject mountedObject;
 		private BlueprintData bp;
+		private Job job;
 		public FurniturePlaceJobEvent(Tile tile, MountedObject mountedObject)
 		{
 			this.tile = tile;
@@ -24,12 +25,15 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-			
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
 		}
 
 		public void OnJobCompleted()
 		{
 			tile.PlaceObject(mountedObject);
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
 		}
 
 		public void OnJobSuspended()
@@ -42,6 +46,7 @@ namespace ProjectOnion
 		private Tile tile;
 		private Sprite sprite;
 		private float movementCostReduction;
+		private Job job;
 
 		public FloorPlaceJobEvent(Tile tile, Sprite sprite, float movementCostReduction = 0f)
 		{
@@ -59,7 +64,8 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
 		}
 
 		public void OnJobCompleted()
@@ -67,6 +73,8 @@ namespace ProjectOnion
 			tile.IsFloor = true;
 			tile.sprite = sprite;
 			tile.movementCost -= movementCostReduction;
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
 		}
 
 		public void OnJobSuspended()

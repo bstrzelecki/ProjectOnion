@@ -58,7 +58,6 @@ namespace ProjectOnion
 			{
 				tile.Draw(sprite);
 			}
-			JobQueue.DrawBlueprints(sprite);
 		}
 	}
 }

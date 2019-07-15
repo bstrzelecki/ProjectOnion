@@ -9,11 +9,14 @@ namespace ProjectOnion
 	{
 		public Tile tile;
 		public Tile dest;
+		private static int _chars = 0;
+		private int id;
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
 
 		public float moveCompleted = 0f;
+		public readonly string Name; 
 
 		public float moveSpeed = .5f;
 		Sprite img;
@@ -21,6 +24,8 @@ namespace ProjectOnion
 		{
 			img = new Sprite("pChar");
 			tile = MainScene.world.GetTile(6, 6);
+			id = _chars;
+			_chars++;
 			GameMain.RegisterRenderer(this);
 			GameMain.RegisterUpdate(this);
 		}
@@ -100,8 +105,9 @@ namespace ProjectOnion
 		{
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
-			currentJob = JobQueue.GetJob();
+			currentJob = JobQueue.GetJob(this);
 			if (currentJob == null) return;
+
 
 			path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
 			path.Reverse();
@@ -111,6 +117,14 @@ namespace ProjectOnion
 				path.Clear();
 				return;
 			}
+		}
+		public override bool Equals(object obj)
+		{
+			if(obj is Character c)
+			{
+				return id == c.id;
+			}
+			return false;
 		}
 	}
 }

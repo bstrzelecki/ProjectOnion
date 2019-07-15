@@ -19,13 +19,14 @@ namespace ProjectOnion
 					return;
 				}
 			}
+			job.Register();
 			jobQueue.Enqueue(job);
 		}
 		public static List<Job> GetJobsAtPosition(Vector2 pos)
 		{
 			return (from n in jobQueue where new Vector2(n.tile.X, n.tile.Y) == pos select n).ToList();
 		}
-		public static Job GetJob()
+		public static Job GetJob(Character ch)
 		{
 			Job j;
 			do
@@ -33,32 +34,9 @@ namespace ProjectOnion
 				if (jobQueue.Count == 0) return null;
 				j = jobQueue.Dequeue();
 			} while (j.IsDisposed);
+			if (j.Owner != null) return null;
+			j.Owner = ch;
 			return j;
-		}
-		public static void DrawBlueprints(SpriteBatch sprite)
-		{
-			foreach (Job job in jobQueue)
-			{
-				if (job.IsDisposed)
-				{
-					continue;
-				}
-
-				BlueprintData data = job.jobEvents.GetBlueprintData();
-				sprite.Draw(data.objectSprite, new TileRectangle(data.position), Color.White);
-				DrawBlips(sprite, data);
-			}
-		}
-
-		private static void DrawBlips(SpriteBatch sprite, BlueprintData data)
-		{
-			Vector2 cornerPos = TileRectangle.GetCorner(data.position);
-			int i = 0;
-			foreach (Sprite blip in data.blips)
-			{
-				sprite.Draw(blip, new Rectangle((int)cornerPos.X + blip.Texture.Width * i, (int)cornerPos.Y, 8, 8), Color.White);
-				i++;
-			}
-		}
+		}	
 	}
 }

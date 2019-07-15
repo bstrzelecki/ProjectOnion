@@ -1,4 +1,5 @@
-﻿using MBBSlib;
+﻿using System;
+using MBBSlib;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +11,7 @@ namespace ProjectOnion
 	{
 		public static GameMain Game { get; set; }
 		public static World world;
+		public static Random rng = new Random();
 		public void Start(GameMain game)
 		{
 			Game = game;

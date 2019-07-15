@@ -9,6 +9,8 @@ namespace ProjectOnion
 {
 	internal class MountedObject : MBBSlib.MonoGame.IDrawable
 	{
+		public string registryName;
+		public string displayName;
 		public bool IsOpaque = false;
 		public Sprite sprite;
 		public float moveCost = 0;
