@@ -11,7 +11,7 @@ namespace ProjectOnion
 	class MultiSprite : Sprite
 	{
 		public string Variant { get; protected set; } = string.Empty;
-		public Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+
 		public void SetTextureVariant(string variant)
 		{
 			Variant = variant;
@@ -22,7 +22,7 @@ namespace ProjectOnion
 			}
 			else
 			{
-				Texture = textures[$"{textureName}_{Variant}"];
+				Texture = TextureStorage.GetTexture($"{textureName}_{Variant}");
 			}
 
 		}

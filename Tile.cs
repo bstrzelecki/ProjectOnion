@@ -56,12 +56,12 @@ namespace ProjectOnion
 			movementCost += mountedObject.moveCost;
 			if (mountedObject.moveCost == float.MaxValue) IsInmovable = true;
 			mountedObject.AssignPosition(Position);
-			mountedObject.OnPlaced();
+			mountedObject.objectEvents.OnPlaced();
 
 			foreach(Tile tile in GetNeighbourTiles())
 			{
 				if (tile == null || tile.mountedObject == null) continue;
-				tile.mountedObject.OnNeighbourChanged(this);
+				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
 			}
 		}
 	}

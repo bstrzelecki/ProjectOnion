@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
@@ -13,9 +14,8 @@ namespace ProjectOnion
 		public float moveCost = 0;
 		public Vector2 position;
 		public Tile tile;
-		public Action<Tile> OnNeighbourChanged;
-		public Action OnPlaced;
-		public Action OnRemoved;
+		public IObjectEvents objectEvents;
+		public List<string> flags = new List<string>();
 		public void AssignPosition(Vector2 pos)
 		{
 			if (pos == Vector2.Zero) Debug.WriteLine("!!!");
@@ -26,5 +26,12 @@ namespace ProjectOnion
 		{
 			sprite.Draw(this.sprite, new TileRectangle(position), Color.White);
 		}
+	}
+
+	internal interface IObjectEvents
+	{
+		void OnNeighbourChanged(Tile tile);
+		void OnPlaced();
+		void OnRemoved();
 	}
 }
