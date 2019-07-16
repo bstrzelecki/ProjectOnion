@@ -24,7 +24,7 @@ namespace ProjectOnion
 
 		internal void Register()
 		{
-			GameMain.RegisterPriorityRenderer(this);
+			GameMain.RegisterRenderer(this, 6);
 		}
 
 		public void Work(float deltaWork)

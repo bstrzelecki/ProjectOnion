@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 
@@ -10,7 +11,7 @@ namespace ProjectOnion
 
 		public static BuildMode buildMode = BuildMode.None;
 		public static BuildType buildType = BuildType.Floor;
-
+		public static Func<Vector2, bool> TileValidator { get; set; } = (v) => true;
 		private static List<Job> toAdd = new List<Job>();
 		public static void PlaceObject(Vector2 pos)
 		{
@@ -19,6 +20,7 @@ namespace ProjectOnion
 				return;
 			}
 			Job job = null;
+			if (!TileValidator(pos)) return;
 			if (buildType == BuildType.Floor)
 			{
 				if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants

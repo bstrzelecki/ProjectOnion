@@ -26,7 +26,7 @@ namespace ProjectOnion
 			tile = MainScene.world.GetTile(6, 6);
 			id = _chars;
 			_chars++;
-			GameMain.RegisterRenderer(this);
+			GameMain.RegisterRenderer(this, 7);
 			GameMain.RegisterUpdate(this);
 		}
 		public void SetDestination(Tile d)
@@ -42,21 +42,34 @@ namespace ProjectOnion
 		Job currentJob;
 		public void Update()
 		{
-			if ((path == null || path.Count == 0) && currentJob == null)
-				GetPath();
-
-
-			DoWork();
-			if (path != null && path.Count != 0 && dest == null)
+			if (!tile.IsInmovable)
 			{
-				Point tilePos = path[0];
-				path.RemoveAt(0);
-				SetDestination(MainScene.world.GetTile(tilePos.X,tilePos.Y));
+				if ((path == null || path.Count == 0) && currentJob == null)
+					GetPath();
+
+
+				DoWork();
+				if (path != null && path.Count != 0 && dest == null)
+				{
+					Point tilePos = path[0];
+					path.RemoveAt(0);
+					SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
+				}
+			}else
+			{
+				foreach(Tile t in tile.GetNeighbourTiles())
+				{
+					//Temp fix
+					if (!t.IsInmovable) { SetDestination(t); moveCompleted = 1f; break; }
+
+				}
 			}
 			if (dest == null) return;
 			if (dest.IsInmovable)
 			{
 				dest = null;
+				path = null;
+				if (currentJob.onTile) currentJob = null;
 				return;
 			}
 			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;

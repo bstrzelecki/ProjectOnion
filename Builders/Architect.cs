@@ -13,7 +13,16 @@ namespace ProjectOnion
 			QueueBuilder.buildType = buildType;
 			QueueBuilder.buildMode = buildMode;
 			BuildController.buildMode = buildMode;
-
+			if (buildType == BuildType.Floor)
+			{
+				BuildController.TileValidator = (v) => true;
+				QueueBuilder.TileValidator = (v) => true;
+			}
+			if (buildType == BuildType.Furniture)
+			{
+				BuildController.TileValidator = (v) => MainScene.world.GetTile(v).IsFloor;
+				QueueBuilder.TileValidator = (v) => MainScene.world.GetTile(v).IsFloor;
+			}
 			if (mountedObject != null)
 				QueueBuilder.toBuild = mountedObject;
 		}
