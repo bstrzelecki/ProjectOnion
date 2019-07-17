@@ -54,6 +54,13 @@ namespace ProjectOnion
 					Point tilePos = path[0];
 					path.RemoveAt(0);
 					SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
+					if (dest.IsInmovable)
+					{
+						dest = null;
+						path = null;
+						if (currentJob.onTile) currentJob = null;
+						return;
+					}
 				}
 			}else
 			{

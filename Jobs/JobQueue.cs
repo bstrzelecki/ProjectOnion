@@ -33,8 +33,7 @@ namespace ProjectOnion
 			{
 				if (jobQueue.Count == 0) return null;
 				j = jobQueue.Dequeue();
-			} while (j.IsDisposed);
-			if (j.Owner != null) return null;
+			} while (j.IsDisposed || j.Owner != null);
 			j.Owner = ch;
 			return j;
 		}	
