@@ -10,17 +10,21 @@ namespace ProjectOnion
 		public static NewFurniture toBuild;
 
 		public static BuildMode buildMode = BuildMode.None;
-		public static BuildType buildType = BuildType.Floor;
+		public static BuildType buildType = BuildType.None;
 		public static Func<Vector2, bool> TileValidator { get; set; } = (v) => true;
+		public static Action<Vector2> PlaceAction { get; set; }
 		private static List<Job> toAdd = new List<Job>();
+		private static List<Vector2> vectors = new List<Vector2>();
 		public static void PlaceObject(Vector2 pos)
 		{
+			if (buildType == BuildType.None) return;
 			if (MainScene.world.GetTile(pos) == null)
 			{
 				return;
 			}
 			Job job = null;
 			if (!TileValidator(pos)) return;
+
 			if (buildType == BuildType.Floor)
 			{
 				if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
@@ -30,6 +34,7 @@ namespace ProjectOnion
 				if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
 				job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false);
 			}
+			vectors.Add(pos);
 			toAdd.Add(job);
 		}
 		private static Vector2 _start;
@@ -37,8 +42,11 @@ namespace ProjectOnion
 		{
 			if (Input.IsMouseKeyDown(0))
 			{
-				if(buildMode != BuildMode.Free)
+				if (buildMode != BuildMode.Free)
+				{
 					toAdd.Clear();
+					vectors.Clear();
+				}
 				if (_start == Vector2.Zero)
 				{
 					_start = (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
@@ -63,6 +71,10 @@ namespace ProjectOnion
 			if (Input.IsMouseKeyUp(0))
 			{
 				_start = Vector2.Zero;
+				foreach(Vector2 pos in vectors)
+					PlaceAction?.Invoke(pos);
+				vectors.Clear();
+				if (buildType == BuildType.Other) return;
 				foreach (Job job in toAdd)
 				{
 					JobQueue.AddJob(job);
@@ -72,8 +84,10 @@ namespace ProjectOnion
 	}
 	public enum BuildType
 	{
+		None,
 		Floor,
 		Furniture,
-		MultiPart
+		MultiPart,
+		Other
 	}
 }

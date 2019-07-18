@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class Job : IDisposable, IDrawable
+	internal class Job : IDrawable
 	{
 		public Tile tile;
 		public Character Owner { get; set; }
 		public bool IsOnTile = true;
 		private float workTime;
 		public IJobEvents jobEvents;
-		public int jobLayer;
+		public JobLayer jobLayer;
 		public bool onTile;
-		public Job(Tile tile, IJobEvents jobEvents,bool onTile = true, float workTime = 1f, int jobLayer = 0)
+		public Job(Tile tile, IJobEvents jobEvents,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
@@ -24,6 +24,7 @@ namespace ProjectOnion
 
 		internal void Register()
 		{
+			tile.job[(int)jobLayer] = this;
 			GameMain.RegisterRenderer(this, 6);
 		}
 
@@ -33,14 +34,21 @@ namespace ProjectOnion
 			if (workTime < 0)
 			{
 				jobEvents.OnJobCompleted();
-				GameMain.UnregisterRenderer(this);
-				this.Dispose();
+				Complete();
 			}
 		}
-		public bool IsDisposed;
-		public void Dispose()
+		public bool IsCompleted { get; protected set; }
+		protected void Complete()
 		{
-			IsDisposed = true;
+			GameMain.UnregisterRenderer(this);
+			tile.job[(int)jobLayer] = null;
+			IsCompleted = true;
+		}
+		public void Cancel()
+		{
+			GameMain.UnregisterRenderer(this);
+			tile.job[(int)jobLayer] = null;
+			IsCompleted = true;
 		}
 		//FIXME
 		public override bool Equals(object obj)
@@ -59,7 +67,7 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
-			if (IsDisposed)
+			if (IsCompleted)
 			{
 				return;
 			}
@@ -89,5 +97,10 @@ namespace ProjectOnion
 			return base.GetHashCode();
 		}
 		#endregion
+	}
+	enum JobLayer
+	{
+		Misc,
+		Build
 	}
 }

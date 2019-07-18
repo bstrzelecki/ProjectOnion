@@ -10,7 +10,7 @@ namespace ProjectOnion
 	internal class BuildController : MBBSlib.MonoGame.IUpdateable, MBBSlib.MonoGame.IDrawable
 	{
 		private List<Vector2> blips = new List<Vector2>();
-		public static Func<Vector2, bool> TileValidator { get; set; } = (v) => true;
+		public static Func<Vector2, bool> TileValidator { get { return QueueBuilder.TileValidator; } }
 		public BuildController()
 		{
 			GameMain.RegisterUpdate(this);

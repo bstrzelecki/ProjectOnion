@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,6 +14,7 @@ namespace ProjectOnion
 		public float movementCost = 1f;
 		public bool IsFloor = false;
 		public bool IsInmovable = false;
+		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
 		public Tile(int x, int y)
 		{

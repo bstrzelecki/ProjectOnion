@@ -12,6 +12,7 @@ namespace ProjectOnion
 
 		public static void AddJob(Job job)
 		{
+			if (job == null) return;
 			foreach (Job j in jobQueue)
 			{
 				if (j.Equals(job))
@@ -33,7 +34,7 @@ namespace ProjectOnion
 			{
 				if (jobQueue.Count == 0) return null;
 				j = jobQueue.Dequeue();
-			} while (j.IsDisposed || j.Owner != null);
+			} while (j.IsCompleted || j.Owner != null);
 			j.Owner = ch;
 			return j;
 		}	

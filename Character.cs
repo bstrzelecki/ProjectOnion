@@ -46,7 +46,7 @@ namespace ProjectOnion
 			{
 				if ((path == null || path.Count == 0) && currentJob == null)
 					GetPath();
-
+				if (currentJob == null) path = null;
 
 				DoWork();
 				if (path != null && path.Count != 0 && dest == null)
@@ -114,7 +114,7 @@ namespace ProjectOnion
 			}
 
 
-			if (currentJob.IsDisposed)
+			if (currentJob.IsCompleted)
 			{
 				if (!currentJob.onTile && dest == currentJob.tile) dest = null;
 				currentJob = null;

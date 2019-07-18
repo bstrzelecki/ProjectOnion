@@ -39,9 +39,11 @@ namespace ProjectOnion
 			QueueBuilder.Update();
 
 			if (Input.IsKeyClicked(Keys.D0))
-				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
+				JobManager.SetCancelJobMode();
 			if (Input.IsKeyClicked(Keys.D1))
 				Architect.SetBuildObject(BuildMode.Area, BuildType.Floor);
+			if (Input.IsKeyClicked(Keys.D2))
+				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 		}
 		public void Draw(SpriteBatch sprite)
 		{
