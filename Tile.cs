@@ -22,7 +22,10 @@ namespace ProjectOnion
 			Y = y;
 			sprite = new Sprite("grid");
 		}
-
+		public float GetMovementCost()
+		{
+			return movementCost + (float)mountedObject?.moveCost;
+		}
 		internal void Draw(SpriteBatch sprite)
 		{
 			if (mountedObject != null)
@@ -55,7 +58,6 @@ namespace ProjectOnion
 		public void PlaceObject(MountedObject mounted)
 		{
 			mountedObject = mounted;
-			movementCost += mountedObject.moveCost;
 			if (mountedObject.moveCost == float.MaxValue) IsInmovable = true;
 			mountedObject.AssignPosition(Position);
 			mountedObject.objectEvents.OnPlaced();

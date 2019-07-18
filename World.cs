@@ -18,7 +18,7 @@ namespace ProjectOnion
 			{
 				for (int j = 0; j < Width; j++)
 				{
-					p[i, j] = map[i,j].movementCost;
+					p[i, j] = map[i,j].GetMovementCost();
 				}
 			}
 			return p;

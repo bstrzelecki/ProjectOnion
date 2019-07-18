@@ -36,4 +36,10 @@ namespace ProjectOnion
 		void OnPlaced();
 		void OnRemoved();
 	}
+	internal interface IUseable
+	{
+		bool CanUse(Character c);
+		void Use();
+	}
+
 }
