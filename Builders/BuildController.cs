@@ -33,7 +33,7 @@ namespace ProjectOnion
 		{
 			foreach (Vector2 blip in blips)
 			{
-				sprite.Draw(new Sprite("blip"), new TileRectangle(blip), TileValidator(blip)?Color.White:Color.Red);
+				sprite.Draw(new Sprite("blip"), new TileRectangle(blip), TileValidator(blip) ? Color.White : Color.Red);
 			}
 		}
 		public static BuildMode buildMode = BuildMode.None;

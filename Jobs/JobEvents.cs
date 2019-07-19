@@ -38,7 +38,7 @@ namespace ProjectOnion
 
 		public void OnJobSuspended()
 		{
-			
+
 		}
 	}
 	internal class FloorPlaceJobEvent : IJobEvents

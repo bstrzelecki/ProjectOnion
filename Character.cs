@@ -16,7 +16,7 @@ namespace ProjectOnion
 		public float Y { get { return Position.Y; } }
 
 		public float moveCompleted = 0f;
-		public readonly string Name; 
+		public readonly string Name;
 
 		public float moveSpeed = .5f;
 		Sprite img;
@@ -62,9 +62,10 @@ namespace ProjectOnion
 						return;
 					}
 				}
-			}else
+			}
+			else
 			{
-				foreach(Tile t in tile.GetNeighbourTiles())
+				foreach (Tile t in tile.GetNeighbourTiles())
 				{
 					//Temp fix
 					if (!t.IsInmovable) { SetDestination(t); moveCompleted = 1f; break; }
@@ -80,7 +81,7 @@ namespace ProjectOnion
 				return;
 			}
 			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;
-			
+
 			if (moveCompleted >= 1f)
 			{
 				tile = dest;
@@ -102,7 +103,7 @@ namespace ProjectOnion
 				path = null;
 				currentJob.Work(1);
 			}
-			if(!currentJob.onTile && tile.GetNeighbourTiles().Contains(currentJob.tile))
+			if (!currentJob.onTile && tile.GetNeighbourTiles().Contains(currentJob.tile))
 			{
 				path = null;
 				dest = null;
@@ -131,7 +132,8 @@ namespace ProjectOnion
 
 			path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
 			path.Reverse();
-			if ((from n in path where MainScene.world.GetTile(n.X,n.Y).IsInmovable select n).Count() > 0) {
+			if ((from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
+			{
 				JobQueue.AddJob(currentJob);
 				currentJob = null;
 				path.Clear();
@@ -140,7 +142,7 @@ namespace ProjectOnion
 		}
 		public override bool Equals(object obj)
 		{
-			if(obj is Character c)
+			if (obj is Character c)
 			{
 				return id == c.id;
 			}

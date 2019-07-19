@@ -49,7 +49,7 @@ namespace ProjectOnion
 			if (fourDirs) return tiles;
 			tiles.Add(MainScene.world.GetTile(X + 1, Y + 1));
 			tiles.Add(MainScene.world.GetTile(X + 1, Y - 1));
-			tiles.Add(MainScene.world.GetTile(X -1, Y + 1));
+			tiles.Add(MainScene.world.GetTile(X - 1, Y + 1));
 			tiles.Add(MainScene.world.GetTile(X - 1, Y - 1));
 			return tiles;
 
@@ -62,7 +62,7 @@ namespace ProjectOnion
 			mountedObject.AssignPosition(Position);
 			mountedObject.objectEvents.OnPlaced();
 
-			foreach(Tile tile in GetNeighbourTiles())
+			foreach (Tile tile in GetNeighbourTiles())
 			{
 				if (tile == null || tile.mountedObject == null) continue;
 				tile.mountedObject.objectEvents.OnNeighbourChanged(this);

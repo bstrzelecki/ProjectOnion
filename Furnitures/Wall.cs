@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
@@ -51,7 +47,7 @@ namespace ProjectOnion
 					if (delta == new Vector2(-1, 0))
 						w = true;
 				}
-				ms.SetTextureVariant((n?"N":string.Empty)+ (e ? "E" : string.Empty) + (s ? "S" : string.Empty) + (w ? "W" : string.Empty));
+				ms.SetTextureVariant((n ? "N" : string.Empty) + (e ? "E" : string.Empty) + (s ? "S" : string.Empty) + (w ? "W" : string.Empty));
 			}
 		}
 		public void OnNeighbourChanged(Tile tile)

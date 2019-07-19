@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
@@ -37,6 +35,6 @@ namespace ProjectOnion
 			} while (j.IsCompleted || j.Owner != null);
 			j.Owner = ch;
 			return j;
-		}	
+		}
 	}
 }

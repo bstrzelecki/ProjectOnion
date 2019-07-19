@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -18,7 +17,7 @@ namespace ProjectOnion
 			{
 				for (int j = 0; j < Width; j++)
 				{
-					p[i, j] = map[i,j].GetMovementCost();
+					p[i, j] = map[i, j].GetMovementCost();
 				}
 			}
 			return p;

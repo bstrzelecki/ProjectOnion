@@ -29,7 +29,8 @@ namespace ProjectOnion
 			{
 				if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
 				job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")));
-			} else if (buildType == BuildType.Furniture)
+			}
+			else if (buildType == BuildType.Furniture)
 			{
 				if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
 				job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false);
@@ -51,9 +52,10 @@ namespace ProjectOnion
 				{
 					_start = (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
 				}
-				switch (buildMode) {
+				switch (buildMode)
+				{
 					case BuildMode.Area:
-						ShapeUtils.DrawArea(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject); 
+						ShapeUtils.DrawArea(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject);
 						break;
 					case BuildMode.Line:
 						ShapeUtils.DrawLine(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject);
@@ -67,11 +69,11 @@ namespace ProjectOnion
 					default:
 						break;
 				}
-			} 
+			}
 			if (Input.IsMouseKeyUp(0))
 			{
 				_start = Vector2.Zero;
-				foreach(Vector2 pos in vectors)
+				foreach (Vector2 pos in vectors)
 					PlaceAction?.Invoke(pos);
 				vectors.Clear();
 				if (buildType == BuildType.Other) return;

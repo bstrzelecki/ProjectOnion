@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
@@ -21,9 +16,9 @@ namespace ProjectOnion
 		static bool CancelValidation(Vector2 v)
 		{
 			bool isJobOnTile = false;
-			foreach(Job t in MainScene.world.GetTile(v).job)
+			foreach (Job t in MainScene.world.GetTile(v).job)
 			{
-				if (t != null) { isJobOnTile = true;  break; }
+				if (t != null) { isJobOnTile = true; break; }
 			}
 			return isJobOnTile;
 		}

@@ -1,5 +1,4 @@
-﻿using System;
-using MBBSlib.MonoGame;
+﻿using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
@@ -13,7 +12,7 @@ namespace ProjectOnion
 		public IJobEvents jobEvents;
 		public JobLayer jobLayer;
 		public bool onTile;
-		public Job(Tile tile, IJobEvents jobEvents,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;

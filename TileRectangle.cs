@@ -19,7 +19,7 @@ namespace ProjectOnion
 
 		public static implicit operator Rectangle(TileRectangle rect)
 		{
-			return new Rectangle(GetCorner(new Vector2(rect.X,rect.Y)).ToPoint(), GetSize().ToPoint());
+			return new Rectangle(GetCorner(new Vector2(rect.X, rect.Y)).ToPoint(), GetSize().ToPoint());
 		}
 		public static Vector2 GetCorner(Vector2 pos)
 		{

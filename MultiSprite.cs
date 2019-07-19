@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MBBSlib.MonoGame;
-using Microsoft.Xna.Framework.Graphics;
+﻿using MBBSlib.MonoGame;
 
 namespace ProjectOnion
 {
@@ -16,7 +10,7 @@ namespace ProjectOnion
 		{
 			Variant = variant;
 
-			if(Variant == string.Empty || !TextureStorage.ContainsTextureKey($"{textureName}_{Variant}"))
+			if (Variant == string.Empty || !TextureStorage.ContainsTextureKey($"{textureName}_{Variant}"))
 			{
 				Texture = TextureStorage.GetTexture(textureName);
 			}
