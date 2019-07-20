@@ -19,6 +19,7 @@ namespace ProjectOnion
 		public Tile tile;
 		public IObjectEvents objectEvents;
 		public IUseable objectUseEvent;
+		public MBBSlib.MonoGame.IUpdateable objectUpdate;
 		public List<string> flags = new List<string>();
 		public void AssignPosition(Vector2 pos)
 		{
@@ -38,6 +39,8 @@ namespace ProjectOnion
 		void OnNeighbourChanged(Tile tile);
 		void OnPlaced();
 		void OnRemoved();
+		void OnCharEnter(Character c);
+		void OnCharExit(Character c);
 	}
 	internal interface IUseable
 	{

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class Tile
+	internal class Tile : MBBSlib.MonoGame.IUpdateable
 	{
 		public Sprite sprite;
 		public readonly int X, Y;
@@ -14,6 +14,7 @@ namespace ProjectOnion
 		public float movementCost = 1f;
 		public bool IsFloor = false;
 		public bool IsInmovable = false;
+		public bool isCharOnTile = false;
 		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
 		public Tile(int x, int y)
@@ -21,6 +22,7 @@ namespace ProjectOnion
 			X = x;
 			Y = y;
 			sprite = new Sprite("grid");
+			GameMain.RegisterUpdate(this);
 		}
 		public float GetMovementCost()
 		{
@@ -67,6 +69,11 @@ namespace ProjectOnion
 				if (tile == null || tile.mountedObject == null) continue;
 				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
 			}
+		}
+
+		public void Update()
+		{
+			if (mountedObject != null) mountedObject.objectUpdate?.Update();
 		}
 	}
 }

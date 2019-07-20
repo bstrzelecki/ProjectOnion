@@ -18,10 +18,11 @@ namespace ProjectOnion
 			obj.moveCost = 4;
 			obj.objectEvents = new DoorEvent(obj);
 			obj.objectUseEvent = new DoorUse(obj);
+			obj.objectUpdate = new DoorEvent(obj);
 			obj.flags.Add("wall");
 		}
 	}
-	class DoorEvent : IObjectEvents
+	class DoorEvent : IObjectEvents, MBBSlib.MonoGame.IUpdateable
 	{
 		MountedObject obj;
 		public DoorEvent(MountedObject r)
@@ -68,6 +69,51 @@ namespace ProjectOnion
 		{
 			throw new NotImplementedException();
 		}
+
+		public void OnCharEnter(Character c)
+		{
+
+		}
+
+		public void OnCharExit(Character c)
+		{
+			
+		}
+		public void Update()
+		{
+			bool isClosing = true;
+			foreach(Tile t in obj.tile.GetNeighbourTiles())
+			{
+				if (t.isCharOnTile)
+				{
+					isClosing = false;
+					break;
+				}
+			}
+			if (isClosing)
+			{
+				if (obj.objectUseEvent is DoorUse du)
+				{
+					if (du.openStatus > 0)
+					{
+						du.openStatus -= 1f / 100f;
+						if (obj.sprite is MultiSprite ms)
+						{
+							if (ms.Variant == "NS")
+								obj.tileOffset.Y = (int)((float)World.TileSize * du.openStatus);
+							if (ms.Variant == "EW")
+								obj.tileOffset.X = (int)((float)World.TileSize * du.openStatus);
+							if (ms.Variant == string.Empty)
+								obj.tileOffset.X = (int)((float)World.TileSize * du.openStatus);
+						}
+					}
+					else
+					{
+						obj.characterCanEnter = false;
+					}
+				}
+			}
+		}
 	}
 	class DoorUse : IUseable
 	{
@@ -86,10 +132,11 @@ namespace ProjectOnion
 			}
 			return false;
 		}
-		float openStatus = 0;
+		public float openStatus = 0;
+
 		public void Use(Character c)
 		{
-			openStatus += c.WorkValue / 100f;
+			openStatus += 1 / 100f;
 			if (r.sprite is MultiSprite ms)
 			{
 				if(ms.Variant == "NS")

@@ -15,6 +15,13 @@ namespace ProjectOnion
 			obj.flags.Add("wall");
 		}
 	}
+	class EmptyUpdate : MBBSlib.MonoGame.IUpdateable
+	{
+		public void Update()
+		{
+			
+		}
+	}
 
 	class WallEvent : IObjectEvents
 	{
@@ -63,6 +70,16 @@ namespace ProjectOnion
 		public void OnRemoved()
 		{
 			throw new NotImplementedException();
+		}
+
+		public void OnCharEnter(Character c)
+		{
+			
+		}
+
+		public void OnCharExit(Character c)
+		{
+			
 		}
 	}
 }

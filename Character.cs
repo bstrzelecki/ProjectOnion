@@ -86,7 +86,10 @@ namespace ProjectOnion
 
 			if (moveCompleted >= 1f)
 			{
+				tile.mountedObject?.objectEvents.OnCharExit(this);
+				tile.isCharOnTile = false;
 				tile = dest;
+				tile.isCharOnTile = true;
 				dest = null;
 				moveCompleted = 0;
 				return;
