@@ -11,6 +11,8 @@ namespace ProjectOnion
 		public Tile dest;
 		private static int _chars = 0;
 		private int id;
+
+		public float WorkValue = 1f;
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
@@ -89,7 +91,10 @@ namespace ProjectOnion
 				moveCompleted = 0;
 				return;
 			}
-			moveCompleted += (moveSpeed * 0.1f);
+			if(dest.mountedObject == null || dest.mountedObject.characterCanEnter)
+				moveCompleted += (moveSpeed * 0.1f);
+			else if(dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
+				dest.mountedObject.objectUseEvent.Use(this);
 
 		}
 		private void DoWork()

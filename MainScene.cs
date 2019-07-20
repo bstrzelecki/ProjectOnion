@@ -44,6 +44,8 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Area, BuildType.Floor);
 			if (Input.IsKeyClicked(Keys.D2))
 				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
+			if (Input.IsKeyClicked(Keys.D3))
+				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 		}
 		public void Draw(SpriteBatch sprite)
 		{

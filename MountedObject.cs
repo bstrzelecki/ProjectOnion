@@ -10,12 +10,15 @@ namespace ProjectOnion
 	{
 		public string registryName;
 		public string displayName;
+		public Point tileOffset = Vector2.Zero.ToPoint();
 		public bool IsOpaque = false;
+		public bool characterCanEnter = true;
 		public Sprite sprite;
 		public float moveCost = 0;
 		public Vector2 position;
 		public Tile tile;
 		public IObjectEvents objectEvents;
+		public IUseable objectUseEvent;
 		public List<string> flags = new List<string>();
 		public void AssignPosition(Vector2 pos)
 		{
@@ -25,7 +28,8 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
-			sprite.Draw(this.sprite, new TileRectangle(position), Color.White);
+			Rectangle rect = new Rectangle(((Rectangle)new TileRectangle(position)).Location + tileOffset, ((Rectangle)new TileRectangle(position)).Size);
+			sprite.Draw(this.sprite, rect, Color.White);
 		}
 	}
 
@@ -38,7 +42,7 @@ namespace ProjectOnion
 	internal interface IUseable
 	{
 		bool CanUse(Character c);
-		void Use();
+		void Use(Character c);
 	}
 
 }

@@ -24,7 +24,7 @@ namespace ProjectOnion
 		}
 		public float GetMovementCost()
 		{
-			return movementCost + (float)mountedObject?.moveCost;
+			return movementCost + (float)(mountedObject?.moveCost??0f);
 		}
 		internal void Draw(SpriteBatch sprite)
 		{

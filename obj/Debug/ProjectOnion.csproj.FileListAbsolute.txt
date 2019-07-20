@@ -68,3 +68,6 @@ C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\wall
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\wall_W.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.MonoGame.dll
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.MonoGame.pdb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door_EW.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door_NS.xnb
