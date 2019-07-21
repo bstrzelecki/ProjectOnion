@@ -56,7 +56,18 @@ namespace ProjectOnion
 			return tiles;
 
 		}
-		//TODO:
+		public void DeconstructObject()
+		{
+			mountedObject = null;
+			IsInmovable = false;
+
+
+			foreach (Tile tile in GetNeighbourTiles())
+			{
+				if (tile == null || tile.mountedObject == null) continue;
+				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
+			}
+		}
 		public void PlaceObject(MountedObject mounted)
 		{
 			mountedObject = mounted;

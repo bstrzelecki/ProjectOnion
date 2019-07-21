@@ -66,6 +66,7 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
+			if (tile.mountedObject != null) Cancel();
 			if (IsCompleted)
 			{
 				return;

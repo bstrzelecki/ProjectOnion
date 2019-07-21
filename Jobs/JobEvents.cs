@@ -41,6 +41,46 @@ namespace ProjectOnion
 
 		}
 	}
+	internal class DeconstructJobEvent : IJobEvents
+	{
+		Tile tile;
+		BlueprintData bp;
+		Job job;
+		public DeconstructJobEvent(Tile tile)
+		{
+			this.tile = tile;
+			bp = new BlueprintData(new Vector2(tile.X, tile.Y), tile.mountedObject.sprite??tile.sprite, new Sprite("ds"));
+		}
+		public BlueprintData GetBlueprintData()
+		{
+			return bp;
+		}
+
+		public void OnJobCanceled()
+		{
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
+		}
+
+		public void OnJobCompleted()
+		{
+			if (tile.mountedObject != null)
+				tile.DeconstructObject();
+			else
+			{
+				tile.sprite = new Sprite("grid");
+				tile.IsFloor = false;
+			}
+			if (job == null) return;
+			GameMain.UnregisterRenderer(job);
+		}
+
+		public void OnJobSuspended()
+		{
+			throw new System.NotImplementedException();
+		}
+	}
+
 	internal class FloorPlaceJobEvent : IJobEvents
 	{
 		private Tile tile;
