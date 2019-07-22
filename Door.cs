@@ -15,7 +15,8 @@ namespace ProjectOnion
 			obj.registryName = "door";
 			obj.sprite = new MultiSprite("door");
 			obj.characterCanEnter = false;
-			obj.moveCost = 4;
+			obj.moveCost = new TimeUnit(0f);
+			obj.pfMoveCost = 4;
 			obj.objectEvents = new DoorEvent(obj);
 			obj.objectUseEvent = new DoorUse(obj);
 			obj.objectUpdate = new DoorEvent(obj);

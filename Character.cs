@@ -19,7 +19,7 @@ namespace ProjectOnion
 
 		public float moveCompleted = 0f;
 		public readonly string Name;
-
+		float distance = 1;
 		public float moveSpeed = .5f;
 		Sprite img;
 		public Character()
@@ -34,6 +34,7 @@ namespace ProjectOnion
 		public void SetDestination(Tile d)
 		{
 			moveCompleted = 0;
+			distance = d.GetMovementCost();
 			dest = d;
 		}
 		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
@@ -94,9 +95,9 @@ namespace ProjectOnion
 				moveCompleted = 0;
 				return;
 			}
-			if(dest.mountedObject == null || dest.mountedObject.characterCanEnter)
-				moveCompleted += (moveSpeed * 0.1f);
-			else if(dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
+			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
+				moveCompleted += (moveSpeed * Time.DeltaTime)/distance;
+			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
 				dest.mountedObject.objectUseEvent.Use(this);
 
 		}

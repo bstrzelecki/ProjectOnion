@@ -64,6 +64,7 @@
     <Compile Include="Tile.cs" />
     <Compile Include="TileRectangle.cs" />
     <Compile Include="Furnitures\Wall.cs" />
+    <Compile Include="TimeUnit.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

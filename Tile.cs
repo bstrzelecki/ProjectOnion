@@ -11,7 +11,7 @@ namespace ProjectOnion
 		public Sprite sprite;
 		public readonly int X, Y;
 		public Vector2 Position { get { return new Vector2(X, Y); } }
-		public float movementCost = 1f;
+		public float movementCost = new TimeUnit(1f);
 		public bool IsFloor = false;
 		public bool IsInmovable = false;
 		public bool isCharOnTile = false;
@@ -23,6 +23,10 @@ namespace ProjectOnion
 			Y = y;
 			sprite = new Sprite("grid");
 			GameMain.RegisterUpdate(this);
+		}
+		public float GetPathfindingMovementCost()
+		{
+			return movementCost + (float)(mountedObject?.pfMoveCost??0f);
 		}
 		public float GetMovementCost()
 		{

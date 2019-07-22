@@ -17,7 +17,7 @@ namespace ProjectOnion
 			{
 				for (int j = 0; j < Width; j++)
 				{
-					p[i, j] = map[i, j].GetMovementCost();
+					p[i, j] = map[i, j].GetPathfindingMovementCost();
 				}
 			}
 			return p;

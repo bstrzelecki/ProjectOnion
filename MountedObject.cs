@@ -15,6 +15,7 @@ namespace ProjectOnion
 		public bool characterCanEnter = true;
 		public Sprite sprite;
 		public float moveCost = 0;
+		public float pfMoveCost = 0;
 		public Vector2 position;
 		public Tile tile;
 		public IObjectEvents objectEvents;
