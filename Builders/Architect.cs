@@ -8,6 +8,7 @@
 			QueueBuilder.buildMode = buildMode;
 			QueueBuilder.PlaceAction = null;
 			BuildController.buildMode = buildMode;
+			QueueBuilder.jobOverride = null;
 
 			if (buildType == BuildType.Floor)
 			{

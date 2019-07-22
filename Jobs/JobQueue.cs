@@ -10,7 +10,7 @@ namespace ProjectOnion
 
 		public static void AddJob(Job job)
 		{
-			if (job == null) return;
+			if (job == null || job.IsCompleted) return;
 			foreach (Job j in jobQueue)
 			{
 				if (j.Equals(job))

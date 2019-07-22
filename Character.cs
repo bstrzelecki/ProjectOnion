@@ -142,10 +142,13 @@ namespace ProjectOnion
 			path.Reverse();
 			if ((from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
 			{
-				JobQueue.AddJob(currentJob);
-				currentJob = null;
-				path.Clear();
-				return;
+				if (!MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).IsInmovable)
+				{
+					JobQueue.AddJob(currentJob);
+					currentJob = null;
+					path.Clear();
+					return;
+				}
 			}
 		}
 		public override bool Equals(object obj)

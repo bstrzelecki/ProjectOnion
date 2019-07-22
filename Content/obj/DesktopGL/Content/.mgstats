@@ -3,6 +3,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/mabat/source/repos/ProjectOnion/Content/door.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/door.xnb","TextureProcessor","Texture2DContent",820,16469,0.5525197
 "C:/Users/mabat/source/repos/ProjectOnion/Content/door_EW.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/door_EW.xnb","TextureProcessor","Texture2DContent",820,16469,0.1589949
 "C:/Users/mabat/source/repos/ProjectOnion/Content/door_NS.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/door_NS.xnb","TextureProcessor","Texture2DContent",802,16469,0.0139996
+"C:/Users/mabat/source/repos/ProjectOnion/Content/ds.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/ds.xnb","TextureProcessor","Texture2DContent",1174,341,0.643545
 "C:/Users/mabat/source/repos/ProjectOnion/Content/floor.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/floor.xnb","TextureProcessor","Texture2DContent",287,16469,0.0129538
 "C:/Users/mabat/source/repos/ProjectOnion/Content/pChar.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/pChar.xnb","TextureProcessor","Texture2DContent",3043,33209,0.1660035
 "C:/Users/mabat/source/repos/ProjectOnion/Content/wall.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/wall.xnb","TextureProcessor","Texture2DContent",1077,16469,0.1699671

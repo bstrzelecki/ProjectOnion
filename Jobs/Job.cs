@@ -66,7 +66,7 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
-			if (tile.mountedObject != null) Cancel();
+			if (tile.mountedObject != null && jobLayer == JobLayer.Build) Cancel();
 			if (IsCompleted)
 			{
 				return;
@@ -101,6 +101,7 @@ namespace ProjectOnion
 	enum JobLayer
 	{
 		Misc,
-		Build
+		Build,
+		Deconstruct
 	}
 }

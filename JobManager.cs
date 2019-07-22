@@ -11,6 +11,7 @@ namespace ProjectOnion
 			QueueBuilder.toBuild = null;
 			QueueBuilder.TileValidator = CancelValidation;
 			QueueBuilder.PlaceAction = (v) => { foreach (Job j in MainScene.world.GetTile(v).job) j?.Cancel(); };
+			QueueBuilder.jobOverride = null;
 			BuildController.buildMode = BuildMode.Area;
 		}
 		static bool CancelValidation(Vector2 v)
@@ -21,6 +22,32 @@ namespace ProjectOnion
 				if (t != null) { isJobOnTile = true; break; }
 			}
 			return isJobOnTile;
+		}
+		public static void SetDeconstructJob()
+		{
+			QueueBuilder.buildMode = BuildMode.Area;
+			QueueBuilder.buildType = BuildType.Furniture;
+			QueueBuilder.toBuild = null;
+			QueueBuilder.TileValidator = DeconstructValidation;
+			QueueBuilder.PlaceAction = null;
+			QueueBuilder.jobOverride = DeconstructCreator;
+			BuildController.buildMode = BuildMode.Area;
+		}
+		static bool DeconstructValidation(Vector2 v)
+		{
+			Tile t = MainScene.world.GetTile(v);
+			if (t.IsFloor)
+				return true;
+			if (t.mountedObject != null)
+				return true;
+			return false;
+		}
+		static Job DeconstructCreator(Vector2 v)
+		{
+			Tile t = MainScene.world.GetTile(v);
+			Job j = new Job(t, new DeconstructJobEvent(t), (t.mountedObject == null || !t.IsInmovable), 1, JobLayer.Deconstruct);
+
+			return j;
 		}
 	}
 }

@@ -15,6 +15,7 @@ namespace ProjectOnion
 		public static Action<Vector2> PlaceAction { get; set; }
 		private static List<Job> toAdd = new List<Job>();
 		private static List<Vector2> vectors = new List<Vector2>();
+		public static Func<Vector2, Job> jobOverride;
 		public static void PlaceObject(Vector2 pos)
 		{
 			if (buildType == BuildType.None) return;
@@ -23,17 +24,25 @@ namespace ProjectOnion
 				return;
 			}
 			Job job = null;
-			if (!TileValidator(pos)) return;
+			if (jobOverride == null)
+			{ 
+				if (!TileValidator(pos)) return;
 
-			if (buildType == BuildType.Floor)
-			{
-				if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
-				job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")));
+				if (buildType == BuildType.Floor)
+				{
+					if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
+					job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")),jobLayer:JobLayer.Build);
+				}
+				else if (buildType == BuildType.Furniture)
+				{
+					if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
+					job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false,jobLayer: JobLayer.Build);
+				}
 			}
-			else if (buildType == BuildType.Furniture)
+			else
 			{
-				if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
-				job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false);
+				if(TileValidator(pos))
+					job = jobOverride(pos);
 			}
 			vectors.Add(pos);
 			toAdd.Add(job);
@@ -81,6 +90,7 @@ namespace ProjectOnion
 				{
 					JobQueue.AddJob(job);
 				}
+				toAdd.Clear();
 			}
 		}
 	}

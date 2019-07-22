@@ -71,3 +71,4 @@ C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.Mono
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door_EW.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door_NS.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\ds.xnb
