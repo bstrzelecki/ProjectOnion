@@ -16,11 +16,12 @@ namespace ProjectOnion
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
-
-		public float moveCompleted = 0f;
 		public readonly string Name;
-		float distance = 1;
+
 		public float moveSpeed = .5f;
+
+		private float moveCompleted = 0f;
+		float distance = 1;
 		Sprite img;
 		public Character()
 		{

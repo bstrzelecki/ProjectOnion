@@ -7,10 +7,36 @@ namespace ProjectOnion
 	internal class JobQueue
 	{
 		public static Queue<Job> jobQueue = new Queue<Job>();
-
-		public static void AddJob(Job job)
+		private static Dictionary<JobType, List<Job>> jobs = new Dictionary<JobType, List<Job>>();
+		private static void ValidateJobs(JobType j)
 		{
-			if (job == null || job.IsCompleted) return;
+			List<Job> t = new List<Job>();
+			if (j == JobType.Any)
+			{
+				foreach(JobType jt in jobs.Keys)
+				{
+					foreach (Job job in jobs[jt])
+					{
+						if (job.IsCompleted || job.Owner != null)
+							t.Add(job);
+					}
+				}
+			}
+			else
+			{
+				foreach (Job job in jobs[j])
+				{
+					if (job.IsCompleted || job.Owner != null)
+						t.Add(job);
+				}
+			}
+			foreach(Job job in t)
+			{
+				jobs[j].Remove(job);
+			}
+		}
+		public static void AddJob(Job job, JobType jobType = JobType.Any)
+		{
 			foreach (Job j in jobQueue)
 			{
 				if (j.Equals(job))
@@ -25,16 +51,20 @@ namespace ProjectOnion
 		{
 			return (from n in jobQueue where new Vector2(n.tile.X, n.tile.Y) == pos select n).ToList();
 		}
-		public static Job GetJob(Character ch)
+		public static Job GetJob(Character ch, JobType jobType = JobType.Any)
 		{
+			ValidateJobs(jobType);
 			Job j;
-			do
-			{
-				if (jobQueue.Count == 0) return null;
-				j = jobQueue.Dequeue();
-			} while (j.IsCompleted || j.Owner != null);
+
+			j = jobQueue.Dequeue();
 			j.Owner = ch;
 			return j;
 		}
+	}
+	enum JobType
+	{
+		Any,
+		Build,
+		Deconstruct
 	}
 }
