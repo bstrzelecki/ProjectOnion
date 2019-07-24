@@ -76,7 +76,7 @@ namespace ProjectOnion
 
 		private static Vector2 GetMouseOnTilePosition()
 		{
-			return (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
+			return (Input.GetMousePosition() - Input.cameraOffset - new Vector2(World.Offset, World.Offset)) / World.TileSize;
 		}
 
 		#region DrawThings

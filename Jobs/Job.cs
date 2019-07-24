@@ -23,7 +23,6 @@ namespace ProjectOnion
 
 		internal void Register()
 		{
-			tile.job[(int)jobLayer] = this;
 			GameMain.RegisterRenderer(this, 6);
 		}
 

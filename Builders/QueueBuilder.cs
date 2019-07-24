@@ -59,21 +59,21 @@ namespace ProjectOnion
 				}
 				if (_start == Vector2.Zero)
 				{
-					_start = (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize;
+					_start = GetMouseOnTilePosition();
 				}
 				switch (buildMode)
 				{
 					case BuildMode.Area:
-						ShapeUtils.DrawArea(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject);
+						ShapeUtils.DrawArea(_start, GetMouseOnTilePosition(), PlaceObject);
 						break;
 					case BuildMode.Line:
-						ShapeUtils.DrawLine(_start, (Input.GetMousePosition() - Input.cameraOffset) / World.TileSize, PlaceObject);
+						ShapeUtils.DrawLine(_start, GetMouseOnTilePosition(), PlaceObject);
 						break;
 					case BuildMode.Single:
-						PlaceObject((Input.GetMousePosition() - Input.cameraOffset) / World.TileSize);
+						PlaceObject(GetMouseOnTilePosition());
 						break;
 					case BuildMode.Free:
-						PlaceObject((Input.GetMousePosition() - Input.cameraOffset) / World.TileSize);
+						PlaceObject(GetMouseOnTilePosition());
 						break;
 					default:
 						break;
@@ -92,6 +92,10 @@ namespace ProjectOnion
 				}
 				toAdd.Clear();
 			}
+		}
+		private static Vector2 GetMouseOnTilePosition()
+		{
+			return (Input.GetMousePosition() - Input.cameraOffset - new Vector2(World.Offset, World.Offset)) / World.TileSize;
 		}
 	}
 	public enum BuildType

@@ -55,7 +55,7 @@ namespace ProjectOnion
 				}
 			}
 			if (job == null) return;
-			//TODO Move to job register func
+
 			job.tile.job[(int)jobType] = job;
 			job.Register();
 			jobs[jobType].Add(job);
