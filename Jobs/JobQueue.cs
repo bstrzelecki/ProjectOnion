@@ -55,6 +55,8 @@ namespace ProjectOnion
 				}
 			}
 			if (job == null) return;
+			//TODO Move to job register func
+			job.tile.job[(int)jobType] = job;
 			job.Register();
 			jobs[jobType].Add(job);
 		}
@@ -74,29 +76,20 @@ namespace ProjectOnion
 		}
 		private static Job GetClosestJob(Character c,JobType jt)
 		{
-			float lastPath = float.MaxValue;
-			Job lastJob = null;
-			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
-			bool init = false;
-			foreach (Job job in jobs[jt])
-			{
-				var path = pathfinding.GetPath(new MBBSlib.AI.Point((int)c.tile.Position.X, (int)c.tile.Position.Y), new MBBSlib.AI.Point((int)job.tile.Position.X, (int)job.tile.Position.Y));
-				float pVal = CalculatePathLenght(path);
 
-				if (!init)
-				{
-					lastPath = pVal;
-					lastJob = job;
-					init = true;
-					continue;
-				}
-				if (pVal < lastPath)
-				{
-					lastPath = pVal;
-					lastJob = job;
-				}
+			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
+
+
+			List<MBBSlib.AI.Point> points = new List<MBBSlib.AI.Point>();
+			foreach(Job job in jobs[jt])
+			{
+				points.Add(new MBBSlib.AI.Point(job.tile.X, job.tile.Y));
 			}
-			return lastJob;
+			var path = pathfinding.GetPath(points, new MBBSlib.AI.Point(c.tile.X, c.tile.Y));
+			if (path == null) return null;
+			Job j = MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).job[(int)jt];
+			if (j != null)jobs[jt].Remove(j);
+			return j;
 		}
 		public static Job GetJob(Character ch, JobType jobType = JobType.Any)
 		{
