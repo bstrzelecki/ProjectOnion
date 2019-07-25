@@ -26,7 +26,7 @@ namespace ProjectOnion
 		public Character()
 		{
 			img = new Sprite("pChar");
-			tile = MainScene.world.GetTile(6, 6);
+			tile = MainScene.world.GetTile(MainScene.rng.Next(0,15), MainScene.rng.Next(0,15));
 			id = _chars;
 			_chars++;
 			GameMain.RegisterRenderer(this, 7);
@@ -84,14 +84,20 @@ namespace ProjectOnion
 				if (currentJob.onTile) currentJob = null;
 				return;
 			}
+			if(dest.character != null && dest.character != this)
+			{
+				if(dest.character.currentJob != null)
+					return;
+			}
 			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;
 
 			if (moveCompleted >= 1f)
 			{
 				tile.mountedObject?.objectEvents.OnCharExit(this);
 				tile.isCharOnTile = false;
+				tile.character = null;
 				tile = dest;
-				tile.isCharOnTile = true;
+				tile.character = this;
 				dest = null;
 				moveCompleted = 0;
 				return;
