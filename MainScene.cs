@@ -25,6 +25,13 @@ namespace ProjectOnion
 			new BuildController();
 			new Character();
 			new Character();
+			new UIFabricator();
+			GameMain.RegisterRenderer(new UIController());
+
+			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
+			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
+			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
+
 
 		}
 		public void Update()

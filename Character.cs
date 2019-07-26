@@ -16,7 +16,7 @@ namespace ProjectOnion
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
-		public readonly string Name;
+		public readonly string Name = "Bob";
 
 		public float moveSpeed = .5f;
 

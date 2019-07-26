@@ -1,8 +1,10 @@
 ﻿using System;
+using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
+	[Category("Structure")]
 	class Wall : NewFurniture
 	{
 		protected override void SetProperties()
@@ -14,6 +16,7 @@ namespace ProjectOnion
 			obj.pfMoveCost = float.MaxValue;
 			obj.objectEvents = new WallEvent(obj);
 			obj.flags.Add("wall");
+			OnClickAction = () => Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 		}
 	}
 	class EmptyUpdate : MBBSlib.MonoGame.IUpdateable

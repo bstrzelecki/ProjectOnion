@@ -1,8 +1,11 @@
-﻿namespace ProjectOnion
+﻿using System;
+
+namespace ProjectOnion
 {
 	internal abstract class NewFurniture
 	{
 		protected MountedObject obj;
+		protected Action OnClickAction;
 
 		protected abstract void SetProperties();
 
@@ -11,6 +14,10 @@
 			obj = new MountedObject();
 			SetProperties();
 			return obj;
+		}
+		public virtual IUIItem GetUIItem()
+		{
+			return new FurnitureItem(GetFurniture(), OnClickAction);
 		}
 		public override bool Equals(object obj)
 		{
@@ -23,6 +30,16 @@
 				return GetFurniture().registryName == mo.registryName;
 			}
 			return false;
+		}
+
+		public override string ToString()
+		{
+			return base.ToString();
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 	}
 }

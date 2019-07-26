@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-
+using MBBSlib.MonoGame;
 namespace ProjectOnion
 {
+	[Category("Structure")]
 	class Door : NewFurniture
 	{
 		protected override void SetProperties()
@@ -21,6 +22,7 @@ namespace ProjectOnion
 			obj.objectUseEvent = new DoorUse(obj);
 			obj.objectUpdate = new DoorEvent(obj);
 			obj.flags.Add("wall");
+			OnClickAction = () => Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 		}
 	}
 	class DoorEvent : IObjectEvents, MBBSlib.MonoGame.IUpdateable
