@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ProjectOnion
 {
-	internal class MainScene : IStartingPoint, MBBSlib.MonoGame.IDrawable, MBBSlib.MonoGame.IUpdateable
+	internal class MainScene : IStartingPoint, MBBSlib.MonoGame.IUpdateable
 	{
 		public static GameMain Game { get; set; }
 		public static World world;
@@ -15,11 +15,11 @@ namespace ProjectOnion
 		public void Start(GameMain game)
 		{
 			Game = game;
+			Game.LoadFont("font");
 			GameMain.graphics.PreferredBackBufferWidth = 1280;
 			GameMain.graphics.PreferredBackBufferHeight = 720;
 			GameMain.graphics.ApplyChanges();
 			Game.BackgroundColor = Color.Black;
-			GameMain.RegisterRenderer(this);
 			GameMain.RegisterUpdate(this);
 			world = new World(16, 16);
 			new BuildController();
@@ -55,10 +55,6 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 			if (Input.IsKeyClicked(Keys.D3))
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
-		}
-		public void Draw(SpriteBatch sprite)
-		{
-
 		}
 	}
 }

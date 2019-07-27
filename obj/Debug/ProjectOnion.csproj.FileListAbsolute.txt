@@ -73,3 +73,4 @@ C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\door_NS.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\ds.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\button.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\font.xnb

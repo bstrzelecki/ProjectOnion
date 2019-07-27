@@ -11,6 +11,7 @@
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/door_NS.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/ds.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/floor.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectOnion/Content/font.spritefont</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/pChar.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/wall.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/wall_E.png</File>
@@ -31,6 +32,7 @@
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/WhitePixel.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -97,6 +97,13 @@
 /processorParam:TextureFormat=Color
 /build:floor.png
 
+#begin font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:font.spritefont
+
 #begin pChar.png
 /importer:TextureImporter
 /processor:TextureProcessor
