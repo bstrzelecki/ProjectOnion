@@ -50,6 +50,7 @@ namespace ProjectOnion
 		private static Vector2 _start;
 		public static void Update()
 		{
+			if (UIController.IsMouseOverUI) return;
 			if (Input.IsMouseKeyDown(0))
 			{
 				if (buildMode != BuildMode.Free)

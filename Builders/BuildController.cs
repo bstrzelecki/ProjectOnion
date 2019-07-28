@@ -40,6 +40,7 @@ namespace ProjectOnion
 		private Vector2 _start;
 		public void Update()
 		{
+			if (UIController.IsMouseOverUI) return;
 			if (Input.IsMouseKeyDown(0))
 			{
 				if (_start == Vector2.Zero)

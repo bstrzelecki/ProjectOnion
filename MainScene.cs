@@ -26,7 +26,9 @@ namespace ProjectOnion
 			new Character();
 			new Character();
 			new UIFabricator();
-			GameMain.RegisterRenderer(new UIController());
+			UIController c = new UIController();
+			GameMain.RegisterRenderer(c, 15);
+			GameMain.RegisterUpdate(c);
 
 			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
 			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));

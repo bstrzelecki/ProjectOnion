@@ -13,7 +13,7 @@ namespace ProjectOnion
 		public JobItem(string name, Action OnClickAction)
 		{
 			this.name = name;
-			this.OnClickAction = OnClick;
+			this.OnClickAction = OnClickAction;
 		}
 		public string GetDisplayName()
 		{
