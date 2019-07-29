@@ -78,6 +78,11 @@ namespace ProjectOnion
 					if (rect.Contains(Input.GetMousePosition()))
 					{
 						Debug.WriteLine("Clicked " + categories[i]);
+						if(displayedCategory == categories[i])
+						{
+							displayedCategory = string.Empty;
+							return;
+						}
 						displayedCategory = categories[i];
 						displayedOffset = i;
 						itemButtons.Clear();
