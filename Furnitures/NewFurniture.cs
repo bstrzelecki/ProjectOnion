@@ -12,6 +12,7 @@ namespace ProjectOnion
 		public virtual MountedObject GetFurniture()
 		{
 			obj = new MountedObject();
+			obj.serializer = this is ITagCompound c ? c : null;
 			SetProperties();
 			return obj;
 		}
