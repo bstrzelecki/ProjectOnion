@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
 	class TagCompound
 	{
 		Dictionary<string, string> tags = new Dictionary<string, string>();
+		Vector2 pos;
+		public TagCompound(Vector2 pos)
+		{
+			this.pos = pos;
+		}
 		public void SaveValue<T>(string name, T i)
 		{
 			tags.Add(name, i.ToString());
