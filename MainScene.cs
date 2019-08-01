@@ -57,6 +57,11 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 			if (Input.IsKeyClicked(Keys.D3))
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
+			if (Input.IsKeyClicked(Keys.S))
+			{
+				Serializer s = new Serializer(world.map);
+				s.Save();
+			}
 		}
 	}
 }

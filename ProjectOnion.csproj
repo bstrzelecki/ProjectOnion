@@ -62,6 +62,7 @@
     <Compile Include="Builders\BuildController.cs" />
     <Compile Include="ITagCompound.cs" />
     <Compile Include="JobItem.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="TagCompound.cs" />
     <Compile Include="UI\Category.cs" />
     <Compile Include="Character.cs" />
@@ -103,6 +104,7 @@
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
