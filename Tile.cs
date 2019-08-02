@@ -27,7 +27,7 @@ namespace ProjectOnion
 		}
 		public float GetPathfindingMovementCost()
 		{
-			return movementCost + (float)(mountedObject?.pfMoveCost??0f);
+			return movementCost + (mountedObject?.pfMoveCost??0f);
 		}
 		public float GetMovementCost()
 		{

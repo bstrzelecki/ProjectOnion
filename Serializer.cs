@@ -25,6 +25,13 @@ namespace ProjectOnion
 				t.Add(new XElement("isFloor", tile.IsFloor));
 				t.Add(new XElement("objName", tile.mountedObject?.registryName??""));
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
+
+				XElement j = new XElement("jobs");
+				foreach(Job job in tile.job)
+				{
+
+				}
+
 				root.Add(t);
 			}
 			doc.Save("map.xml");

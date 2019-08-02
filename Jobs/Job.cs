@@ -20,6 +20,14 @@ namespace ProjectOnion
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
 		}
+		public override string ToString()
+		{
+			
+		}
+		public Job(string s)
+		{
+
+		}
 
 		internal void Register()
 		{
@@ -86,10 +94,6 @@ namespace ProjectOnion
 			}
 		}
 		#region side-overrides
-		public override string ToString()
-		{
-			return base.ToString();
-		}
 
 		public override int GetHashCode()
 		{
