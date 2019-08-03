@@ -27,8 +27,12 @@ namespace ProjectOnion
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
 
 				XElement j = new XElement("jobs");
+				int i = 0;
 				foreach(Job job in tile.job)
 				{
+					if (job == null) { i++; continue; }
+					XElement jb = new XElement("job");
+					jb.SetAttributeValue("layer", i);
 
 				}
 
