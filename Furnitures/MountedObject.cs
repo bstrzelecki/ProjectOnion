@@ -10,6 +10,7 @@ namespace ProjectOnion
 	{
 		public string registryName;
 		public string displayName;
+		public string category;
 		public Point tileOffset = Vector2.Zero.ToPoint();
 		public bool IsOpaque = false;
 		public bool characterCanEnter = true;

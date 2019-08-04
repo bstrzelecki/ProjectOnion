@@ -14,6 +14,7 @@ namespace ProjectOnion
 		{
 			obj.displayName = "Door";
 			obj.registryName = "door";
+			obj.category = "Structure";
 			obj.sprite = new MultiSprite("door");
 			obj.characterCanEnter = false;
 			obj.moveCost = new TimeUnit(0f);
