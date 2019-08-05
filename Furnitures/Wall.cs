@@ -11,7 +11,7 @@ namespace ProjectOnion
 		{
 			obj.displayName = "Wall";
 			obj.registryName = "wall";
-			obj.category = "Structure;"
+			obj.category = "Structure";
 			obj.sprite = new MultiSprite("wall");
 			obj.moveCost = float.MaxValue;
 			obj.pfMoveCost = float.MaxValue;
