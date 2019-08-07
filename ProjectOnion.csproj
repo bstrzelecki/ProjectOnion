@@ -65,7 +65,6 @@
     <Compile Include="Registry.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="TagCompound.cs" />
-    <Compile Include="UI\Category.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Furnitures\Door.cs" />
     <Compile Include="UI\FurnitureItem.cs" />
@@ -88,7 +87,6 @@
     <Compile Include="Furnitures\Wall.cs" />
     <Compile Include="TimeUnit.cs" />
     <Compile Include="UI\UIController.cs" />
-    <Compile Include="UI\UIFabricator.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
-	[Category("Structure")]
 	class Wall : NewFurniture
 	{
 		protected override void SetProperties()

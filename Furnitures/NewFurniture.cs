@@ -16,6 +16,11 @@ namespace ProjectOnion
 			SetProperties();
 			return obj;
 		}
+
+		public Action GetOnClickAction()
+		{
+			return OnClickAction;
+		}
 		public virtual IUIItem GetUIItem()
 		{
 			return new FurnitureItem(GetFurniture(), OnClickAction);

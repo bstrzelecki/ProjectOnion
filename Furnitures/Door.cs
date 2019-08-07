@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using MBBSlib.MonoGame;
 namespace ProjectOnion
 {
-	[Category("Structure")]
 	class Door : NewFurniture
 	{
 		protected override void SetProperties()

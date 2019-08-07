@@ -25,7 +25,7 @@ namespace ProjectOnion
 			new BuildController();
 			new Character();
 			new Character();
-			new UIFabricator();
+			Registry.RegisterAll();
 			UIController c = new UIController();
 			GameMain.RegisterRenderer(c, 15);
 			GameMain.RegisterUpdate(c);

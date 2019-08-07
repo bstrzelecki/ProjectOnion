@@ -20,10 +20,7 @@ namespace ProjectOnion
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
 		}
-		public override string ToString()
-		{
-			
-		}
+
 		public Job(string s)
 		{
 
