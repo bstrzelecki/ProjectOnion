@@ -10,7 +10,7 @@ namespace ProjectOnion
 		public Tile tile;
 		public Tile dest;
 		private static int _chars = 0;
-		private int id;
+		public int id;
 
 		public float WorkValue = 1f;
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }

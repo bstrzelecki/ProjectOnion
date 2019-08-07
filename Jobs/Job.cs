@@ -8,7 +8,7 @@ namespace ProjectOnion
 		public Tile tile;
 		public Character Owner { get; set; }
 		public bool IsOnTile = true;
-		private float workTime;
+		public float workTime;
 		public IJobEvents jobEvents;
 		public JobLayer jobLayer;
 		public bool onTile;

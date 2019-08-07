@@ -25,7 +25,7 @@ namespace ProjectOnion
 				t.Add(new XElement("isFloor", tile.IsFloor));
 				t.Add(new XElement("objName", tile.mountedObject?.registryName??""));
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
-
+				t.Add(new XElement("character", tile.character.id));
 				XElement j = new XElement("jobs");
 				int i = 0;
 				foreach(Job job in tile.job)
@@ -33,6 +33,9 @@ namespace ProjectOnion
 					if (job == null) { i++; continue; }
 					XElement jb = new XElement("job");
 					jb.SetAttributeValue("layer", i);
+					jb.Add(new XElement("events", job.jobEvents.GetType().Name));
+					jb.Add(new XElement("onTile", job.IsOnTile.ToString()));
+					jb.Add(new XElement("workTime", job.workTime));
 
 				}
 
