@@ -18,9 +18,20 @@ namespace ProjectOnion
 			this.mountedObject = mountedObject;
 			bp = new BlueprintData(new Vector2(tile.X, tile.Y), mountedObject.sprite, new Sprite("bp"));
 		}
+		public FurniturePlaceJobEvent(Tile tile, string mo)
+		{
+			this.tile = tile;
+			this.mountedObject = Registry.furnitures[mo].GetFurniture();
+			bp = new BlueprintData(new Vector2(tile.X, tile.Y), mountedObject.sprite, new Sprite("bp"));
+		}
 		public BlueprintData GetBlueprintData()
 		{
 			return bp;
+		}
+
+		public string[] GetSerializationData()
+		{
+			return new string[] { mountedObject.registryName };
 		}
 
 		public void OnJobCanceled()
@@ -54,6 +65,11 @@ namespace ProjectOnion
 		public BlueprintData GetBlueprintData()
 		{
 			return bp;
+		}
+
+		public string[] GetSerializationData()
+		{
+			return new string[] { string.Empty };
 		}
 
 		public void OnJobCanceled()
@@ -120,6 +136,11 @@ namespace ProjectOnion
 		public void OnJobSuspended()
 		{
 
+		}
+
+		public string[] GetSerializationData()
+		{
+			return new string[] { sprite.ToString(), movementCostReduction.ToString() };
 		}
 	}
 }

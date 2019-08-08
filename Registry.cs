@@ -9,11 +9,12 @@ namespace ProjectOnion
 {
 	class Registry
 	{
-		public static List<NewFurniture> furnitures = new List<NewFurniture>();
+		public static Dictionary<string,NewFurniture> furnitures = new Dictionary<string, NewFurniture>();
 		public static Dictionary<string, Action> jobActions = new Dictionary<string, Action>();
 		public static void Register(NewFurniture f)
 		{
-			furnitures.Add(f);
+			string name = f.GetFurniture().registryName;
+			furnitures.Add(name, f);
 		}
 		public static void Register(string s, Action j)
 		{
@@ -25,7 +26,7 @@ namespace ProjectOnion
 			foreach (Type type in from tp in assembly.GetTypes() where tp.IsSubclassOf(typeof(NewFurniture)) select tp)
 			{
 				NewFurniture nf = (NewFurniture)Activator.CreateInstance(type);
-				furnitures.Add(nf);
+				Register(nf);
 				jobActions.Add(nf.GetFurniture().registryName + "_job", nf.GetOnClickAction());
 				UIController.AddItem(nf.GetFurniture().category, nf.GetUIItem());
 			}

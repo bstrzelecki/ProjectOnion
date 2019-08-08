@@ -60,7 +60,7 @@ namespace ProjectOnion
 			if (Input.IsKeyClicked(Keys.S))
 			{
 				Serializer s = new Serializer(world.map);
-				s.Save();
+				s.Save("game");
 			}
 		}
 	}

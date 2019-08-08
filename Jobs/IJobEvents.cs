@@ -9,6 +9,7 @@ namespace ProjectOnion
 		void OnJobCompleted();
 		void OnJobCanceled();
 		void OnJobSuspended();
+		string[] GetSerializationData();
 		BlueprintData GetBlueprintData();
 	}
 
