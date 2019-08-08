@@ -92,11 +92,11 @@ namespace ProjectOnion
 
 					t.job[int.Parse(job.Attribute("layer").Value)] = j;
 				}
-
+				map[t.X, t.Y] = t;
 				//TODO: Add character load
 				//t.isCharOnTile = true;
 			}
-			return null;
+			return map;
 		}
 	}
 }
