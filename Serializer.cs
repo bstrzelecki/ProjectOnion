@@ -11,12 +11,7 @@ namespace ProjectOnion
 {
 	class Serializer
 	{
-		Tile[,] map;
-		public  Serializer(Tile[,] map)
-		{
-			this.map = map;
-		}
-		public void Save(string fileName)
+		public void Save(Tile[,] map, string fileName)
 		{
 			XDocument doc = new XDocument();
 			doc.Add(new XElement("Map"));
@@ -39,7 +34,7 @@ namespace ProjectOnion
 				int i = 0;
 				foreach(Job job in tile.job)
 				{
-					if (job == null) { i++; continue; }
+					if (job == null || job.IsCompleted) { i++; continue; }
 					XElement jb = new XElement("job");
 					jb.SetAttributeValue("layer", i);
 					jb.Add(new XElement("events", job.jobEvents.GetType().Name));
@@ -47,9 +42,9 @@ namespace ProjectOnion
 					XElement args = new XElement("eventArgs");
 					foreach(string s in job.jobEvents.GetSerializationData())
 					{
-						args.Add("a", s);
+						args.Add(new XElement("a", s));
 					}
-
+					jb.Add(args);
 					jb.Add(new XElement("onTile", job.IsOnTile.ToString()));
 					jb.Add(new XElement("workTime", job.workTime));
 					j.Add(jb);
@@ -75,7 +70,8 @@ namespace ProjectOnion
 				Tile t = new Tile(int.Parse(tile.Attribute("X").Value), int.Parse(tile.Attribute("Y").Value));
 				t.IsFloor = bool.Parse(tile.Element("isFloor").Value);
 				t.sprite = new MBBSlib.MonoGame.Sprite(tile.Element("floorName").Value);
-				t.PlaceObject(Registry.furnitures[tile.Element("objName").Value].GetFurniture());
+				if(tile.Element("objName").Value != string.Empty)
+					t.PlaceObject(Registry.furnitures[tile.Element("objName").Value].GetFurniture());
 
 				XElement jobs = tile.Element("jobs");
 				foreach(XElement job in jobs.Elements("job"))
@@ -88,8 +84,15 @@ namespace ProjectOnion
 					{
 						eventArgs[i] = s[i - 1];
 					}
-					Job j = new Job(t, (IJobEvents)a.CreateInstance(job.Element("events").Value, false, BindingFlags.Default, null, eventArgs,null,null), bool.Parse(tile.Element("onTile").Value), int.Parse(tile.Element("workTime").Value), int.Parse(job.Attribute("layer").Value));
-
+					string typeName = job.Element("events").Value;
+					Type type = a.GetType("ProjectOnion."+typeName);
+					IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
+					bool onTIle = bool.Parse(job.Element("onTile").Value);
+					int workTime = int.Parse(job.Element("workTime").Value);
+					JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
+					Job j = new Job(t, events, onTIle, workTime, jb);
+					j.Register();
+					JobQueue.AddJob(j);
 					t.job[int.Parse(job.Attribute("layer").Value)] = j;
 				}
 				map[t.X, t.Y] = t;

@@ -21,18 +21,19 @@ namespace ProjectOnion
 			GameMain.graphics.ApplyChanges();
 			Game.BackgroundColor = Color.Black;
 			GameMain.RegisterUpdate(this);
+			Registry.RegisterAll();
+			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
+			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
+			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 			world = new World(16, 16);
+			world.map = new Serializer().Load("game");
 			new BuildController();
 			new Character();
 			new Character();
-			Registry.RegisterAll();
 			UIController c = new UIController();
 			GameMain.RegisterRenderer(c, 15);
 			GameMain.RegisterUpdate(c);
 
-			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
-			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
-			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 
 
 		}
@@ -59,8 +60,8 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 			if (Input.IsKeyClicked(Keys.S))
 			{
-				Serializer s = new Serializer(world.map);
-				s.Save("game");
+				Serializer s = new Serializer();
+				s.Save(world.map, "game");
 			}
 		}
 	}

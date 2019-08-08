@@ -111,7 +111,14 @@ namespace ProjectOnion
 			this.movementCostReduction = movementCostReduction;
 			bp = new BlueprintData(new Vector2(tile.X, tile.Y), sprite, new Sprite("bp"));
 		}
+		public FloorPlaceJobEvent(Tile tile, string sprite, string cost)
+		{
+			this.tile = tile;
+			this.sprite = new Sprite(sprite);
+			this.movementCostReduction = int.Parse(cost);
+			bp = new BlueprintData(new Vector2(tile.X, tile.Y), this.sprite, new Sprite("bp"));
 
+		}
 		private BlueprintData bp;
 		public BlueprintData GetBlueprintData()
 		{

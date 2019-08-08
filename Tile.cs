@@ -34,8 +34,11 @@ namespace ProjectOnion
 		{
 			return movementCost + (float)(mountedObject?.moveCost??0f);
 		}
+		private bool firstDraw = true;
 		internal void Draw(SpriteBatch sprite)
 		{
+			if (firstDraw)
+				mountedObject?.objectEvents?.OnNeighbourChanged(this);
 			if (mountedObject != null)
 			{
 				if (!mountedObject.IsOpaque)
@@ -80,12 +83,12 @@ namespace ProjectOnion
 			if (mountedObject.moveCost == float.MaxValue) IsInmovable = true;
 			mountedObject.AssignPosition(Position);
 			mountedObject.objectEvents.OnPlaced();
-
 			foreach (Tile tile in GetNeighbourTiles())
 			{
 				if (tile == null || tile.mountedObject == null) continue;
 				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
 			}
+			mountedObject.objectEvents.OnNeighbourChanged(this);
 		}
 
 		public void Update()
