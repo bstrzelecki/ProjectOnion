@@ -50,6 +50,14 @@ namespace ProjectOnion
 				sprite.Draw(this.sprite, new TileRectangle(X, Y), Color.White);
 			}
 		}
+		public void OnTagLoad(TagCompound compound)
+		{
+			mountedObject.serializer?.OnLoad(compound);
+		}
+		public void OnTagSave(TagCompound compound)
+		{
+			mountedObject.serializer?.OnSave(compound);
+		}
 		public List<Tile> GetNeighbourTiles(bool fourDirs = true)
 		{
 			List<Tile> tiles = new List<Tile>();

@@ -22,7 +22,7 @@ namespace ProjectOnion
 		public IObjectEvents objectEvents;
 		public IUseable objectUseEvent;
 		public MBBSlib.MonoGame.IUpdateable objectUpdate;
-		public ITagCompound serializer;
+		public ISerializable serializer;
 		public List<string> flags = new List<string>();
 		public void AssignPosition(Vector2 pos)
 		{

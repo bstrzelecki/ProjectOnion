@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOnion
 {
-	interface ITagCompound
+	interface ISerializable
 	{
 		void OnLoad(TagCompound compound);
 		void OnSave(TagCompound compound);

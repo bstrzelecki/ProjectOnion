@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,18 +23,18 @@ namespace ProjectOnion
 			settings.Add(new XElement("mapSize", new XElement("X", MainScene.world.Width), new XElement("Y", MainScene.world.Height)));
 
 			root.Add(settings);
-			foreach(Tile tile in map)
+			foreach (Tile tile in map)
 			{
 				XElement t = new XElement("tile");
 				t.SetAttributeValue("X", tile.X);
 				t.SetAttributeValue("Y", tile.Y);
 				t.Add(new XElement("isFloor", tile.IsFloor));
-				t.Add(new XElement("objName", tile.mountedObject?.registryName??""));
+				t.Add(new XElement("objName", tile.mountedObject?.registryName ?? ""));
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
-				t.Add(new XElement("character", tile.character?.id.ToString()??""));
+				t.Add(new XElement("character", tile.character?.id.ToString() ?? ""));
 				XElement j = new XElement("jobs");
 				int i = 0;
-				foreach(Job job in tile.job)
+				foreach (Job job in tile.job)
 				{
 					if (job == null || job.IsCompleted) { i++; continue; }
 					XElement jb = new XElement("job");
@@ -40,7 +42,7 @@ namespace ProjectOnion
 					jb.Add(new XElement("events", job.jobEvents.GetType().Name));
 
 					XElement args = new XElement("eventArgs");
-					foreach(string s in job.jobEvents.GetSerializationData())
+					foreach (string s in job.jobEvents.GetSerializationData())
 					{
 						args.Add(new XElement("a", s));
 					}
@@ -52,12 +54,24 @@ namespace ProjectOnion
 				t.Add(j);
 				root.Add(t);
 			}
-			doc.Save(fileName+"_map.xml");
+			try {
+				doc.Save($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.ToString());
+				Directory.CreateDirectory($"{Environment.CurrentDirectory}/Saves/");
+				doc.Save($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
+			}
 		}
 		public Tile[,] Load(string fileName)
 		{
+			if (!File.Exists($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml"))
+			{
+				return null;
+			}
 			Assembly a = Assembly.GetCallingAssembly();
-			XDocument doc = XDocument.Load(fileName + "_map.xml");
+			XDocument doc = XDocument.Load($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 			XElement root = doc.Root;
 
 			int x = int.Parse(root.Element("settings").Element("mapSize").Element("X").Value);
@@ -100,6 +114,27 @@ namespace ProjectOnion
 				//t.isCharOnTile = true;
 			}
 			return map;
+		}
+
+		public void SaveTags(Tile[,] map, string fileName)
+		{
+			XDocument doc = new XDocument();
+			doc.Add(new XElement("root"));
+
+			XElement root = doc.Root;
+			foreach(Tile tile in map)
+			{
+				TagCompound tag = new TagCompound(new Vector2(tile.X, tile.Y));
+				tile.OnTagSave(tag);
+				XElement t = new XElement("tag");
+				t.SetAttributeValue("X", tile.X);
+				t.SetAttributeValue("Y", tile.Y);
+				foreach(string s in tag.GetSerializableData().Keys)
+				{
+					t.Add(new XElement(s, tag.GetSerializableData()[s]));
+				}
+				root.Add(t);
+			}
 		}
 	}
 }

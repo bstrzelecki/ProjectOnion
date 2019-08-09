@@ -26,7 +26,7 @@ namespace ProjectOnion
 			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
 			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 			world = new World(16, 16);
-			world.map = new Serializer().Load("game");
+			world.SetupMap(new Serializer().Load("game"));
 			new BuildController();
 			new Character();
 			new Character();

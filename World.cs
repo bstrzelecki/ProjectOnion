@@ -22,6 +22,11 @@ namespace ProjectOnion
 			}
 			return p;
 		}
+		public void SetupMap(Tile[,] tiles)
+		{
+			if(tiles != null)
+				map = tiles;
+		} 
 		public World(int height, int width)
 		{
 			Height = height;
