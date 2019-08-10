@@ -11,7 +11,6 @@ namespace ProjectOnion
 		private Tile tile;
 		private MountedObject mountedObject;
 		private BlueprintData bp;
-		private Job job;
 		public FurniturePlaceJobEvent(Tile tile, MountedObject mountedObject)
 		{
 			this.tile = tile;
@@ -36,15 +35,13 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
+
 		}
 
 		public void OnJobCompleted()
 		{
 			tile.PlaceObject(mountedObject);
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
+
 		}
 
 		public void OnJobSuspended()
@@ -56,7 +53,7 @@ namespace ProjectOnion
 	{
 		Tile tile;
 		BlueprintData bp;
-		Job job;
+
 		public DeconstructJobEvent(Tile tile)
 		{
 			this.tile = tile;
@@ -74,8 +71,7 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
+
 		}
 
 		public void OnJobCompleted()
@@ -87,8 +83,7 @@ namespace ProjectOnion
 				tile.sprite = new Sprite("grid");
 				tile.IsFloor = false;
 			}
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
+
 		}
 
 		public void OnJobSuspended()
@@ -99,10 +94,9 @@ namespace ProjectOnion
 
 	internal class FloorPlaceJobEvent : IJobEvents
 	{
-		private Tile tile;
-		private Sprite sprite;
-		private float movementCostReduction;
-		private Job job;
+		private readonly Tile tile;
+		private readonly Sprite sprite;
+		private readonly float movementCostReduction;
 
 		public FloorPlaceJobEvent(Tile tile, Sprite sprite, float movementCostReduction = 0f)
 		{
@@ -127,8 +121,7 @@ namespace ProjectOnion
 
 		public void OnJobCanceled()
 		{
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
+
 		}
 
 		public void OnJobCompleted()
@@ -136,8 +129,6 @@ namespace ProjectOnion
 			tile.IsFloor = true;
 			tile.sprite = sprite;
 			tile.movementCost -= movementCostReduction;
-			if (job == null) return;
-			GameMain.UnregisterRenderer(job);
 		}
 
 		public void OnJobSuspended()

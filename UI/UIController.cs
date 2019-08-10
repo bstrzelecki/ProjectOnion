@@ -14,7 +14,6 @@ namespace ProjectOnion
 	{
 		static Dictionary<string, List<IUIItem>> Items = new Dictionary<string, List<IUIItem>>();
 		static List<Rectangle> buttons = new List<Rectangle>();
-		public static int OffsetX, OffsetY;
 		public static bool IsMouseOverUI { get; private set; } = false;
 		public static void AddItem(string category, IUIItem item)
 		{

@@ -15,7 +15,6 @@ namespace ProjectOnion
 		public bool IsFloor = false;
 		public bool IsInmovable = false;
 		public bool isCharOnTile = false;
-		public string jobPending;
 		public Character character;
 		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
