@@ -62,6 +62,7 @@
     <Compile Include="Builders\BuildController.cs" />
     <Compile Include="ITagCompound.cs" />
     <Compile Include="JobItem.cs" />
+    <Compile Include="MenuController.cs" />
     <Compile Include="Registry.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="TagCompound.cs" />
