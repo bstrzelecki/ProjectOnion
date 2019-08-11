@@ -22,6 +22,7 @@ namespace ProjectOnion
 			Game.BackgroundColor = Color.Black;
 			GameMain.RegisterUpdate(this);
 			Registry.RegisterAll();
+			new MenuController();
 			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
 			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
 			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
