@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,23 +9,42 @@ namespace ProjectOnion
 {
 	class MenuController : MBBSlib.MonoGame.IDrawable, MBBSlib.MonoGame.IUpdateable
 	{
-		public bool IsMenuOpened { get; protected set; }
-		public static bool IsMouseOverUI = false;
-		List<Button> buttons = new List<Button>();
+		public static bool IsMenuOpened { get; protected set; }
+		public static bool IsMouseOverUI { get
+			{
+				foreach(Button btn in buttons)
+				{
+					if (btn.IsMouseOverUI) return true;
+				}
+				return false;
+			}
+		}
+		static List<Button> buttons = new List<Button>();
 		public MenuController()
 		{
 			GameMain.RegisterRenderer(this, 10);
 			GameMain.RegisterUpdate(this);
 			Vector2 screenCenter = new Vector2(GameMain.graphics.PreferredBackBufferWidth / 2 - 64, GameMain.graphics.PreferredBackBufferHeight / 2 - 120);
 			int i = 0;
-			buttons.Add(new Button("Resume", screenCenter + new Vector2(0,32 * i))); i++;
+			Button resume = new Button("Resume", screenCenter + new Vector2(0, 32 * i));
+			resume.OnClicked += () =>
+			{
+				IsMenuOpened = false;
+			};
+			buttons.Add(resume); i++;
 			buttons.Add(new Button("Save", screenCenter + new Vector2(0,32 * i))); i++;
 			buttons.Add(new Button("Load", screenCenter + new Vector2(0,32 * i))); i++;
-			buttons.Add(new Button("Exit", screenCenter + new Vector2(0,32 * i))); i++;
+			Button exit = new Button("Exit", screenCenter + new Vector2(0, 32 * i));
+			exit.OnClicked += () =>
+			{
+				GameMain.lastCopy.Exit();
+			};
+			buttons.Add(exit);
 		}
 
 		public void Draw(SpriteBatch sprite)
 		{
+			if (!IsMenuOpened) return;
 			foreach (Button btn in buttons)
 			{
 				btn.Draw(sprite);
@@ -33,6 +53,17 @@ namespace ProjectOnion
 
 		public void Update()
 		{
+			Debug.WriteLine(IsMouseOverUI);
+			if (Input.IsKeyClicked(Microsoft.Xna.Framework.Input.Keys.Escape))
+			{
+				IsMenuOpened = !IsMenuOpened;
+			}
+			if (IsMenuOpened) Time.IsPaused = true;
+			if (!IsMenuOpened)
+			{
+				Time.IsPaused = false;
+				return;
+			}
 			foreach (Button btn in buttons)
 			{
 				btn.Update();
@@ -72,20 +103,25 @@ namespace ProjectOnion
 			else
 				image = sprite;
 			if (image.Texture != null)
+			{
 				size = image.Texture.Bounds;
+				size.Location = position.ToPoint();
+			}
 			position = pos;
 			this.color = color;
 		}
 		public bool IsMouseOverUI
 		{
-			get { return MenuController.IsMouseOverUI; }
-			set { MenuController.IsMouseOverUI = value; }
+			get; set;
 		}
 		public void Draw(SpriteBatch sprite)
 		{
 			sprite.Draw(image, position, Color.White);
 			if (size == Rectangle.Empty)
+			{
 				size = image.Texture.Bounds;
+				size.Location = position.ToPoint();
+			}
 			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width,0.25f * size.Height), color);
 		}
 

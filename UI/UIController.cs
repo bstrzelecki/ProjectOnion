@@ -68,6 +68,8 @@ namespace ProjectOnion
 				if (rect.Contains(Input.GetMousePosition()))
 					IsMouseOverUI = true;
 			}
+			if (MenuController.IsMouseOverUI)
+				IsMouseOverUI = true;
 			if (!IsMouseOverUI) return;
 			if (Input.IsMouseButtonClicked(0))
 			{
