@@ -136,5 +136,13 @@ namespace ProjectOnion
 				root.Add(t);
 			}
 		}
+
+		public static string[] GetSaveStrings()
+		{
+			string path = Environment.CurrentDirectory + @"\Saves\";
+			string[] files = Directory.GetFiles(path);
+			string[] saves = (from n in files where n.Contains("_map.xml") select n.Substring(path.Length, n.IndexOf('_') - path.Length )).ToArray();
+			return saves;
+		}
 	}
 }
