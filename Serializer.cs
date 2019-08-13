@@ -13,7 +13,14 @@ namespace ProjectOnion
 {
 	class Serializer
 	{
-		public void Save(Tile[,] map, string fileName)
+		string fileName;
+		public static string lastName;
+		public Serializer(string fn)
+		{
+			fileName = fn;
+			lastName = fn;
+		}
+		public void Save(Tile[,] map)
 		{
 			XDocument doc = new XDocument();
 			doc.Add(new XElement("Map"));
@@ -64,7 +71,7 @@ namespace ProjectOnion
 				doc.Save($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 			}
 		}
-		public Tile[,] Load(string fileName)
+		public Tile[,] Load()
 		{
 			if (!File.Exists($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml"))
 			{
@@ -116,7 +123,7 @@ namespace ProjectOnion
 			return map;
 		}
 
-		public void SaveTags(Tile[,] map, string fileName)
+		public void SaveTags(Tile[,] map)
 		{
 			XDocument doc = new XDocument();
 			doc.Add(new XElement("root"));

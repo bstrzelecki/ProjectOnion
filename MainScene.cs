@@ -27,7 +27,7 @@ namespace ProjectOnion
 			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
 			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 			world = new World(16, 16);
-			world.SetupMap(new Serializer().Load("game"));
+			world.SetupMap(new Serializer("game").Load());
 			new BuildController();
 			new Character();
 			new Character();
@@ -61,8 +61,8 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 			if (Input.IsKeyClicked(Keys.S))
 			{
-				Serializer s = new Serializer();
-				s.Save(world.map, "game");
+				Serializer s = new Serializer("game");
+				s.Save(world.map);
 			}
 		}
 	}

@@ -37,6 +37,7 @@ namespace ProjectOnion
 			Button load = new Button("Load", screenCenter + new Vector2(0, 32 * i));
 			load.OnClicked += () =>
 			{
+				sideMenu.Clear();
 				int j = 0;
 				foreach (string s in Serializer.GetSaveStrings())
 				{
@@ -44,8 +45,8 @@ namespace ProjectOnion
 					btn.OnClicked += () =>
 					{
 						Debug.WriteLine("Loading " + s);
-						Serializer ss = new Serializer();
-						MainScene.world.SetupMap(ss.Load(s));
+						Serializer ss = new Serializer(s);
+						MainScene.world.SetupMap(ss.Load());
 					};
 					sideMenu.Add(btn);
 				}
