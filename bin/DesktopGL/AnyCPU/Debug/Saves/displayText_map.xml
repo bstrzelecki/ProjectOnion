@@ -1281,27 +1281,17 @@
     <jobs />
   </tile>
   <tile X="11" Y="6">
-    <isFloor>false</isFloor>
+    <isFloor>true</isFloor>
     <objName></objName>
-    <floorName>grid</floorName>
-    <character></character>
-    <jobs>
-      <job layer="0">
-        <events>FloorPlaceJobEvent</events>
-        <eventArgs>
-          <a>floor</a>
-          <a>0</a>
-        </eventArgs>
-        <onTile>True</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <floorName>floor</floorName>
+    <character>1</character>
+    <jobs />
   </tile>
   <tile X="11" Y="7">
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>1</character>
+    <character></character>
     <jobs />
   </tile>
   <tile X="11" Y="8">
@@ -1375,21 +1365,11 @@
     <jobs />
   </tile>
   <tile X="12" Y="2">
-    <isFloor>false</isFloor>
+    <isFloor>true</isFloor>
     <objName></objName>
-    <floorName>grid</floorName>
+    <floorName>floor</floorName>
     <character></character>
-    <jobs>
-      <job layer="0">
-        <events>FloorPlaceJobEvent</events>
-        <eventArgs>
-          <a>floor</a>
-          <a>0</a>
-        </eventArgs>
-        <onTile>True</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="12" Y="3">
     <isFloor>true</isFloor>
@@ -1517,55 +1497,25 @@
     <jobs />
   </tile>
   <tile X="13" Y="2">
-    <isFloor>false</isFloor>
+    <isFloor>true</isFloor>
     <objName></objName>
-    <floorName>grid</floorName>
+    <floorName>floor</floorName>
     <character></character>
-    <jobs>
-      <job layer="0">
-        <events>FloorPlaceJobEvent</events>
-        <eventArgs>
-          <a>floor</a>
-          <a>0</a>
-        </eventArgs>
-        <onTile>True</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="13" Y="3">
-    <isFloor>false</isFloor>
+    <isFloor>true</isFloor>
     <objName></objName>
-    <floorName>grid</floorName>
+    <floorName>floor</floorName>
     <character></character>
-    <jobs>
-      <job layer="0">
-        <events>FloorPlaceJobEvent</events>
-        <eventArgs>
-          <a>floor</a>
-          <a>0</a>
-        </eventArgs>
-        <onTile>True</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="13" Y="4">
-    <isFloor>false</isFloor>
+    <isFloor>true</isFloor>
     <objName></objName>
-    <floorName>grid</floorName>
-    <character></character>
-    <jobs>
-      <job layer="0">
-        <events>FloorPlaceJobEvent</events>
-        <eventArgs>
-          <a>floor</a>
-          <a>0</a>
-        </eventArgs>
-        <onTile>True</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <floorName>floor</floorName>
+    <character>0</character>
+    <jobs />
   </tile>
   <tile X="13" Y="5">
     <isFloor>false</isFloor>
@@ -1588,7 +1538,7 @@
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>0</character>
+    <character></character>
     <jobs />
   </tile>
   <tile X="13" Y="7">

@@ -843,7 +843,7 @@
     <isFloor>false</isFloor>
     <objName></objName>
     <floorName>grid</floorName>
-    <character></character>
+    <character>1</character>
     <jobs />
   </tile>
   <tile X="7" Y="8">
@@ -864,7 +864,7 @@
     <isFloor>false</isFloor>
     <objName></objName>
     <floorName>grid</floorName>
-    <character></character>
+    <character>0</character>
     <jobs />
   </tile>
   <tile X="7" Y="11">
@@ -1301,7 +1301,7 @@
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>1</character>
+    <character></character>
     <jobs />
   </tile>
   <tile X="11" Y="8">
@@ -1588,7 +1588,7 @@
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>0</character>
+    <character></character>
     <jobs />
   </tile>
   <tile X="13" Y="7">

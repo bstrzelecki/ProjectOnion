@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,10 +31,30 @@ namespace ProjectOnion
 			Button resume = new Button("Resume", screenCenter + new Vector2(0, 32 * i));
 			resume.OnClicked += () =>
 			{
+				sideMenu.Clear();
 				IsMenuOpened = false;
 			};
 			buttons.Add(resume); i++;
-			buttons.Add(new Button("Save", screenCenter + new Vector2(0,32 * i))); i++;
+			Button save = new Button("Save", screenCenter + new Vector2(0, 32 * i));
+			save.OnClicked += () =>
+			{
+				sideMenu.Clear();
+				sideMenu.Add(new TextBox("", screenCenter + new Vector2(128, 0)));
+				if (Serializer.lastName != string.Empty)
+				{
+					string s = Serializer.lastName;
+					Button btn = new Button(s, screenCenter + new Vector2(128, 32));
+					btn.OnClicked += () =>
+					{
+						Debug.WriteLine("Saving " + s);
+						Serializer ss = new Serializer(s);
+						ss.Save(MainScene.world.map);
+						sideMenu.Clear();
+					};
+					sideMenu.Add(btn);
+				}
+			};
+			buttons.Add(save); i++;
 			Button load = new Button("Load", screenCenter + new Vector2(0, 32 * i));
 			load.OnClicked += () =>
 			{
@@ -47,6 +68,7 @@ namespace ProjectOnion
 						Debug.WriteLine("Loading " + s);
 						Serializer ss = new Serializer(s);
 						MainScene.world.SetupMap(ss.Load());
+						sideMenu.Clear();
 					};
 					sideMenu.Add(btn);
 				}
@@ -77,6 +99,7 @@ namespace ProjectOnion
 		{
 			if (Input.IsKeyClicked(Microsoft.Xna.Framework.Input.Keys.Escape))
 			{
+				sideMenu.Clear();
 				IsMenuOpened = !IsMenuOpened;
 			}
 			if (IsMenuOpened) Time.IsPaused = true;
@@ -96,15 +119,63 @@ namespace ProjectOnion
 			}
 		}
 	}
+	class TextBox : Button
+	{
+		public TextBox(string text, Vector2 pos, MultiSprite sprite = null) : base(text,pos,sprite)
+		{
+			GameMain.lastCopy.Window.TextInput += Window_TextInput;
+			OnClicked += TextBox_OnClicked;
+		}
+
+		private void TextBox_OnClicked()
+		{
+			if (displayText == string.Empty) return;
+			Serializer s = new Serializer(displayText);
+			s.Save(MainScene.world.map);
+		}
+
+		private void Window_TextInput(object sender, TextInputEventArgs e)
+		{
+			if (e.Character == 9)
+				return;
+			if (e.Character == 8)
+			{
+				if (displayText.Length > 0)
+				{
+					displayText = displayText.Remove(displayText.Length - 1);
+				}
+				return;
+			}
+			displayText += e.Character;
+		}
+		public override void Draw(SpriteBatch sprite)
+		{
+			sprite.Draw(image, position, Color.White);
+			if (size.Location == Point.Zero || size.Size == Point.Zero)
+			{
+				size.Location = position.ToPoint();
+				size.Size = image.Texture.Bounds.Size;
+			}
+			try
+			{
+				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(displayText);
+			}
+		}
+
+	}
 	class Button : MBBSlib.MonoGame.IDrawable, MBBSlib.MonoGame.IUpdateable
 	{
-		string displayText = "missing_text";
+		protected string displayText = "missing_text";
 		public event Action OnClicked;
 		public event Action OnHover;
 		public Rectangle size;
 		public Color color = Color.White;
-		MultiSprite image;
-		Vector2 position;
+		protected MultiSprite image;
+		protected Vector2 position;
 		public Button()
 		{
 			image = new MultiSprite("button");
@@ -145,7 +216,7 @@ namespace ProjectOnion
 		{
 			get; set;
 		}
-		public void Draw(SpriteBatch sprite)
+		public virtual void Draw(SpriteBatch sprite)
 		{
 			sprite.Draw(image, position, Color.White);
 			if (size.Location == Point.Zero || size.Size == Point.Zero)
