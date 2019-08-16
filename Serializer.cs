@@ -123,6 +123,26 @@ namespace ProjectOnion
 			return map;
 		}
 
+		private void SaveChars(Character[] chars)
+		{
+			XDocument doc = new XDocument();
+			doc.Add(new XElement("root"));
+			XElement root = doc.Root;
+
+			foreach(Character c in chars)
+			{
+				XElement cc = new XElement("character");
+				XElement pos = new XElement("position");
+				pos.Add(new XElement("tile", $"{c.tile.X},{c.tile.Y}" ));
+				pos.Add(new XElement("dest", $"{c.dest.X},{c.dest.Y}" ));
+				pos.Add(new XElement("progress", c.moveCompleted ));
+				cc.Add(pos);
+				cc.Add(new XElement("id", c.id));
+				cc.Add(new XElement("name", c.Name));
+				root.Add(cc);
+			}
+		}
+
 		public void SaveTags(Tile[,] map)
 		{
 			XDocument doc = new XDocument();

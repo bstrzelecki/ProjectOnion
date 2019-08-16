@@ -20,7 +20,7 @@ namespace ProjectOnion
 
 		public float moveSpeed = .5f;
 
-		private float moveCompleted = 0f;
+		public float moveCompleted = 0f;
 		float distance = 1;
 		Sprite img;
 		public Character()
