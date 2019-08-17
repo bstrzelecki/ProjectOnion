@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.AI;
 using MBBSlib.MonoGame;
@@ -16,7 +17,7 @@ namespace ProjectOnion
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
-		public readonly string Name = "Bob";
+		public string Name = "Bob";
 
 		public float moveSpeed = .5f;
 
@@ -31,6 +32,7 @@ namespace ProjectOnion
 			_chars++;
 			GameMain.RegisterRenderer(this, 7);
 			GameMain.RegisterUpdate(this);
+			Registry.characters.Add(this);
 		}
 		public void SetDestination(Tile d)
 		{
@@ -174,6 +176,12 @@ namespace ProjectOnion
 		public override string ToString()
 		{
 			return base.ToString();
+		}
+
+		internal void Dispose()
+		{
+			GameMain.UnregisterRenderer(this, 7);
+			GameMain.UnregisterUpdate(this);
 		}
 	}
 }

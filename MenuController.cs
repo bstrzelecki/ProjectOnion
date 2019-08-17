@@ -49,7 +49,6 @@ namespace ProjectOnion
 						Debug.WriteLine("Saving " + s);
 						Serializer ss = new Serializer(s);
 						ss.Save(MainScene.world.map);
-						sideMenu.Clear();
 					};
 					sideMenu.Add(btn);
 				}
@@ -68,7 +67,6 @@ namespace ProjectOnion
 						Debug.WriteLine("Loading " + s);
 						Serializer ss = new Serializer(s);
 						MainScene.world.SetupMap(ss.Load());
-						sideMenu.Clear();
 					};
 					sideMenu.Add(btn);
 				}

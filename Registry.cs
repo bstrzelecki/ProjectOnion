@@ -11,6 +11,7 @@ namespace ProjectOnion
 	{
 		public static Dictionary<string,NewFurniture> furnitures = new Dictionary<string, NewFurniture>();
 		public static Dictionary<string, Action> jobActions = new Dictionary<string, Action>();
+		public static List<Character> characters = new List<Character>();
 		public static void Register(NewFurniture f)
 		{
 			string name = f.GetFurniture().registryName;

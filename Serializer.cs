@@ -28,7 +28,6 @@ namespace ProjectOnion
 
 			XElement settings = new XElement("settings");
 			settings.Add(new XElement("mapSize", new XElement("X", MainScene.world.Width), new XElement("Y", MainScene.world.Height)));
-
 			root.Add(settings);
 			foreach (Tile tile in map)
 			{
@@ -70,6 +69,7 @@ namespace ProjectOnion
 				Directory.CreateDirectory($"{Environment.CurrentDirectory}/Saves/");
 				doc.Save($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 			}
+			SaveChars();
 		}
 		public Tile[,] Load()
 		{
@@ -117,32 +117,64 @@ namespace ProjectOnion
 					t.job[int.Parse(job.Attribute("layer").Value)] = j;
 				}
 				map[t.X, t.Y] = t;
-				//TODO: Add character load
-				//t.isCharOnTile = true;
 			}
+			try
+			{
+				LoadChars();
+			}
+			catch { }
 			return map;
 		}
 
-		private void SaveChars(Character[] chars)
+		private void SaveChars()
 		{
 			XDocument doc = new XDocument();
 			doc.Add(new XElement("root"));
 			XElement root = doc.Root;
 
-			foreach(Character c in chars)
+			foreach(Character c in Registry.characters)
 			{
 				XElement cc = new XElement("character");
 				XElement pos = new XElement("position");
 				pos.Add(new XElement("tile", $"{c.tile.X},{c.tile.Y}" ));
-				pos.Add(new XElement("dest", $"{c.dest.X},{c.dest.Y}" ));
+				if(c.dest != null)
+					pos.Add(new XElement("dest", $"{c.dest.X},{c.dest.Y}" ));
 				pos.Add(new XElement("progress", c.moveCompleted ));
 				cc.Add(pos);
 				cc.Add(new XElement("id", c.id));
 				cc.Add(new XElement("name", c.Name));
 				root.Add(cc);
 			}
+			doc.Save(Environment.CurrentDirectory + @"\Saves\" + fileName + "_char.xml");
 		}
-
+		private void LoadChars()
+		{
+			foreach(Character c in Registry.characters)
+			{
+				c.Dispose();
+			}
+			Registry.characters.Clear();
+			XDocument doc = XDocument.Load(Environment.CurrentDirectory + @"\Saves\" + fileName + "_char.xml");
+			foreach(XElement c in doc.Root.Elements("character"))
+			{
+				Character cc = new Character();
+				string p = c.Element("position").Element("tile").Value;
+				Vector2 pos;
+				pos.X = int.Parse(p.Split(',')[0]);
+				pos.Y = int.Parse(p.Split(',')[1]);
+				cc.tile = MainScene.world.GetTile(pos);
+				if (c.Element("position").Element("dest") != null)
+				{
+					string dp = c.Element("position").Element("dest").Value;
+					pos.X = int.Parse(p.Split(',')[0]);
+					pos.Y = int.Parse(p.Split(',')[1]);
+					cc.dest = MainScene.world.GetTile(pos);
+					cc.moveCompleted = int.Parse(c.Element("position").Element("progress").Value);
+				}
+				cc.id = int.Parse(c.Element("id").Value);
+				cc.Name = c.Element("name").Value;
+			}
+		}
 		public void SaveTags(Tile[,] map)
 		{
 			XDocument doc = new XDocument();

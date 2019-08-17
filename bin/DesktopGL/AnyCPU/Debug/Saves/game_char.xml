@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <character>
+    <position>
+      <tile>11,8</tile>
+      <progress>0</progress>
+    </position>
+    <id>0</id>
+    <name>Bob</name>
+  </character>
+</root>
