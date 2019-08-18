@@ -158,7 +158,7 @@ namespace ProjectOnion
 			{
 				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 			}
-			catch (Exception e)
+			catch
 			{
 				Debug.WriteLine(displayText);
 			}

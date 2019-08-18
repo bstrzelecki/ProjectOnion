@@ -28,15 +28,23 @@ namespace ProjectOnion
 			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 			world = new World(16, 16);
 			new BuildController();
-			//new Character();
-			//new Character();
 			UIController c = new UIController();
 			GameMain.RegisterRenderer(c, 15);
 			GameMain.RegisterUpdate(c);
-
-
-
+			Debugger.OnCmd += Debugger_OnCmd;
 		}
+
+		private void Debugger_OnCmd(CommandCompund cmd)
+		{
+			if (cmd.Check("mainScene"))
+			{
+				if(cmd.Source == "spawn")
+				{
+					new Character();
+				}
+			}
+		}
+
 		public void Update()
 		{
 			MouseController.HandleDeltaMouse();
