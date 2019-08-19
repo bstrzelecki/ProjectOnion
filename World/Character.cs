@@ -8,22 +8,35 @@ namespace ProjectOnion
 {
 	class Character : IDrawable, IUpdateable
 	{
+		#region Positions
 		public Tile tile;
 		public Tile dest;
-		private static int _chars = 0;
-		public int id;
-
-		public float WorkValue = 1f;
+		float distance = 1;
+		public float moveCompleted = 0f;
 		public Microsoft.Xna.Framework.Vector2 Position { get { return (tile != null) ? tile.Position : Microsoft.Xna.Framework.Vector2.Zero; } }
 		public float X { get { return Position.X; } }
 		public float Y { get { return Position.Y; } }
+		#endregion
+
+		#region Id
+		private static int _chars = 0;
+		public int id;
+		#endregion
+
 		public string Name = "Bob";
+
+		public float WorkValue = 1f;
 
 		public float moveSpeed = .5f;
 
-		public float moveCompleted = 0f;
-		float distance = 1;
 		Sprite img;
+
+		#region JobData
+		List<Point> path;
+		Queue<Job> enqueuedJobs = new Queue<Job>();
+		Job currentJob;
+		#endregion
+
 		public Character()
 		{
 			img = new Sprite("pChar");
@@ -40,12 +53,17 @@ namespace ProjectOnion
 			distance = d.GetMovementCost();
 			dest = d;
 		}
+
+		public void EnqueueJob(Job j)
+		{
+			enqueuedJobs.Enqueue(j);
+		}
+		
+		#region Interface implementation
 		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
 		}
-		List<Point> path;
-		Job currentJob;
 		public void Update()
 		{
 			if (!tile.IsInmovable)
@@ -104,7 +122,9 @@ namespace ProjectOnion
 				dest.mountedObject.objectUseEvent.Use(this);
 
 		}
+		#endregion
 
+		#region private members
 		private void MoveCharacter()
 		{
 			tile.mountedObject?.objectEvents.OnCharExit(this);
@@ -150,7 +170,14 @@ namespace ProjectOnion
 		{
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
-			currentJob = JobQueue.GetJob(this);
+			if (enqueuedJobs.Count > 0)
+			{
+				currentJob = enqueuedJobs.Dequeue();
+			}
+			else
+			{
+				currentJob = JobQueue.GetJob(this);
+			}
 			if (currentJob == null) return;
 
 
@@ -167,6 +194,9 @@ namespace ProjectOnion
 				}
 			}
 		}
+		#endregion
+		
+		#region objectOverrides
 		public override bool Equals(object obj)
 		{
 			if (obj is Character c)
@@ -183,6 +213,7 @@ namespace ProjectOnion
 		{
 			return base.ToString();
 		}
+		#endregion
 
 		internal void Dispose()
 		{
