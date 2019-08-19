@@ -60,13 +60,13 @@
   <ItemGroup>
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
-    <Compile Include="ITagCompound.cs" />
-    <Compile Include="JobItem.cs" />
-    <Compile Include="MenuController.cs" />
+    <Compile Include="Serialization\ITagCompound.cs" />
+    <Compile Include="UI\JobItem.cs" />
+    <Compile Include="UI\MenuController.cs" />
     <Compile Include="Registry.cs" />
-    <Compile Include="Serializer.cs" />
-    <Compile Include="TagCompound.cs" />
-    <Compile Include="Character.cs" />
+    <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="Serialization\TagCompound.cs" />
+    <Compile Include="World\Character.cs" />
     <Compile Include="Furnitures\Door.cs" />
     <Compile Include="UI\FurnitureItem.cs" />
     <Compile Include="UI\IUIItem.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\JobEvents.cs" />
     <Compile Include="Jobs\JobQueue.cs" />
-    <Compile Include="MainScene.cs" />
+    <Compile Include="World\MainScene.cs" />
     <Compile Include="Furnitures\MountedObject.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="Furnitures\NewFurniture.cs" />
@@ -83,12 +83,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\QueueBuilder.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="TileRectangle.cs" />
+    <Compile Include="World\Tile.cs" />
+    <Compile Include="World\TileRectangle.cs" />
     <Compile Include="Furnitures\Wall.cs" />
     <Compile Include="TimeUnit.cs" />
     <Compile Include="UI\UIController.cs" />
-    <Compile Include="World.cs" />
+    <Compile Include="World\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MBBSlib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

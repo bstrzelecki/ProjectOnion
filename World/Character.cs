@@ -95,13 +95,7 @@ namespace ProjectOnion
 
 			if (moveCompleted >= 1f)
 			{
-				tile.mountedObject?.objectEvents.OnCharExit(this);
-				tile.isCharOnTile = false;
-				tile.character = null;
-				tile = dest;
-				tile.character = this;
-				dest = null;
-				moveCompleted = 0;
+				MoveCharacter();
 				return;
 			}
 			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
@@ -110,6 +104,18 @@ namespace ProjectOnion
 				dest.mountedObject.objectUseEvent.Use(this);
 
 		}
+
+		private void MoveCharacter()
+		{
+			tile.mountedObject?.objectEvents.OnCharExit(this);
+			tile.isCharOnTile = false;
+			tile.character = null;
+			tile = dest;
+			tile.character = this;
+			dest = null;
+			moveCompleted = 0;
+		}
+
 		private void DoWork()
 		{
 			if (currentJob == null)
