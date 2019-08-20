@@ -21,6 +21,7 @@ namespace ProjectOnion
 			int diff = initialScroll - (Input.GetMouseScrollDelta() / 120);
 			initialScroll = Input.GetMouseScrollDelta() / 120;
 			World.TileSize -= diff * 6;
+			//FIXME
 			World.Offset += diff * 3 * MainScene.world.Width;
 		}
 	}
