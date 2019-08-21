@@ -31,6 +31,7 @@ namespace ProjectOnion
 			UIController c = new UIController();
 			GameMain.RegisterRenderer(c, 15);
 			GameMain.RegisterUpdate(c);
+			ResourceDataBase.Init();
 			Debugger.OnCmd += Debugger_OnCmd;
 		}
 

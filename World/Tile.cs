@@ -18,12 +18,14 @@ namespace ProjectOnion
 		public Character character;
 		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
+		public StackItem stackItem { get; protected set; } 
 		public Tile(int x, int y)
 		{
 			X = x;
 			Y = y;
 			sprite = new Sprite("grid");
 			GameMain.RegisterUpdate(this);
+			stackItem = new StackItem(this, "METAL", 50);
 		}
 		public float GetPathfindingMovementCost()
 		{
@@ -48,6 +50,7 @@ namespace ProjectOnion
 			{
 				sprite.Draw(this.sprite, new TileRectangle(X, Y), Color.White);
 			}
+			stackItem?.Draw(sprite);
 		}
 		public void OnTagLoad(TagCompound compound)
 		{
