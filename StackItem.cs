@@ -22,7 +22,14 @@ namespace ProjectOnion
 			this.resource = resource;
 			this.amount = amount;
 		}
-
+		public void AddToStack(int am)
+		{
+			amount += am;
+		}
+		public int GetAmount()
+		{
+			return amount;
+		}
 		public void Draw(SpriteBatch sprite)
 		{
 			TileRectangle tilePos = new TileRectangle(Position);
@@ -30,6 +37,10 @@ namespace ProjectOnion
 			sprite.Draw(ResourceData.GetSprite(), rect, Color.White);
 			if(World.TileSize > 47)
 				sprite.DrawString(GameMain.fonts["font"], amount.ToString(), ((Rectangle)tilePos).Location.ToVector2() + new Vector2(8,8), Color.White);
+		}
+		public override string ToString()
+		{
+			return resource;
 		}
 	}
 }

@@ -37,6 +37,34 @@ namespace ProjectOnion
 		Job currentJob;
 		#endregion
 
+		public StackItem carryItem;
+
+		public bool PickupItemFromTile()
+		{
+			if (carryItem == null)
+			{
+				carryItem = tile.stackItem;
+				tile.RemoveItemStack();
+				return true;
+			}
+			if(carryItem.ToString() == tile.stackItem.ToString())
+			{
+				carryItem.AddToStack(tile.stackItem.GetAmount());
+				tile.RemoveItemStack();
+				return true;
+			}
+			return false;
+
+		}
+		public bool PutItemOnTile()
+		{
+			if (tile.PutItemStack(carryItem))
+			{
+				carryItem = null;
+				return true;
+			}
+			return false;
+		}
 		public Character()
 		{
 			img = new Sprite("pChar");

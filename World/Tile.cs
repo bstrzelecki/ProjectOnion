@@ -18,7 +18,25 @@ namespace ProjectOnion
 		public Character character;
 		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
-		public StackItem stackItem { get; protected set; } 
+		public StackItem stackItem { get; protected set; }
+		public void RemoveItemStack()
+		{
+			stackItem = null;
+		}
+		public bool PutItemStack(StackItem stack)
+		{
+			if (stackItem == null)
+			{
+				stackItem = stack;
+				return true;
+			}
+			if (stackItem.ToString() == stack.ToString())
+			{
+				stackItem.AddToStack(stack.GetAmount());
+				return true;
+			}
+			return false;
+		}
 		public Tile(int x, int y)
 		{
 			X = x;
