@@ -12,7 +12,8 @@ namespace ProjectOnion
 		private static Dictionary<string, Resource> resources = new Dictionary<string, Resource>();
 		public static void Init()
 		{
-			resources.Add("METAL", new Resource(new Sprite("blip")));
+			resources.Add("METAL", new Resource(new Sprite("metal")));
+			resources.Add("CONCRETE", new Resource(new Sprite("concrete")));
 		}
 		public static Resource GetResource(string key)
 		{

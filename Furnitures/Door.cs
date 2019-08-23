@@ -22,6 +22,7 @@ namespace ProjectOnion
 			obj.objectUseEvent = new DoorUse(obj);
 			obj.objectUpdate = new DoorEvent(obj);
 			obj.flags.Add("wall");
+			obj.resources = new ItemStack[] { new ItemStack("METAL", 20) };
 			OnClickAction = () => Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 		}
 	}

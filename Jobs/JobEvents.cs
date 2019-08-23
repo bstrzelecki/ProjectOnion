@@ -83,7 +83,6 @@ namespace ProjectOnion
 				tile.sprite = new Sprite("grid");
 				tile.IsFloor = false;
 			}
-
 		}
 
 		public void OnJobSuspended()

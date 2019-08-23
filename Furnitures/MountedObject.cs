@@ -24,6 +24,7 @@ namespace ProjectOnion
 		public MBBSlib.MonoGame.IUpdateable objectUpdate;
 		public ISerializable serializer;
 		public List<string> flags = new List<string>();
+		public ItemStack[] resources;
 		public void AssignPosition(Vector2 pos)
 		{
 			if (pos == Vector2.Zero) Debug.WriteLine("!!!");

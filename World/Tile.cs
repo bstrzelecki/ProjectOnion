@@ -18,21 +18,23 @@ namespace ProjectOnion
 		public Character character;
 		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
-		public StackItem stackItem { get; protected set; }
+		public ItemStack stackItem { get; protected set; }
 		public void RemoveItemStack()
 		{
 			stackItem = null;
 		}
-		public bool PutItemStack(StackItem stack)
+		public bool PutItemStack(ItemStack stack)
 		{
 			if (stackItem == null)
 			{
 				stackItem = stack;
+				stackItem.SetTile(this);
 				return true;
 			}
 			if (stackItem.ToString() == stack.ToString())
 			{
 				stackItem.AddToStack(stack.GetAmount());
+				stackItem.SetTile(this);
 				return true;
 			}
 			return false;
@@ -43,7 +45,6 @@ namespace ProjectOnion
 			Y = y;
 			sprite = new Sprite("grid");
 			GameMain.RegisterUpdate(this);
-			stackItem = new StackItem(this, "METAL", 50);
 		}
 		public float GetPathfindingMovementCost()
 		{
@@ -95,6 +96,7 @@ namespace ProjectOnion
 		}
 		public void DeconstructObject()
 		{
+			PutItemStacks(mountedObject.resources);
 			mountedObject = null;
 			IsInmovable = false;
 
@@ -103,6 +105,22 @@ namespace ProjectOnion
 			{
 				if (tile == null || tile.mountedObject == null) continue;
 				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
+			}
+		}
+		public void PutItemStacks(ItemStack[] stacks)
+		{
+			foreach(ItemStack s in mountedObject.resources)
+			{
+				if (!PutItemStack(s))
+				{
+					foreach(Tile tile in GetNeighbourTiles())
+					{
+						if (tile.PutItemStack(s))
+						{
+							break;
+						}
+					}
+				}
 			}
 		}
 		public void PlaceObject(MountedObject mounted)

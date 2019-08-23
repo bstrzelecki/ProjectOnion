@@ -9,18 +9,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	class StackItem : MBBSlib.MonoGame.IDrawable
+	class ItemStack : MBBSlib.MonoGame.IDrawable
 	{
 		Tile tile;
 		string resource;
 		int amount;
 		public Vector2 Position { get { return tile.Position; } }
 		public Resource ResourceData { get { return ResourceDataBase.GetResource(resource); } }
-		public StackItem(Tile tile, string resource, int amount)
+		public ItemStack(Tile tile, string resource, int amount)
 		{
 			this.tile = tile;
 			this.resource = resource;
 			this.amount = amount;
+		}
+		public ItemStack(string resource, int amount)
+		{ 
+			this.resource = resource;
+			this.amount = amount;
+		}
+		public void SetTile(Tile tile)
+		{
+			this.tile = tile;
 		}
 		public void AddToStack(int am)
 		{
@@ -32,6 +41,7 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
+			if (tile == null) return;
 			TileRectangle tilePos = new TileRectangle(Position);
 			Rectangle rect = new Rectangle(((Rectangle)tilePos).Location + new Point(16,16), ((Rectangle)tilePos).Size - new Point(16,16));
 			sprite.Draw(ResourceData.GetSprite(), rect, Color.White);

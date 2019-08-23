@@ -62,7 +62,7 @@
     <Compile Include="Builders\BuildController.cs" />
     <Compile Include="ResourceDataBase.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />
-    <Compile Include="StackItem.cs" />
+    <Compile Include="ItemStack.cs" />
     <Compile Include="UI\JobItem.cs" />
     <Compile Include="UI\MenuController.cs" />
     <Compile Include="Registry.cs" />

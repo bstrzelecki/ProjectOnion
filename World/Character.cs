@@ -37,7 +37,7 @@ namespace ProjectOnion
 		Job currentJob;
 		#endregion
 
-		public StackItem carryItem;
+		public ItemStack carryItem;
 
 		public bool PickupItemFromTile()
 		{

@@ -16,6 +16,7 @@ namespace ProjectOnion
 			obj.pfMoveCost = float.MaxValue;
 			obj.objectEvents = new WallEvent(obj);
 			obj.flags.Add("wall");
+			obj.resources = new ItemStack[] { new ItemStack("METAL", 10) , new ItemStack("CONCRETE", 25)};
 			OnClickAction = () => Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 		}
 	}
