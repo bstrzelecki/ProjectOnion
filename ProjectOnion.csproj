@@ -61,6 +61,7 @@
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
     <Compile Include="ResourceDataBase.cs" />
+    <Compile Include="ResourceJob.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />
     <Compile Include="ItemStack.cs" />
     <Compile Include="UI\JobItem.cs" />

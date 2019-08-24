@@ -21,7 +21,7 @@ namespace ProjectOnion
 			this.onTile = onTile;
 		}
 
-		public Job(string s)
+		public Job()
 		{
 
 		}
@@ -31,7 +31,7 @@ namespace ProjectOnion
 			GameMain.RegisterRenderer(this, 6);
 		}
 
-		public void Work(float deltaWork)
+		public virtual void Work(float deltaWork)
 		{
 			workTime -= deltaWork;
 			if (workTime < 0)
@@ -102,6 +102,7 @@ namespace ProjectOnion
 	{
 		Misc,
 		Build,
+		Resource,
 		Deconstruct
 	}
 }
