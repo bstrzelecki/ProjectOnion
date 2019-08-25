@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.AI;
 using MBBSlib.MonoGame;
@@ -47,7 +46,7 @@ namespace ProjectOnion
 				tile.RemoveItemStack();
 				return true;
 			}
-			if(carryItem.ToString() == tile.stackItem.ToString())
+			if (carryItem.ToString() == tile.stackItem.ToString())
 			{
 				carryItem.AddToStack(tile.stackItem.GetAmount());
 				tile.RemoveItemStack();
@@ -68,7 +67,7 @@ namespace ProjectOnion
 		public Character()
 		{
 			img = new Sprite("pChar");
-			tile = MainScene.world.GetTile(MainScene.rng.Next(0,15), MainScene.rng.Next(0,15));
+			tile = MainScene.world.GetTile(MainScene.rng.Next(0, 15), MainScene.rng.Next(0, 15));
 			id = _chars;
 			_chars++;
 			GameMain.RegisterRenderer(this, 7);
@@ -86,7 +85,7 @@ namespace ProjectOnion
 		{
 			enqueuedJobs.Enqueue(j);
 		}
-		
+
 		private void GetJob()
 		{
 			if (enqueuedJobs.Count > 0)
@@ -106,41 +105,10 @@ namespace ProjectOnion
 		}
 		public void Update()
 		{
-			if (!tile.IsInmovable)
+			//Checks if tile thats char can move to another tile
+			if (tile.IsInmovable)
 			{
-				if ((path == null || path.Count == 0) && currentJob == null)
-				{
-					GetJob();
-				}
-				if (currentJob != null)
-				{
-					if (currentJob.IsAvailable)
-					{
-						GetPath();
-					}
-					else
-					{
-
-					}
-				}
-
-				DoWork();
-				if (path != null && path.Count != 0 && dest == null)
-				{
-					Point tilePos = path[0];
-					path.RemoveAt(0);
-					SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
-					if (dest.IsInmovable)
-					{
-						dest = null;
-						path = null;
-						if (currentJob.onTile) currentJob = null;
-						return;
-					}
-				}
-			}
-			else
-			{
+				//Loop through neighbours of this tile and teleports to movable location
 				foreach (Tile t in tile.GetNeighbourTiles())
 				{
 					//Temp fix
@@ -148,31 +116,85 @@ namespace ProjectOnion
 
 				}
 			}
-			if (dest == null) return;
-			if (dest.IsInmovable)
+			//If character has no path and no job then find him a new one
+			if ((path == null || path.Count == 0) && currentJob == null)
+			{
+				PathNotAssigned();
+			}
+			//If character has job but no path assigned
+			if ((path == null || path.Count == 0) && currentJob != null)
+			{
+				//If character can make job then create path just to job destination
+				if (currentJob.IsAvailable)
+				{
+					GetPath();
+				}
+				else
+				{
+					//In other case create path to meet the condition
+
+				}
+			}
+			//If player is in sutable position just work
+			DoWork();
+
+			//If character achieved the destionation assign him a new one
+			if (path != null && path.Count != 0 && dest == null)
+			{
+				Point tilePos = path[0];
+				path.RemoveAt(0);
+				SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
+				if (dest.IsInmovable)
+				{
+					dest = null;
+					path = null;
+					if (currentJob.onTile) currentJob = null;
+					return;
+				}
+			}
+			//If destination is inmovable then abandon current path
+			if (dest.IsInmovable || dest == null)
 			{
 				dest = null;
 				path = null;
 				if (currentJob.onTile) currentJob = null;
 				return;
 			}
-			if(dest.character != null && dest.character != this)
+			//If destination tile is occupied then wait
+			if (dest.character != null && dest.character != this)
 			{
-				if(dest.character.currentJob != null)
+				if (dest.character.currentJob != null)
 					return;
 			}
+			//If TODO isnt directly on tile then wait 
 			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;
 
+			//If character complete distance between tiles move him
 			if (moveCompleted >= 1f)
 			{
 				MoveCharacter();
 				return;
 			}
+
+			if (path.Count == 0 && !currentJob.IsAvailable)
+			{
+				if (currentJob.resources.Contains(tile.stackItem.ResourceData))
+				{
+
+				}
+			}
+			//If character can enter the destination progrres his movement
 			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
-				moveCompleted += (moveSpeed * Time.DeltaTime)/distance;
-			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
+				moveCompleted += (moveSpeed * Time.DeltaTime) / distance;
+			//Else try open a door (FIXME)
+ 			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
 				dest.mountedObject.objectUseEvent.Use(this);
 
+		}
+
+		private void PathNotAssigned()
+		{
+			GetJob();
 		}
 		#endregion
 
@@ -242,16 +264,12 @@ namespace ProjectOnion
 
 			Resource[] res = currentJob.resources;
 			Tile[] tiles = (from t in MainScene.world where res.Contains(t.stackItem.ResourceData) select t).ToArray();
-			List<MBBSlib.AI.Point> points = new List<Point>();
+			var points = new List<Point>();
 			foreach (Tile tile in tiles)
 			{
 				points.Add(new Point(tile.X, tile.Y));
 			}
 			path = p.GetPath(points, new Point(tile.X, tile.Y));
-			if ((from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
-			{
-				GetResourcePath();
-			}
 		}
 		#endregion
 
