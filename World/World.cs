@@ -1,10 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class World : IDrawable
+	internal class World : IDrawable, IEnumerable<Tile>
 	{
 		public readonly int Height, Width;
 		public Tile[,] map;
@@ -62,6 +64,55 @@ namespace ProjectOnion
 			{
 				tile.Draw(sprite);
 			}
+		}
+
+		public IEnumerator<Tile> GetEnumerator()
+		{
+			return new TIleEnumerator(map);
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+	}
+	class TIleEnumerator : IEnumerator<Tile>
+	{
+		public Tile Current { get; private set; } = null;
+		Tile[,] map;
+		public TIleEnumerator(Tile[,] map)
+		{
+			this.map = map; 
+		}
+		object IEnumerator.Current => Current;
+
+		public void Dispose()
+		{
+			map = null;
+		}
+		int x = 0;
+		int y = 0;
+		public bool MoveNext()
+		{
+			Current = map[x, y];
+			x++;
+			if(x > MainScene.world.Width)
+			{
+				x = 0;
+				y++;
+				if(y > MainScene.world.Height)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public void Reset()
+		{
+			x = 0;
+			y = 0;
+			Current = map[0, 0];
 		}
 	}
 }

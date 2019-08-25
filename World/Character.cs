@@ -87,6 +87,18 @@ namespace ProjectOnion
 			enqueuedJobs.Enqueue(j);
 		}
 		
+		private void GetJob()
+		{
+			if (enqueuedJobs.Count > 0)
+			{
+				currentJob = enqueuedJobs.Dequeue();
+			}
+			else
+			{
+				currentJob = JobQueue.GetJob(this);
+			}
+		}
+
 		#region Interface implementation
 		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
 		{
@@ -97,8 +109,20 @@ namespace ProjectOnion
 			if (!tile.IsInmovable)
 			{
 				if ((path == null || path.Count == 0) && currentJob == null)
-					GetPath();
-				if (currentJob == null) path = null;
+				{
+					GetJob();
+				}
+				if (currentJob != null)
+				{
+					if (currentJob.IsAvailable)
+					{
+						GetPath();
+					}
+					else
+					{
+
+					}
+				}
 
 				DoWork();
 				if (path != null && path.Count != 0 && dest == null)
@@ -166,7 +190,7 @@ namespace ProjectOnion
 
 		private void DoWork()
 		{
-			if (currentJob == null)
+			if (currentJob == null || !currentJob.IsAvailable)
 			{
 				return;
 			}
@@ -198,16 +222,6 @@ namespace ProjectOnion
 		{
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
-			if (enqueuedJobs.Count > 0)
-			{
-				currentJob = enqueuedJobs.Dequeue();
-			}
-			else
-			{
-				currentJob = JobQueue.GetJob(this);
-			}
-			if (currentJob == null) return;
-
 
 			path = p.GetPath(new Point((int)tile.Position.X, (int)tile.Position.Y), new Point((int)currentJob.tile.Position.X, (int)currentJob.tile.Position.Y));
 			path.Reverse();
@@ -222,8 +236,25 @@ namespace ProjectOnion
 				}
 			}
 		}
+		private void GetResourcePath()
+		{
+			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
+
+			Resource[] res = currentJob.resources;
+			Tile[] tiles = (from t in MainScene.world where res.Contains(t.stackItem.ResourceData) select t).ToArray();
+			List<MBBSlib.AI.Point> points = new List<Point>();
+			foreach (Tile tile in tiles)
+			{
+				points.Add(new Point(tile.X, tile.Y));
+			}
+			path = p.GetPath(points, new Point(tile.X, tile.Y));
+			if ((from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
+			{
+				GetResourcePath();
+			}
+		}
 		#endregion
-		
+
 		#region objectOverrides
 		public override bool Equals(object obj)
 		{

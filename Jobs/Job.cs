@@ -1,4 +1,5 @@
-﻿using MBBSlib.MonoGame;
+﻿using System;
+using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
@@ -7,11 +8,22 @@ namespace ProjectOnion
 	{
 		public Tile tile;
 		public Character Owner { get; set; }
+		public bool IsAvailable { get { return (resources == null || resources.Length == 0); } }
 		public bool IsOnTile = true;
 		public float workTime;
 		public IJobEvents jobEvents;
 		public JobLayer jobLayer;
 		public bool onTile;
+		public Resource[] resources;
+		public Job(Tile tile, IJobEvents jobEvents, Resource[] resources,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		{
+			this.tile = tile;
+			this.jobEvents = jobEvents;
+			this.workTime = workTime;
+			this.jobLayer = jobLayer;
+			this.onTile = onTile;
+			this.resources = resources??Array.Empty<Resource>();
+		}
 		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
 			this.tile = tile;
@@ -19,6 +31,7 @@ namespace ProjectOnion
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
+			this.resources = Array.Empty<Resource>();
 		}
 
 		public Job()
