@@ -103,6 +103,7 @@ namespace ProjectOnion
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
 		}
+		//TODO rewrite this shit!!!!!!!!!!!!!!!
 		public void Update()
 		{
 			//Checks if tile thats char can move to another tile
@@ -144,7 +145,7 @@ namespace ProjectOnion
 				Point tilePos = path[0];
 				path.RemoveAt(0);
 				SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
-				if (dest.IsInmovable)
+				if (dest != null && dest.IsInmovable)
 				{
 					dest = null;
 					path = null;
@@ -153,11 +154,11 @@ namespace ProjectOnion
 				}
 			}
 			//If destination is inmovable then abandon current path
-			if (dest.IsInmovable || dest == null)
+			if (dest == null || dest.IsInmovable )
 			{
 				dest = null;
 				path = null;
-				if (currentJob.onTile) currentJob = null;
+				if (currentJob!=null && currentJob.onTile) currentJob = null;
 				return;
 			}
 			//If destination tile is occupied then wait
@@ -176,13 +177,6 @@ namespace ProjectOnion
 				return;
 			}
 
-			if (path.Count == 0 && !currentJob.IsAvailable)
-			{
-				if (currentJob.resources.Contains(tile.stackItem.ResourceData))
-				{
-
-				}
-			}
 			//If character can enter the destination progrres his movement
 			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
 				moveCompleted += (moveSpeed * Time.DeltaTime) / distance;
