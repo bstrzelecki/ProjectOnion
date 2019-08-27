@@ -14,15 +14,15 @@ namespace ProjectOnion
 		public IJobEvents jobEvents;
 		public JobLayer jobLayer;
 		public bool onTile;
-		public Resource[] resources;
-		public Job(Tile tile, IJobEvents jobEvents, Resource[] resources,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		public ItemStack[] resources;
+		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
-			this.resources = resources??Array.Empty<Resource>();
+			this.resources = resources??Array.Empty<ItemStack>();
 		}
 		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
@@ -31,7 +31,11 @@ namespace ProjectOnion
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
-			this.resources = Array.Empty<Resource>();
+			this.resources = Array.Empty<ItemStack>();
+		}
+		public void Supply(ItemStack stack)
+		{
+			
 		}
 
 		public Job()

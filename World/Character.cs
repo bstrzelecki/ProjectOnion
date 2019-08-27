@@ -103,92 +103,50 @@ namespace ProjectOnion
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
 		}
-		//TODO rewrite this shit!!!!!!!!!!!!!!!
 		public void Update()
 		{
-			//Checks if tile thats char can move to another tile
-			if (tile.IsInmovable)
+			if((path == null || path.Count == 0) && currentJob == null)
 			{
-				//Loop through neighbours of this tile and teleports to movable location
-				foreach (Tile t in tile.GetNeighbourTiles())
-				{
-					//Temp fix
-					if (!t.IsInmovable) { SetDestination(t); moveCompleted = 1f; break; }
-
-				}
+				GetJob();
 			}
-			//If character has no path and no job then find him a new one
-			if ((path == null || path.Count == 0) && currentJob == null)
+			if (currentJob != null)
 			{
-				PathNotAssigned();
-			}
-			//If character has job but no path assigned
-			if ((path == null || path.Count == 0) && currentJob != null)
-			{
-				//If character can make job then create path just to job destination
 				if (currentJob.IsAvailable)
 				{
-					GetPath();
+					if (path == null || path.Count == 0)
+						GetPath();
+					DoWork();
 				}
 				else
 				{
-					//In other case create path to meet the condition
+					if (currentJob.resources.Contains(carryItem))
+					{
+						if (path == null || path.Count == 0)
+							GetPath();
+						if((dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile)))
+						{
 
+						}
+					}
 				}
 			}
-			//If player is in sutable position just work
-			DoWork();
-
-			//If character achieved the destionation assign him a new one
-			if (path != null && path.Count != 0 && dest == null)
+			if(!(path == null || path.Count == 0) && dest == null)
 			{
-				Point tilePos = path[0];
+				dest = MainScene.world.GetTile(path[0].X, path[0].Y);
 				path.RemoveAt(0);
-				SetDestination(MainScene.world.GetTile(tilePos.X, tilePos.Y));
-				if (dest != null && dest.IsInmovable)
-				{
-					dest = null;
-					path = null;
-					if (currentJob.onTile) currentJob = null;
-					return;
-				}
-			}
-			//If destination is inmovable then abandon current path
-			if (dest == null || dest.IsInmovable )
-			{
-				dest = null;
-				path = null;
-				if (currentJob!=null && currentJob.onTile) currentJob = null;
-				return;
-			}
-			//If destination tile is occupied then wait
-			if (dest.character != null && dest.character != this)
-			{
-				if (dest.character.currentJob != null)
-					return;
-			}
-			//If TODO isnt directly on tile then wait 
-			if (currentJob != null && !currentJob.onTile && dest == currentJob.tile) return;
-
-			//If character complete distance between tiles move him
-			if (moveCompleted >= 1f)
-			{
-				MoveCharacter();
-				return;
 			}
 
-			//If character can enter the destination progrres his movement
+			if (path == null || path.Count == 0 || dest == null) return;
+			//If character can enter the destination progress his movement
 			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
-				moveCompleted += (moveSpeed * Time.DeltaTime) / distance;
+				moveCompleted += (moveSpeed * ((float)Time.DeltaTime/1000)) / distance;
 			//Else try open a door (FIXME)
  			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
 				dest.mountedObject.objectUseEvent.Use(this);
-
-		}
-
-		private void PathNotAssigned()
-		{
-			GetJob();
+			if(moveCompleted > 1)
+			{
+				MoveCharacter();
+			}
 		}
 		#endregion
 
@@ -210,16 +168,10 @@ namespace ProjectOnion
 			{
 				return;
 			}
-			if (!currentJob.onTile && dest == currentJob.tile)
+			if (!currentJob.onTile && (dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile)))
 			{
 				path = null;
-				currentJob.Work(1);
-			}
-			if (!currentJob.onTile && tile.GetNeighbourTiles().Contains(currentJob.tile))
-			{
-				path = null;
-				dest = null;
-				currentJob.Work(1);
+				currentJob.Work(WorkValue);
 			}
 			if (currentJob.onTile && tile == currentJob.tile)
 			{
@@ -229,7 +181,8 @@ namespace ProjectOnion
 
 			if (currentJob.IsCompleted)
 			{
-				if (!currentJob.onTile && dest == currentJob.tile) dest = null;
+				dest = null;
+				path = null;
 				currentJob = null;
 				return;
 			}
@@ -256,8 +209,8 @@ namespace ProjectOnion
 		{
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
-			Resource[] res = currentJob.resources;
-			Tile[] tiles = (from t in MainScene.world where res.Contains(t.stackItem.ResourceData) select t).ToArray();
+			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
+			Tile[] tiles = (from t in MainScene.world where r.Contains(t.stackItem.ResourceData) select t).ToArray();
 			var points = new List<Point>();
 			foreach (Tile tile in tiles)
 			{
