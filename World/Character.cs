@@ -162,6 +162,11 @@ namespace ProjectOnion
 					}
 				}
 			}
+			if(currentJob != null && (from n in path where MainScene.world.GetTile(n.X,n.Y).IsInmovable select n).Count() > 0)
+			{
+				path = null;
+				DisownJob();
+			}
 			if(!(path == null || path.Count == 0) && dest == null)
 			{
 				dest = MainScene.world.GetTile(path[0].X, path[0].Y);
@@ -183,6 +188,12 @@ namespace ProjectOnion
 		#endregion
 
 		#region private members
+		private void DisownJob()
+		{
+			currentJob.Owner = null;
+			JobQueue.AddJob(currentJob, currentJob.jobLayer);
+			currentJob = null;
+		}
 		private bool Compare(ItemStack item)
 		{
 			if (item == null) return false;
@@ -235,9 +246,8 @@ namespace ProjectOnion
 			{
 				if (!MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).IsInmovable)
 				{
-					JobQueue.AddJob(currentJob);
-					currentJob = null;
-					path.Clear();
+					path = null;
+					DisownJob();
 					return;
 				}
 			}
@@ -248,12 +258,27 @@ namespace ProjectOnion
 
 			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
 			Tile[] tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();
+			if(tiles == null || tiles.Length == 0)
+			{
+				path = null;
+				DisownJob();
+				return;
+			}
 			var points = new List<Point>();
 			foreach (Tile tile in tiles)
 			{
 				points.Add(new Point(tile.X, tile.Y));
 			}
 			path = p.GetPath(points, new Point(tile.X, tile.Y));
+			if ((from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
+			{
+				if (!MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).IsInmovable)
+				{
+					path = null;
+					DisownJob();
+					return;
+				}
+			}
 		}
 		#endregion
 

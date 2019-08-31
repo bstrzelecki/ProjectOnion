@@ -7,22 +7,22 @@ namespace ProjectOnion
 	internal class JobQueue
 	{
 		public static Queue<Job> jobQueue = new Queue<Job>();
-		private static Dictionary<JobType, List<Job>> jobs = InitializeJobDictionary();
-		private static Dictionary<JobType, List<Job>> InitializeJobDictionary()
+		private static Dictionary<JobLayer, List<Job>> jobs = InitializeJobDictionary();
+		private static Dictionary<JobLayer, List<Job>> InitializeJobDictionary()
 		{
-			Dictionary<JobType, List<Job>> j = new Dictionary<JobType, List<Job>>();
-			foreach(string name in Enum.GetNames(typeof(JobType)))
+			Dictionary<JobLayer, List<Job>> j = new Dictionary<JobLayer, List<Job>>();
+			foreach(string name in Enum.GetNames(typeof(JobLayer)))
 			{
-				j.Add((JobType)Enum.Parse(typeof(JobType), name), new List<Job>());
+				j.Add((JobLayer)Enum.Parse(typeof(JobLayer), name), new List<Job>());
 			}
 			return j;
 		}
-		private static void ValidateJobs(JobType j)
+		private static void ValidateJobs(JobLayer j)
 		{
 			List<Job> t = new List<Job>();
-			if (j == JobType.Any)
+			if (j == JobLayer.Any)
 			{
-				foreach(JobType jt in jobs.Keys)
+				foreach(JobLayer jt in jobs.Keys)
 				{
 					foreach (Job job in jobs[jt])
 					{
@@ -44,7 +44,7 @@ namespace ProjectOnion
 				jobs[j].Remove(job);
 			}
 		}
-		public static void AddJob(Job job, JobType jobType = JobType.Any)
+		public static void AddJob(Job job, JobLayer jobType = JobLayer.Any)
 		{
 			ValidateJobs(jobType);
 			foreach (Job j in jobs[jobType])
@@ -74,7 +74,7 @@ namespace ProjectOnion
 			}
 			return val;
 		}
-		private static Job GetClosestJob(Character c,JobType jt)
+		private static Job GetClosestJob(Character c,JobLayer jt)
 		{
 
 			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
@@ -91,13 +91,13 @@ namespace ProjectOnion
 			if (j != null)jobs[jt].Remove(j);
 			return j;
 		}
-		public static Job GetJob(Character ch, JobType jobType = JobType.Any)
+		public static Job GetJob(Character ch, JobLayer jobType = JobLayer.Any)
 		{
 			ValidateJobs(jobType);
 			Job j = null;
-			if (jobType == JobType.Any)
+			if (jobType == JobLayer.Any)
 			{
-				foreach (JobType jt in jobs.Keys)
+				foreach (JobLayer jt in jobs.Keys)
 				{
 					j = GetClosestJob(ch, jt);
 					if (j != null) break;
@@ -111,11 +111,5 @@ namespace ProjectOnion
 			j.Owner = ch;
 			return j;
 		}
-	}
-	enum JobType
-	{
-		Any,
-		Build,
-		Deconstruct
 	}
 }
