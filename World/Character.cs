@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.AI;
 using MBBSlib.MonoGame;
@@ -26,7 +27,7 @@ namespace ProjectOnion
 
 		public float WorkValue = 1f;
 
-		public float moveSpeed = .5f;
+		public float moveSpeed = 2f;
 
 		Sprite img;
 
@@ -38,18 +39,30 @@ namespace ProjectOnion
 
 		public ItemStack carryItem;
 
-		public bool PickupItemFromTile()
+		public bool PickupItemFromTile(int amount)
 		{
 			if (carryItem == null)
 			{
 				carryItem = tile.stackItem;
 				tile.RemoveItemStack();
+				if(carryItem.GetAmount() > amount)
+				{
+					int diff = carryItem.GetAmount() - amount;
+					carryItem.SetAmount(amount);
+					tile.PutItemStack(new ItemStack(carryItem.ResourceData.ToString(), diff));
+				}
 				return true;
 			}
 			if (carryItem.ToString() == tile.stackItem.ToString())
 			{
 				carryItem.AddToStack(tile.stackItem.GetAmount());
 				tile.RemoveItemStack();
+				if (carryItem.GetAmount() > amount)
+				{
+					int diff = carryItem.GetAmount() - amount;
+					carryItem.SetAmount(amount);
+					tile.PutItemStack(new ItemStack(carryItem.ResourceData.ToString(), diff));
+				}
 				return true;
 			}
 			return false;
@@ -119,13 +132,32 @@ namespace ProjectOnion
 				}
 				else
 				{
-					if (currentJob.resources.Contains(carryItem))
+					if (carryItem != null)
+					{
+						if (Compare(carryItem))
+						{
+							if (path == null || path.Count == 0)
+								GetPath();
+							if ((dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile)))
+							{
+								currentJob.Supply(carryItem);
+								carryItem = null;
+							}
+						}
+						else
+						{
+							PutItemOnTile();
+							return;
+						}
+					}
+					else
 					{
 						if (path == null || path.Count == 0)
-							GetPath();
-						if((dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile)))
+							GetResourcePath();
+						if (Compare(tile.stackItem))
 						{
-
+							PickupItemFromTile((from n in currentJob.resources where n.ToString() == tile.stackItem.ToString() select n).First().GetAmount());
+							path = null;
 						}
 					}
 				}
@@ -151,6 +183,11 @@ namespace ProjectOnion
 		#endregion
 
 		#region private members
+		private bool Compare(ItemStack item)
+		{
+			if (item == null) return false;
+			return (from n in currentJob.resources where n.ToString() == item.ToString() select n).Count() > 0;
+		}
 		private void MoveCharacter()
 		{
 			tile.mountedObject?.objectEvents.OnCharExit(this);
@@ -210,7 +247,7 @@ namespace ProjectOnion
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
 			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
-			Tile[] tiles = (from t in MainScene.world where r.Contains(t.stackItem.ResourceData) select t).ToArray();
+			Tile[] tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();
 			var points = new List<Point>();
 			foreach (Tile tile in tiles)
 			{

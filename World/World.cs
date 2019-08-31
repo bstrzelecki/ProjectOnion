@@ -84,6 +84,16 @@ namespace ProjectOnion
 		{
 			this.map = map; 
 		}
+		public Tile GetTile(int x, int y)
+		{
+			if (x < 0 || y < 0 || x >= MainScene.world.Width || y >= MainScene.world.Height)
+			{
+				Debug.WriteLine($"Returning null at {x}, {y}");
+				return null;
+			}
+
+			return map[x, y];
+		}
 		object IEnumerator.Current => Current;
 
 		public void Dispose()
@@ -94,13 +104,13 @@ namespace ProjectOnion
 		int y = 0;
 		public bool MoveNext()
 		{
-			Current = map[x, y];
+			Current = GetTile(x,y);
 			x++;
-			if(x > MainScene.world.Width)
+			if(x >= MainScene.world.Width)
 			{
 				x = 0;
 				y++;
-				if(y > MainScene.world.Height)
+				if(y >= MainScene.world.Height)
 				{
 					return false;
 				}

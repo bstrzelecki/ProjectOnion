@@ -1,6 +1,7 @@
 ﻿using System;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 
 namespace ProjectOnion
 {
@@ -8,7 +9,7 @@ namespace ProjectOnion
 	{
 		public Tile tile;
 		public Character Owner { get; set; }
-		public bool IsAvailable { get { return (resources == null || resources.Length == 0); } }
+		public bool IsAvailable { get { return (resources == null || resources.Length == 0) || (from n in resources where n.GetAmount() > 0 select n).Count() == 0; } }
 		public bool IsOnTile = true;
 		public float workTime;
 		public IJobEvents jobEvents;
@@ -31,11 +32,14 @@ namespace ProjectOnion
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
-			this.resources = Array.Empty<ItemStack>();
+			//this.resources = Array.Empty<ItemStack>();
+			if(jobLayer != JobLayer.Deconstruct)
+				this.resources = new ItemStack[] { new ItemStack("METAL", 10) };
 		}
 		public void Supply(ItemStack stack)
 		{
-			
+			ItemStack r = (from n in resources where n.ResourceData == stack.ResourceData select n).First();
+			r.SetAmount(r.GetAmount() - stack.GetAmount());
 		}
 
 		public Job()

@@ -39,6 +39,12 @@ namespace ProjectOnion
 		{
 			return amount;
 		}
+		public void SetAmount(int am)
+		{
+			amount = am;
+			if (amount < 0)
+				amount = 0;
+		}
 		public void Draw(SpriteBatch sprite)
 		{
 			if (tile == null) return;
