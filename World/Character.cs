@@ -225,8 +225,6 @@ namespace ProjectOnion
 			{
 				currentJob.Work(1);
 			}
-
-
 			if (currentJob.IsCompleted)
 			{
 				dest = null;
