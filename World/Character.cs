@@ -303,6 +303,9 @@ namespace ProjectOnion
 		{
 			GameMain.UnregisterRenderer(this, 7);
 			GameMain.UnregisterUpdate(this);
+			path = null;
+			if (currentJob != null)
+				DisownJob();
 		}
 	}
 }
