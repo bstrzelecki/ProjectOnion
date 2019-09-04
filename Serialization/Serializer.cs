@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 
@@ -60,7 +57,8 @@ namespace ProjectOnion
 				t.Add(j);
 				root.Add(t);
 			}
-			try {
+			try
+			{
 				doc.Save($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 			}
 			catch (Exception e)
@@ -86,27 +84,27 @@ namespace ProjectOnion
 
 			Tile[,] map = new Tile[x, y];
 			var tiles = root.Elements("tile");
-			foreach(XElement tile in tiles)
+			foreach (XElement tile in tiles)
 			{
 				Tile t = new Tile(int.Parse(tile.Attribute("X").Value), int.Parse(tile.Attribute("Y").Value));
 				t.IsFloor = bool.Parse(tile.Element("isFloor").Value);
 				t.sprite = new MBBSlib.MonoGame.Sprite(tile.Element("floorName").Value);
-				if(tile.Element("objName").Value != string.Empty)
+				if (tile.Element("objName").Value != string.Empty)
 					t.PlaceObject(Registry.furnitures[tile.Element("objName").Value].GetFurniture());
 
 				XElement jobs = tile.Element("jobs");
-				foreach(XElement job in jobs.Elements("job"))
+				foreach (XElement job in jobs.Elements("job"))
 				{
 					string[] s = (from n in job.Element("eventArgs").Elements("a") select n.Value).ToArray();
 
 					object[] eventArgs = new object[1 + s.Length];
 					eventArgs[0] = t;
-					for(int i = 1; i < 1 + s.Length; i++)
+					for (int i = 1; i < 1 + s.Length; i++)
 					{
 						eventArgs[i] = s[i - 1];
 					}
 					string typeName = job.Element("events").Value;
-					Type type = a.GetType("ProjectOnion."+typeName);
+					Type type = a.GetType("ProjectOnion." + typeName);
 					IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
 					bool onTIle = bool.Parse(job.Element("onTile").Value);
 					int workTime = int.Parse(job.Element("workTime").Value);
@@ -132,14 +130,14 @@ namespace ProjectOnion
 			doc.Add(new XElement("root"));
 			XElement root = doc.Root;
 
-			foreach(Character c in Registry.characters)
+			foreach (Character c in Registry.characters)
 			{
 				XElement cc = new XElement("character");
 				XElement pos = new XElement("position");
-				pos.Add(new XElement("tile", $"{c.tile.X},{c.tile.Y}" ));
-				if(c.dest != null)
-					pos.Add(new XElement("dest", $"{c.dest.X},{c.dest.Y}" ));
-				pos.Add(new XElement("progress", c.moveCompleted ));
+				pos.Add(new XElement("tile", $"{c.tile.X},{c.tile.Y}"));
+				if (c.dest != null)
+					pos.Add(new XElement("dest", $"{c.dest.X},{c.dest.Y}"));
+				pos.Add(new XElement("progress", c.moveCompleted));
 				cc.Add(pos);
 				cc.Add(new XElement("id", c.id));
 				cc.Add(new XElement("name", c.Name));
@@ -149,13 +147,13 @@ namespace ProjectOnion
 		}
 		private void LoadChars()
 		{
-			foreach(Character c in Registry.characters)
+			foreach (Character c in Registry.characters)
 			{
 				c.Dispose();
 			}
 			Registry.characters.Clear();
 			XDocument doc = XDocument.Load(Environment.CurrentDirectory + @"\Saves\" + fileName + "_char.xml");
-			foreach(XElement c in doc.Root.Elements("character"))
+			foreach (XElement c in doc.Root.Elements("character"))
 			{
 				Character cc = new Character();
 				string p = c.Element("position").Element("tile").Value;
@@ -181,14 +179,14 @@ namespace ProjectOnion
 			doc.Add(new XElement("root"));
 
 			XElement root = doc.Root;
-			foreach(Tile tile in map)
+			foreach (Tile tile in map)
 			{
 				TagCompound tag = new TagCompound(new Vector2(tile.X, tile.Y));
 				tile.OnTagSave(tag);
 				XElement t = new XElement("tag");
 				t.SetAttributeValue("X", tile.X);
 				t.SetAttributeValue("Y", tile.Y);
-				foreach(string s in tag.GetSerializableData().Keys)
+				foreach (string s in tag.GetSerializableData().Keys)
 				{
 					t.Add(new XElement(s, tag.GetSerializableData()[s]));
 				}
@@ -200,7 +198,7 @@ namespace ProjectOnion
 		{
 			string path = Environment.CurrentDirectory + @"\Saves\";
 			string[] files = Directory.GetFiles(path);
-			string[] saves = (from n in files where n.Contains("_map.xml") select n.Substring(path.Length, n.IndexOf('_') - path.Length )).ToArray();
+			string[] saves = (from n in files where n.Contains("_map.xml") select n.Substring(path.Length, n.IndexOf('_') - path.Length)).ToArray();
 			return saves;
 		}
 	}

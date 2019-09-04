@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,9 +10,11 @@ namespace ProjectOnion
 	class MenuController : MBBSlib.MonoGame.IDrawable, MBBSlib.MonoGame.IUpdateable
 	{
 		public static bool IsMenuOpened { get; protected set; }
-		public static bool IsMouseOverUI { get
+		public static bool IsMouseOverUI
+		{
+			get
 			{
-				foreach(Button btn in buttons)
+				foreach (Button btn in buttons)
 				{
 					if (btn.IsMouseOverUI) return true;
 				}
@@ -113,13 +114,13 @@ namespace ProjectOnion
 			foreach (Button btn in sideMenu)
 			{
 				btn.Update();
-				
+
 			}
 		}
 	}
 	class TextBox : Button
 	{
-		public TextBox(string text, Vector2 pos, MultiSprite sprite = null) : base(text,pos,sprite)
+		public TextBox(string text, Vector2 pos, MultiSprite sprite = null) : base(text, pos, sprite)
 		{
 			GameMain.lastCopy.Window.TextInput += Window_TextInput;
 			OnClicked += TextBox_OnClicked;
@@ -186,7 +187,7 @@ namespace ProjectOnion
 				image = new MultiSprite("button");
 			else
 				image = sprite;
-			if(image.Texture != null)
+			if (image.Texture != null)
 				size = image.Texture.Bounds;
 			if (image.Texture != null)
 			{
@@ -222,7 +223,7 @@ namespace ProjectOnion
 				size.Location = position.ToPoint();
 				size.Size = image.Texture.Bounds.Size;
 			}
-			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width,0.25f * size.Height), color);
+			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 		}
 
 		public void Update()
@@ -230,7 +231,7 @@ namespace ProjectOnion
 			if (size.Location == Point.Zero || size.Size == Point.Zero)
 			{
 				size.Location = position.ToPoint();
-				if(image.Texture != null)
+				if (image.Texture != null)
 					size.Size = image.Texture.Bounds.Size;
 			}
 			if (size.Contains(Input.GetMousePosition()))

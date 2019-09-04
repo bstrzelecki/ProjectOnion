@@ -2,7 +2,6 @@
 using MBBSlib;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace ProjectOnion
@@ -23,9 +22,9 @@ namespace ProjectOnion
 			GameMain.RegisterUpdate(this);
 			Registry.RegisterAll();
 			new MenuController();
-			UIController.AddItem("Misc", new JobItem ("Cancel Job", () => JobManager.SetCancelJobMode()));
-			UIController.AddItem("Misc", new JobItem ("Deconstruct", () => JobManager.SetDeconstructJob()));
-			UIController.AddItem("Structure", new JobItem ("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
+			UIController.AddItem("Misc", new JobItem("Cancel Job", () => JobManager.SetCancelJobMode()));
+			UIController.AddItem("Misc", new JobItem("Deconstruct", () => JobManager.SetDeconstructJob()));
+			UIController.AddItem("Structure", new JobItem("Floor", () => Architect.SetBuildObject(BuildMode.Area, BuildType.Floor)));
 			world = new World(16, 16);
 			new BuildController();
 			UIController c = new UIController();
@@ -39,7 +38,7 @@ namespace ProjectOnion
 		{
 			if (cmd.Check("mainScene"))
 			{
-				if(cmd.Source == "spawn")
+				if (cmd.Source == "spawn")
 				{
 					new Character();
 				}

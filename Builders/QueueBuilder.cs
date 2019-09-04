@@ -25,23 +25,23 @@ namespace ProjectOnion
 			}
 			Job job = null;
 			if (jobOverride == null)
-			{ 
+			{
 				if (!TileValidator(pos)) return;
 
 				if (buildType == BuildType.Floor)
 				{
 					if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
-					job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")),jobLayer:JobLayer.Build);
+					job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")), jobLayer: JobLayer.Build);
 				}
 				else if (buildType == BuildType.Furniture)
 				{
 					if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
-					job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false,jobLayer: JobLayer.Build);
+					job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false, jobLayer: JobLayer.Build);
 				}
 			}
 			else
 			{
-				if(TileValidator(pos))
+				if (TileValidator(pos))
 					job = jobOverride(pos);
 			}
 			vectors.Add(pos);

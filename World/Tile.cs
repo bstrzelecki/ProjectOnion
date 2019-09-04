@@ -48,11 +48,11 @@ namespace ProjectOnion
 		}
 		public float GetPathfindingMovementCost()
 		{
-			return movementCost + (mountedObject?.pfMoveCost??0f);
+			return movementCost + (mountedObject?.pfMoveCost ?? 0f);
 		}
 		public float GetMovementCost()
 		{
-			return movementCost + (float)(mountedObject?.moveCost??0f);
+			return movementCost + (float)(mountedObject?.moveCost ?? 0f);
 		}
 		private bool firstDraw = true;
 		internal void Draw(SpriteBatch sprite)
@@ -109,11 +109,11 @@ namespace ProjectOnion
 		}
 		public void PutItemStacks(ItemStack[] stacks)
 		{
-			foreach(ItemStack s in mountedObject.resources)
+			foreach (ItemStack s in mountedObject.resources)
 			{
 				if (!PutItemStack(s))
 				{
-					foreach(Tile tile in GetNeighbourTiles())
+					foreach (Tile tile in GetNeighbourTiles())
 					{
 						if (tile.PutItemStack(s))
 						{

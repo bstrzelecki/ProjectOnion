@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework;
 namespace ProjectOnion
 {
 	class Door : NewFurniture
@@ -57,7 +53,7 @@ namespace ProjectOnion
 					if (delta == new Vector2(-1, 0))
 						w = true;
 				}
-				ms.SetTextureVariant((n && s)?"NS":(e && w)?"EW":"");
+				ms.SetTextureVariant((n && s) ? "NS" : (e && w) ? "EW" : "");
 			}
 		}
 		public void OnNeighbourChanged(Tile tile)
@@ -81,12 +77,12 @@ namespace ProjectOnion
 
 		public void OnCharExit(Character c)
 		{
-			
+
 		}
 		public void Update()
 		{
 			bool isClosing = true;
-			foreach(Tile t in obj.tile.GetNeighbourTiles())
+			foreach (Tile t in obj.tile.GetNeighbourTiles())
 			{
 				if (t.isCharOnTile)
 				{
@@ -129,7 +125,7 @@ namespace ProjectOnion
 		public bool CanUse(Character c)
 		{
 			if (c.tile == r.tile) return true;
-			foreach(Tile t in r.tile.GetNeighbourTiles())
+			foreach (Tile t in r.tile.GetNeighbourTiles())
 			{
 				if (c.tile == t)
 					return true;
@@ -143,11 +139,11 @@ namespace ProjectOnion
 			openStatus += 1 / 100f;
 			if (r.sprite is MultiSprite ms)
 			{
-				if(ms.Variant == "NS")
+				if (ms.Variant == "NS")
 					r.tileOffset.Y = (int)((float)World.TileSize * openStatus);
-				if(ms.Variant == "EW")
+				if (ms.Variant == "EW")
 					r.tileOffset.X = (int)((float)World.TileSize * openStatus);
-				if(ms.Variant == string.Empty)
+				if (ms.Variant == string.Empty)
 					r.tileOffset.X = (int)((float)World.TileSize * openStatus);
 			}
 			if (openStatus >= 1f)

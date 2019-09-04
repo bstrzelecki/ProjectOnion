@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
-using System;
 namespace ProjectOnion
 {
 	internal class JobQueue
@@ -11,7 +11,7 @@ namespace ProjectOnion
 		private static Dictionary<JobLayer, List<Job>> InitializeJobDictionary()
 		{
 			Dictionary<JobLayer, List<Job>> j = new Dictionary<JobLayer, List<Job>>();
-			foreach(string name in Enum.GetNames(typeof(JobLayer)))
+			foreach (string name in Enum.GetNames(typeof(JobLayer)))
 			{
 				j.Add((JobLayer)Enum.Parse(typeof(JobLayer), name), new List<Job>());
 			}
@@ -22,7 +22,7 @@ namespace ProjectOnion
 			List<Job> t = new List<Job>();
 			if (j == JobLayer.Any)
 			{
-				foreach(JobLayer jt in jobs.Keys)
+				foreach (JobLayer jt in jobs.Keys)
 				{
 					foreach (Job job in jobs[jt])
 					{
@@ -39,7 +39,7 @@ namespace ProjectOnion
 						t.Add(job);
 				}
 			}
-			foreach(Job job in t)
+			foreach (Job job in t)
 			{
 				jobs[j].Remove(job);
 			}
@@ -67,28 +67,28 @@ namespace ProjectOnion
 		private static float CalculatePathLenght(List<MBBSlib.AI.Point> path)
 		{
 			float val = 0f;
-			foreach(var p in path)
+			foreach (var p in path)
 			{
 				Tile t = MainScene.world.GetTile(p.X, p.Y);
 				val += t.GetPathfindingMovementCost();
 			}
 			return val;
 		}
-		private static Job GetClosestJob(Character c,JobLayer jt)
+		private static Job GetClosestJob(Character c, JobLayer jt)
 		{
 
 			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
 
 
 			List<MBBSlib.AI.Point> points = new List<MBBSlib.AI.Point>();
-			foreach(Job job in jobs[jt])
+			foreach (Job job in jobs[jt])
 			{
 				points.Add(new MBBSlib.AI.Point(job.tile.X, job.tile.Y));
 			}
 			var path = pathfinding.GetPath(points, new MBBSlib.AI.Point(c.tile.X, c.tile.Y));
 			if (path == null) return null;
 			Job j = MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).job[(int)jt];
-			if (j != null)jobs[jt].Remove(j);
+			if (j != null) jobs[jt].Remove(j);
 			return j;
 		}
 		public static Job GetJob(Character ch, JobLayer jobType = JobLayer.Any)

@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
 
 namespace ProjectOnion
 {
@@ -16,14 +16,14 @@ namespace ProjectOnion
 		public JobLayer jobLayer;
 		public bool onTile;
 		public ItemStack[] resources;
-		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources,bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
 			this.workTime = workTime;
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
-			this.resources = resources??Array.Empty<ItemStack>();
+			this.resources = resources ?? Array.Empty<ItemStack>();
 		}
 		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
 		{
@@ -33,7 +33,7 @@ namespace ProjectOnion
 			this.jobLayer = jobLayer;
 			this.onTile = onTile;
 			//this.resources = Array.Empty<ItemStack>();
-			if(jobLayer != JobLayer.Deconstruct)
+			if (jobLayer != JobLayer.Deconstruct)
 				this.resources = new ItemStack[] { new ItemStack("METAL", 10) };
 		}
 		public void Supply(ItemStack stack)

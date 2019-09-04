@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,16 +30,16 @@ namespace ProjectOnion
 		public void Draw(SpriteBatch sprite)
 		{
 			int i = 0;
-			foreach(string c in Items.Keys)
+			foreach (string c in Items.Keys)
 			{
 				sprite.Draw(new Sprite("button"), new Vector2(0, 32 * i), Color.White);
 				sprite.DrawString(GameMain.fonts["font"], c, new Vector2(16, 8 + 32 * i), Color.White);
 				i++;
 			}
-			if(displayedCategory != string.Empty)
+			if (displayedCategory != string.Empty)
 			{
 				i = 0;
-				foreach(IUIItem c in Items[displayedCategory])
+				foreach (IUIItem c in Items[displayedCategory])
 				{
 					string text = c.GetDisplayName();
 					sprite.Draw(new Sprite("button"), new Vector2(128, 32 * (i + displayedOffset)), Color.White);
@@ -58,12 +54,12 @@ namespace ProjectOnion
 		public void Update()
 		{
 			IsMouseOverUI = false;
-			foreach(Rectangle rect in buttons)
+			foreach (Rectangle rect in buttons)
 			{
 				if (rect.Contains(Input.GetMousePosition()))
 					IsMouseOverUI = true;
 			}
-			foreach(Rectangle rect in itemButtons)
+			foreach (Rectangle rect in itemButtons)
 			{
 				if (rect.Contains(Input.GetMousePosition()))
 					IsMouseOverUI = true;
@@ -79,7 +75,7 @@ namespace ProjectOnion
 					if (rect.Contains(Input.GetMousePosition()))
 					{
 						Debug.WriteLine("Clicked " + categories[i]);
-						if(displayedCategory == categories[i])
+						if (displayedCategory == categories[i])
 						{
 							displayedCategory = string.Empty;
 							return;
@@ -94,13 +90,13 @@ namespace ProjectOnion
 							j++;
 						}
 					}
-					
+
 					i++;
 				}
 				if (displayedCategory != string.Empty)
 				{
 					i = 0;
-					foreach(Rectangle rect in itemButtons)
+					foreach (Rectangle rect in itemButtons)
 					{
 						if (rect.Contains(Input.GetMousePosition()))
 						{

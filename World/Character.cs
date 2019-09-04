@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.AI;
 using MBBSlib.MonoGame;
@@ -45,7 +44,7 @@ namespace ProjectOnion
 			{
 				carryItem = tile.stackItem;
 				tile.RemoveItemStack();
-				if(carryItem.GetAmount() > amount)
+				if (carryItem.GetAmount() > amount)
 				{
 					int diff = carryItem.GetAmount() - amount;
 					carryItem.SetAmount(amount);
@@ -118,7 +117,7 @@ namespace ProjectOnion
 		}
 		public void Update()
 		{
-			if((path == null || path.Count == 0) && currentJob == null)
+			if ((path == null || path.Count == 0) && currentJob == null)
 			{
 				GetJob();
 			}
@@ -162,12 +161,12 @@ namespace ProjectOnion
 					}
 				}
 			}
-			if(currentJob != null && (from n in path where MainScene.world.GetTile(n.X,n.Y).IsInmovable select n).Count() > 0)
+			if (currentJob != null && (from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
 			{
 				path = null;
 				DisownJob();
 			}
-			if(!(path == null || path.Count == 0) && dest == null)
+			if (!(path == null || path.Count == 0) && dest == null)
 			{
 				dest = MainScene.world.GetTile(path[0].X, path[0].Y);
 				path.RemoveAt(0);
@@ -176,11 +175,11 @@ namespace ProjectOnion
 			if (path == null || path.Count == 0 || dest == null) return;
 			//If character can enter the destination progress his movement
 			if (dest.mountedObject == null || dest.mountedObject.characterCanEnter)
-				moveCompleted += (moveSpeed * ((float)Time.DeltaTime/1000)) / distance;
+				moveCompleted += (moveSpeed * ((float)Time.DeltaTime / 1000)) / distance;
 			//Else try open a door (FIXME)
- 			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
+			else if (dest.mountedObject != null && dest.mountedObject.objectUseEvent.CanUse(this))
 				dest.mountedObject.objectUseEvent.Use(this);
-			if(moveCompleted > 1)
+			if (moveCompleted > 1)
 			{
 				MoveCharacter();
 			}
@@ -256,7 +255,7 @@ namespace ProjectOnion
 
 			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
 			Tile[] tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();
-			if(tiles == null || tiles.Length == 0)
+			if (tiles == null || tiles.Length == 0)
 			{
 				path = null;
 				DisownJob();

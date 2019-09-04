@@ -57,7 +57,7 @@ namespace ProjectOnion
 		public DeconstructJobEvent(Tile tile)
 		{
 			this.tile = tile;
-			bp = new BlueprintData(new Vector2(tile.X, tile.Y), tile.mountedObject?.sprite??tile.sprite, new Sprite("ds"));
+			bp = new BlueprintData(new Vector2(tile.X, tile.Y), tile.mountedObject?.sprite ?? tile.sprite, new Sprite("ds"));
 		}
 		public BlueprintData GetBlueprintData()
 		{

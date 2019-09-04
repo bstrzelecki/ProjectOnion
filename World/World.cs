@@ -26,9 +26,9 @@ namespace ProjectOnion
 		}
 		public void SetupMap(Tile[,] tiles)
 		{
-			if(tiles != null)
+			if (tiles != null)
 				map = tiles;
-		} 
+		}
 		public World(int height, int width)
 		{
 			Height = height;
@@ -82,7 +82,7 @@ namespace ProjectOnion
 		Tile[,] map;
 		public TIleEnumerator(Tile[,] map)
 		{
-			this.map = map; 
+			this.map = map;
 		}
 		public Tile GetTile(int x, int y)
 		{
@@ -104,13 +104,13 @@ namespace ProjectOnion
 		int y = 0;
 		public bool MoveNext()
 		{
-			Current = GetTile(x,y);
+			Current = GetTile(x, y);
 			x++;
-			if(x >= MainScene.world.Width)
+			if (x >= MainScene.world.Width)
 			{
 				x = 0;
 				y++;
-				if(y >= MainScene.world.Height)
+				if (y >= MainScene.world.Height)
 				{
 					return false;
 				}
