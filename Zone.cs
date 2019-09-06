@@ -17,5 +17,6 @@ namespace ProjectOnion
 			position = tile.Position;
 		}
 		public abstract Job GetZoneJob();
+		public abstract bool IsJobAvailable();
 	}
 }
