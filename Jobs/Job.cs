@@ -16,7 +16,7 @@ namespace ProjectOnion
 		public JobLayer jobLayer;
 		public bool onTile;
 		public ItemStack[] resources;
-		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources, bool onTile = true, float workTime = 1f, JobLayer jobLayer = JobLayer.Any)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
@@ -25,7 +25,7 @@ namespace ProjectOnion
 			this.onTile = onTile;
 			this.resources = resources ?? Array.Empty<ItemStack>();
 		}
-		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = 0)
+		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = JobLayer.Any)
 		{
 			this.tile = tile;
 			this.jobEvents = jobEvents;
@@ -121,6 +121,7 @@ namespace ProjectOnion
 	}
 	enum JobLayer
 	{
+		Any,
 		Misc,
 		Build,
 		Resource,

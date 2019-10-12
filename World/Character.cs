@@ -34,6 +34,7 @@ namespace ProjectOnion
 		List<Point> path;
 		Queue<Job> enqueuedJobs = new Queue<Job>();
 		Job currentJob;
+		AIModel ai; 
 		#endregion
 
 		public ItemStack carryItem;
@@ -161,7 +162,7 @@ namespace ProjectOnion
 					}
 				}
 			}
-			if (currentJob != null && (from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
+			if (currentJob != null && path != null && (from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
 			{
 				path = null;
 				DisownJob();

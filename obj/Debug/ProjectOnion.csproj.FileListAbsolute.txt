@@ -42,7 +42,6 @@ C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\ProjectOnion
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\ProjectOnion.pdb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\MBBSlib.pdb
-C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csproj.CoreCompileInputs.cache
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csproj.CopyComplete
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.exe
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.pdb
