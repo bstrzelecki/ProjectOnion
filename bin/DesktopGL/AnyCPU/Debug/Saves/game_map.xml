@@ -11,6 +11,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="1">
@@ -18,6 +19,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="2">
@@ -25,6 +27,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="3">
@@ -32,6 +35,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="4">
@@ -39,6 +43,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="5">
@@ -46,6 +51,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="6">
@@ -53,6 +59,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="7">
@@ -60,6 +67,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="8">
@@ -67,6 +75,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="9">
@@ -74,6 +83,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="10">
@@ -81,6 +91,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="11">
@@ -88,6 +99,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="12">
@@ -95,6 +107,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="13">
@@ -102,6 +115,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="14">
@@ -109,6 +123,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="0" Y="15">
@@ -116,6 +131,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="0">
@@ -123,6 +139,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="1">
@@ -130,6 +147,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="2">
@@ -137,6 +155,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="3">
@@ -144,6 +163,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="4">
@@ -151,6 +171,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="5">
@@ -158,6 +179,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="6">
@@ -165,6 +187,10 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources>
+      <id>CONCRETE</id>
+      <amount>25</amount>
+    </resources>
     <jobs />
   </tile>
   <tile X="1" Y="7">
@@ -172,6 +198,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="8">
@@ -179,6 +206,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="9">
@@ -186,6 +214,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="10">
@@ -193,6 +222,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="11">
@@ -200,6 +230,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="12">
@@ -207,6 +238,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="13">
@@ -214,6 +246,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="14">
@@ -221,6 +254,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="1" Y="15">
@@ -228,6 +262,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="0">
@@ -235,6 +270,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="1">
@@ -242,6 +278,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="2">
@@ -249,6 +286,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="3">
@@ -256,6 +294,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="4">
@@ -263,20 +302,23 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="5">
-    <isFloor>true</isFloor>
+    <isFloor>false</isFloor>
     <objName></objName>
-    <floorName>floor</floorName>
+    <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="6">
     <isFloor>true</isFloor>
-    <objName>wall</objName>
+    <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="7">
@@ -284,6 +326,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="8">
@@ -291,6 +334,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="9">
@@ -298,6 +342,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="10">
@@ -305,6 +350,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="11">
@@ -312,6 +358,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="12">
@@ -319,6 +366,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="13">
@@ -326,6 +374,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="14">
@@ -333,6 +382,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="2" Y="15">
@@ -340,6 +390,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="0">
@@ -347,6 +398,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="1">
@@ -354,6 +406,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="2">
@@ -361,6 +414,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="3">
@@ -368,6 +422,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="4">
@@ -375,20 +430,23 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="5">
-    <isFloor>true</isFloor>
+    <isFloor>false</isFloor>
     <objName></objName>
-    <floorName>floor</floorName>
+    <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="6">
     <isFloor>true</isFloor>
-    <objName>wall</objName>
+    <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="7">
@@ -396,6 +454,10 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources>
+      <id>CONCRETE</id>
+      <amount>25</amount>
+    </resources>
     <jobs />
   </tile>
   <tile X="3" Y="8">
@@ -403,6 +465,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="9">
@@ -410,6 +473,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="10">
@@ -417,6 +481,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="11">
@@ -424,6 +489,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="12">
@@ -431,6 +497,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="13">
@@ -438,6 +505,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="14">
@@ -445,6 +513,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="3" Y="15">
@@ -452,6 +521,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="0">
@@ -459,6 +529,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="1">
@@ -466,6 +537,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="2">
@@ -473,6 +545,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="3">
@@ -480,6 +553,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="4">
@@ -487,20 +561,26 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="5">
-    <isFloor>true</isFloor>
+    <isFloor>false</isFloor>
     <objName></objName>
-    <floorName>floor</floorName>
+    <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="6">
     <isFloor>true</isFloor>
-    <objName>wall</objName>
+    <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources>
+      <id>METAL</id>
+      <amount>10</amount>
+    </resources>
     <jobs />
   </tile>
   <tile X="4" Y="7">
@@ -508,6 +588,10 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources>
+      <id>CONCRETE</id>
+      <amount>25</amount>
+    </resources>
     <jobs />
   </tile>
   <tile X="4" Y="8">
@@ -515,6 +599,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="9">
@@ -522,6 +607,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="10">
@@ -529,6 +615,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="11">
@@ -536,6 +623,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="12">
@@ -543,6 +631,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="13">
@@ -550,6 +639,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="14">
@@ -557,6 +647,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="4" Y="15">
@@ -564,6 +655,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="0">
@@ -571,6 +663,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="1">
@@ -578,6 +671,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="2">
@@ -585,6 +679,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="3">
@@ -592,6 +687,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="4">
@@ -599,20 +695,23 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="5">
-    <isFloor>true</isFloor>
+    <isFloor>false</isFloor>
     <objName></objName>
-    <floorName>floor</floorName>
+    <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="6">
     <isFloor>true</isFloor>
-    <objName>wall</objName>
+    <objName></objName>
     <floorName>floor</floorName>
-    <character></character>
+    <character>0</character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="7">
@@ -620,6 +719,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="8">
@@ -627,6 +727,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="9">
@@ -634,6 +735,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="10">
@@ -641,6 +743,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="11">
@@ -648,6 +751,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="12">
@@ -655,6 +759,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="13">
@@ -662,6 +767,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="14">
@@ -669,6 +775,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="5" Y="15">
@@ -676,6 +783,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="0">
@@ -683,6 +791,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="1">
@@ -690,6 +799,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="2">
@@ -697,6 +807,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="3">
@@ -704,6 +815,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="4">
@@ -711,6 +823,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="5">
@@ -718,13 +831,18 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="6">
-    <isFloor>true</isFloor>
+    <isFloor>false</isFloor>
     <objName></objName>
-    <floorName>floor</floorName>
+    <floorName>grid</floorName>
     <character></character>
+    <resources>
+      <id>CONCRETE</id>
+      <amount>25</amount>
+    </resources>
     <jobs />
   </tile>
   <tile X="6" Y="7">
@@ -732,6 +850,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="8">
@@ -739,6 +858,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="9">
@@ -746,6 +866,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="10">
@@ -753,6 +874,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="11">
@@ -760,6 +882,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="12">
@@ -767,6 +890,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="13">
@@ -774,6 +898,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="14">
@@ -781,6 +906,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="6" Y="15">
@@ -788,6 +914,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="0">
@@ -795,6 +922,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="1">
@@ -802,6 +930,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="2">
@@ -809,6 +938,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="3">
@@ -816,6 +946,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="4">
@@ -823,6 +954,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="5">
@@ -830,13 +962,15 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="6">
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character></character>
+    <character>1</character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="7">
@@ -844,6 +978,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="8">
@@ -851,6 +986,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="9">
@@ -858,6 +994,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="10">
@@ -865,6 +1002,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="11">
@@ -872,6 +1010,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="12">
@@ -879,6 +1018,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="13">
@@ -886,6 +1026,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="14">
@@ -893,6 +1034,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="7" Y="15">
@@ -900,6 +1042,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="0">
@@ -907,6 +1050,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="1">
@@ -914,6 +1058,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="2">
@@ -921,6 +1066,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="3">
@@ -928,6 +1074,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="4">
@@ -935,6 +1082,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="5">
@@ -942,6 +1090,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="6">
@@ -949,6 +1098,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="7">
@@ -956,6 +1106,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="8">
@@ -963,6 +1114,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="9">
@@ -970,6 +1122,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="10">
@@ -977,6 +1130,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="11">
@@ -984,6 +1138,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="12">
@@ -991,6 +1146,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="13">
@@ -998,6 +1154,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="14">
@@ -1005,6 +1162,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="8" Y="15">
@@ -1012,6 +1170,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="0">
@@ -1019,6 +1178,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="1">
@@ -1026,6 +1186,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="2">
@@ -1033,6 +1194,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="3">
@@ -1040,6 +1202,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="4">
@@ -1047,6 +1210,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="5">
@@ -1054,6 +1218,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="6">
@@ -1061,6 +1226,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="7">
@@ -1068,6 +1234,7 @@
     <objName>wall</objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="8">
@@ -1075,6 +1242,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="9">
@@ -1082,6 +1250,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="10">
@@ -1089,6 +1258,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="11">
@@ -1096,6 +1266,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="12">
@@ -1103,6 +1274,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="13">
@@ -1110,6 +1282,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="14">
@@ -1117,6 +1290,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="9" Y="15">
@@ -1124,6 +1298,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="0">
@@ -1131,6 +1306,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="1">
@@ -1138,6 +1314,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="2">
@@ -1145,6 +1322,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="3">
@@ -1152,6 +1330,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="4">
@@ -1159,6 +1338,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="5">
@@ -1166,6 +1346,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="6">
@@ -1173,6 +1354,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="7">
@@ -1180,6 +1362,7 @@
     <objName>wall</objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="8">
@@ -1187,6 +1370,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="9">
@@ -1194,6 +1378,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="10">
@@ -1201,6 +1386,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="11">
@@ -1208,6 +1394,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="12">
@@ -1215,6 +1402,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="13">
@@ -1222,6 +1410,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="14">
@@ -1229,6 +1418,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="10" Y="15">
@@ -1236,6 +1426,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="0">
@@ -1243,6 +1434,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="1">
@@ -1250,6 +1442,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="2">
@@ -1257,6 +1450,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="3">
@@ -1264,6 +1458,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="4">
@@ -1271,29 +1466,23 @@
     <objName>wall</objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="5">
     <isFloor>true</isFloor>
-    <objName></objName>
+    <objName>wall</objName>
     <floorName>floor</floorName>
     <character></character>
-    <jobs>
-      <job layer="2">
-        <events>FurniturePlaceJobEvent</events>
-        <eventArgs>
-          <a>wall</a>
-        </eventArgs>
-        <onTile>False</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <resources />
+    <jobs />
   </tile>
   <tile X="11" Y="6">
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="7">
@@ -1301,6 +1490,7 @@
     <objName>wall</objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="8">
@@ -1308,6 +1498,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="9">
@@ -1315,6 +1506,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="10">
@@ -1322,6 +1514,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="11">
@@ -1329,6 +1522,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="12">
@@ -1336,6 +1530,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="13">
@@ -1343,6 +1538,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="14">
@@ -1350,6 +1546,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="11" Y="15">
@@ -1357,6 +1554,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="0">
@@ -1364,6 +1562,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="1">
@@ -1371,6 +1570,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="2">
@@ -1378,6 +1578,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="3">
@@ -1385,6 +1586,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="4">
@@ -1392,6 +1594,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="5">
@@ -1399,6 +1602,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs>
       <job layer="2">
         <events>FurniturePlaceJobEvent</events>
@@ -1415,6 +1619,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="7">
@@ -1422,6 +1627,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs>
       <job layer="2">
         <events>FurniturePlaceJobEvent</events>
@@ -1438,6 +1644,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="9">
@@ -1445,6 +1652,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="10">
@@ -1452,6 +1660,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="11">
@@ -1459,6 +1668,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="12">
@@ -1466,6 +1676,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="13">
@@ -1473,6 +1684,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="14">
@@ -1480,6 +1692,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="12" Y="15">
@@ -1487,6 +1700,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="0">
@@ -1494,6 +1708,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="1">
@@ -1501,6 +1716,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="2">
@@ -1508,6 +1724,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="3">
@@ -1515,6 +1732,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="4">
@@ -1522,6 +1740,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="5">
@@ -1529,6 +1748,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="6">
@@ -1536,6 +1756,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="7">
@@ -1543,6 +1764,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs>
       <job layer="2">
         <events>FurniturePlaceJobEvent</events>
@@ -1559,6 +1781,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="9">
@@ -1566,6 +1789,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="10">
@@ -1573,6 +1797,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="11">
@@ -1580,6 +1805,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="12">
@@ -1587,6 +1813,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="13">
@@ -1594,6 +1821,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="14">
@@ -1601,6 +1829,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="13" Y="15">
@@ -1608,6 +1837,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="0">
@@ -1615,6 +1845,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="1">
@@ -1622,6 +1853,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="2">
@@ -1629,6 +1861,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="3">
@@ -1636,6 +1869,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="4">
@@ -1643,6 +1877,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="5">
@@ -1650,6 +1885,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="6">
@@ -1657,6 +1893,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="7">
@@ -1664,6 +1901,7 @@
     <objName></objName>
     <floorName>floor</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="8">
@@ -1671,6 +1909,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="9">
@@ -1678,6 +1917,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="10">
@@ -1685,6 +1925,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="11">
@@ -1692,6 +1933,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="12">
@@ -1699,6 +1941,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="13">
@@ -1706,6 +1949,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="14">
@@ -1713,6 +1957,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="14" Y="15">
@@ -1720,6 +1965,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="0">
@@ -1727,6 +1973,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="1">
@@ -1734,6 +1981,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="2">
@@ -1741,6 +1989,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="3">
@@ -1748,6 +1997,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="4">
@@ -1755,6 +2005,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="5">
@@ -1762,6 +2013,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="6">
@@ -1769,6 +2021,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="7">
@@ -1776,6 +2029,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="8">
@@ -1783,6 +2037,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="9">
@@ -1790,6 +2045,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="10">
@@ -1797,6 +2053,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="11">
@@ -1804,6 +2061,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="12">
@@ -1811,6 +2069,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="13">
@@ -1818,6 +2077,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="14">
@@ -1825,6 +2085,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
   <tile X="15" Y="15">
@@ -1832,6 +2093,7 @@
     <objName></objName>
     <floorName>grid</floorName>
     <character></character>
+    <resources />
     <jobs />
   </tile>
 </Map>

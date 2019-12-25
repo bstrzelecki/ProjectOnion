@@ -35,6 +35,15 @@ namespace ProjectOnion
 				t.Add(new XElement("objName", tile.mountedObject?.registryName ?? ""));
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
 				t.Add(new XElement("character", tile.character?.id.ToString() ?? ""));
+
+				XElement r = new XElement("resources");
+				if (tile.stackItem != null)
+				{
+					r.Add(new XElement("id", tile.stackItem.GetResource()));
+					r.Add(new XElement("amount", tile.stackItem.GetAmount()));
+				}
+				t.Add(r);
+
 				XElement j = new XElement("jobs");
 				for(int i = 0; i < tile.job.Length;i++)
 				{
@@ -92,6 +101,12 @@ namespace ProjectOnion
 				if (tile.Element("objName").Value != string.Empty)
 					t.PlaceObject(Registry.furnitures[tile.Element("objName").Value].GetFurniture());
 
+				if (tile.Element("resources") != null && tile.Element("resources").Element("id") != null)
+				{
+					ItemStack stack = new ItemStack(tile.Element("resources").Element("id").Value, int.Parse(tile.Element("resources").Element("amount").Value));
+
+					t.PutItemStack(stack);
+				}
 				XElement jobs = tile.Element("jobs");
 				foreach (XElement job in jobs.Elements("job"))
 				{
@@ -106,7 +121,6 @@ namespace ProjectOnion
 					string typeName = job.Element("events").Value;
 					Type type = a.GetType("ProjectOnion." + typeName);
 					IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
-					//TODO fix layering problem
 					bool onTile = bool.Parse(job.Element("onTile").Value);
 					int workTime = int.Parse(job.Element("workTime").Value);
 					JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
@@ -141,6 +155,15 @@ namespace ProjectOnion
 				cc.Add(pos);
 				cc.Add(new XElement("id", c.id));
 				cc.Add(new XElement("name", c.Name));
+
+				XElement r = new XElement("resources");
+				if (c.carryItem != null)
+				{
+					r.Add(new XElement("id", c.carryItem.GetResource()));
+					r.Add(new XElement("amount", c.carryItem.GetAmount()));
+				}
+				cc.Add(r);
+
 				root.Add(cc);
 			}
 			doc.Save(Environment.CurrentDirectory + @"\Saves\" + fileName + "_char.xml");
@@ -161,6 +184,12 @@ namespace ProjectOnion
 				pos.X = int.Parse(p.Split(',')[0]);
 				pos.Y = int.Parse(p.Split(',')[1]);
 				cc.tile = MainScene.world.GetTile(pos);
+				if (c.Element("resources") != null && c.Element("resources").Element("id") != null)
+				{
+					ItemStack stack = new ItemStack(c.Element("resources").Element("id").Value, int.Parse(c.Element("resources").Element("amount").Value));
+
+					cc.carryItem = stack;
+				}
 				if (c.Element("position").Element("dest") != null)
 				{
 					string dp = c.Element("position").Element("dest").Value;

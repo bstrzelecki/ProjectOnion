@@ -2,18 +2,21 @@
 <root>
   <character>
     <position>
-      <tile>10,6</tile>
-      <progress>0</progress>
+      <tile>5,6</tile>
     </position>
     <id>0</id>
     <name>Bob</name>
+    <resources />
   </character>
   <character>
     <position>
-      <tile>9,6</tile>
-      <progress>0</progress>
+      <tile>7,6</tile>
     </position>
     <id>1</id>
     <name>Bob</name>
+    <resources>
+      <id>METAL</id>
+      <amount>10</amount>
+    </resources>
   </character>
 </root>

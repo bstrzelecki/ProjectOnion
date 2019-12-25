@@ -22,6 +22,10 @@ namespace ProjectOnion
 			this.resource = resource;
 			this.amount = amount;
 		}
+		public string GetResource()
+		{
+			return resource;
+		}
 		public void SetTile(Tile tile)
 		{
 			this.tile = tile;
