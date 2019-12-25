@@ -3,7 +3,7 @@
   <character>
     <position>
       <tile>10,6</tile>
-      <progress>0.032</progress>
+      <progress>0</progress>
     </position>
     <id>0</id>
     <name>Bob</name>
@@ -11,7 +11,7 @@
   <character>
     <position>
       <tile>9,6</tile>
-      <progress>0.034</progress>
+      <progress>0</progress>
     </position>
     <id>1</id>
     <name>Bob</name>

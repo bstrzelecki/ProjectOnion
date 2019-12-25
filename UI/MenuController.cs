@@ -18,6 +18,10 @@ namespace ProjectOnion
 				{
 					if (btn.IsMouseOverUI) return true;
 				}
+				foreach(Button btn in sideMenu)
+				{
+					if (btn.IsMouseOverUI) return true;
+				}
 				return false;
 			}
 		}

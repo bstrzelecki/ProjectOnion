@@ -112,7 +112,7 @@ namespace ProjectOnion
 					JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
 					Job j = new Job(t, events, onTile, workTime, jb);
 					j.Register();
-					JobQueue.AddJob(j);
+					JobQueue.AddJob(j, j.jobLayer);
 				}
 				map[t.X, t.Y] = t;
 			}
