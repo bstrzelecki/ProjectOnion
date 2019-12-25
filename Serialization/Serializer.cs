@@ -36,12 +36,12 @@ namespace ProjectOnion
 				t.Add(new XElement("floorName", tile.sprite.ToString()));
 				t.Add(new XElement("character", tile.character?.id.ToString() ?? ""));
 				XElement j = new XElement("jobs");
-				int i = 0;
-				foreach (Job job in tile.job)
+				for(int i = 0; i < tile.job.Length;i++)
 				{
-					if (job == null || job.IsCompleted) { i++; continue; }
+					Job job = tile.job[i];
+					if (job == null || job.IsCompleted) { continue; }
 					XElement jb = new XElement("job");
-					jb.SetAttributeValue("layer", i);
+					jb.SetAttributeValue("layer", (int)job.jobLayer);
 					jb.Add(new XElement("events", job.jobEvents.GetType().Name));
 
 					XElement args = new XElement("eventArgs");
@@ -50,7 +50,7 @@ namespace ProjectOnion
 						args.Add(new XElement("a", s));
 					}
 					jb.Add(args);
-					jb.Add(new XElement("onTile", job.IsOnTile.ToString()));
+					jb.Add(new XElement("onTile", job.onTile.ToString()));
 					jb.Add(new XElement("workTime", job.workTime));
 					j.Add(jb);
 				}
@@ -106,13 +106,13 @@ namespace ProjectOnion
 					string typeName = job.Element("events").Value;
 					Type type = a.GetType("ProjectOnion." + typeName);
 					IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
-					bool onTIle = bool.Parse(job.Element("onTile").Value);
+					//TODO fix layering problem
+					bool onTile = bool.Parse(job.Element("onTile").Value);
 					int workTime = int.Parse(job.Element("workTime").Value);
 					JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
-					Job j = new Job(t, events, onTIle, workTime, jb);
+					Job j = new Job(t, events, onTile, workTime, jb);
 					j.Register();
 					JobQueue.AddJob(j);
-					t.job[int.Parse(job.Attribute("layer").Value)] = j;
 				}
 				map[t.X, t.Y] = t;
 			}

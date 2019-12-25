@@ -124,6 +124,7 @@ namespace ProjectOnion
 		{
 			GameMain.lastCopy.Window.TextInput += Window_TextInput;
 			OnClicked += TextBox_OnClicked;
+			displayText = string.Empty;
 		}
 
 		private void TextBox_OnClicked()
@@ -223,7 +224,8 @@ namespace ProjectOnion
 				size.Location = position.ToPoint();
 				size.Size = image.Texture.Bounds.Size;
 			}
-			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
+			if (displayText == null) return;
+				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 		}
 
 		public void Update()
