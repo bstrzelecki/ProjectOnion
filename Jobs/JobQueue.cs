@@ -64,16 +64,6 @@ namespace ProjectOnion
 		{
 			return (from n in jobQueue where new Vector2(n.tile.X, n.tile.Y) == pos select n).ToList();
 		}
-		private static float CalculatePathLenght(List<MBBSlib.AI.Point> path)
-		{
-			float val = 0f;
-			foreach (var p in path)
-			{
-				Tile t = MainScene.world.GetTile(p.X, p.Y);
-				val += t.GetPathfindingMovementCost();
-			}
-			return val;
-		}
 		private static Job GetClosestJob(Character c, JobLayer jt)
 		{
 

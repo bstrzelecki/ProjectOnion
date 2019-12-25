@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -74,7 +73,6 @@ namespace ProjectOnion
 				{
 					if (rect.Contains(Input.GetMousePosition()))
 					{
-						Debug.WriteLine("Clicked " + categories[i]);
 						if (displayedCategory == categories[i])
 						{
 							displayedCategory = string.Empty;
@@ -100,7 +98,6 @@ namespace ProjectOnion
 					{
 						if (rect.Contains(Input.GetMousePosition()))
 						{
-							Debug.WriteLine("Clicked " + Items[displayedCategory][i].GetDisplayName());
 							Items[displayedCategory][i].OnClick();
 						}
 						i++;

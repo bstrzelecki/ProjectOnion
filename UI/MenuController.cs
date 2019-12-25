@@ -18,7 +18,7 @@ namespace ProjectOnion
 				{
 					if (btn.IsMouseOverUI) return true;
 				}
-				foreach(Button btn in sideMenu)
+				foreach (Button btn in sideMenu)
 				{
 					if (btn.IsMouseOverUI) return true;
 				}
@@ -51,7 +51,6 @@ namespace ProjectOnion
 					Button btn = new Button(s, screenCenter + new Vector2(128, 32));
 					btn.OnClicked += () =>
 					{
-						Debug.WriteLine("Saving " + s);
 						Serializer ss = new Serializer(s);
 						ss.Save(MainScene.world.map);
 					};
@@ -69,7 +68,6 @@ namespace ProjectOnion
 					Button btn = new Button(s, screenCenter + new Vector2(128, 32 * j)); j++;
 					btn.OnClicked += () =>
 					{
-						Debug.WriteLine("Loading " + s);
 						Serializer ss = new Serializer(s);
 						MainScene.world.SetupMap(ss.Load());
 					};
@@ -164,9 +162,9 @@ namespace ProjectOnion
 			{
 				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 			}
-			catch
+			catch (Exception e)
 			{
-				Debug.WriteLine(displayText);
+				Debug.Write(e.ToString());
 			}
 		}
 
@@ -229,7 +227,7 @@ namespace ProjectOnion
 				size.Size = image.Texture.Bounds.Size;
 			}
 			if (displayText == null) return;
-				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
+			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 		}
 
 		public void Update()
@@ -247,7 +245,6 @@ namespace ProjectOnion
 				image.SetTextureVariant("hover");
 				if (Input.IsMouseButtonClicked(0))
 				{
-					Debug.WriteLine("sdaasd");
 					OnClicked?.Invoke();
 					image.SetTextureVariant("click");
 				}

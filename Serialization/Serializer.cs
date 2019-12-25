@@ -45,7 +45,7 @@ namespace ProjectOnion
 				t.Add(r);
 
 				XElement j = new XElement("jobs");
-				for(int i = 0; i < tile.job.Length;i++)
+				for (int i = 0; i < tile.job.Length; i++)
 				{
 					Job job = tile.job[i];
 					if (job == null || job.IsCompleted) { continue; }
@@ -95,9 +95,11 @@ namespace ProjectOnion
 			var tiles = root.Elements("tile");
 			foreach (XElement tile in tiles)
 			{
-				Tile t = new Tile(int.Parse(tile.Attribute("X").Value), int.Parse(tile.Attribute("Y").Value));
-				t.IsFloor = bool.Parse(tile.Element("isFloor").Value);
-				t.sprite = new MBBSlib.MonoGame.Sprite(tile.Element("floorName").Value);
+				Tile t = new Tile(int.Parse(tile.Attribute("X").Value), int.Parse(tile.Attribute("Y").Value))
+				{
+					IsFloor = bool.Parse(tile.Element("isFloor").Value),
+					sprite = new MBBSlib.MonoGame.Sprite(tile.Element("floorName").Value)
+				};
 				if (tile.Element("objName").Value != string.Empty)
 					t.PlaceObject(Registry.furnitures[tile.Element("objName").Value].GetFurniture());
 

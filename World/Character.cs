@@ -34,7 +34,6 @@ namespace ProjectOnion
 		List<Point> path;
 		Queue<Job> enqueuedJobs = new Queue<Job>();
 		Job currentJob;
-		AIModel ai; 
 		#endregion
 
 		public ItemStack carryItem;
@@ -49,7 +48,7 @@ namespace ProjectOnion
 				{
 					int diff = carryItem.GetAmount() - amount;
 					carryItem.SetAmount(amount);
-					tile.PutItemStack(new ItemStack(carryItem.ResourceData.ToString(), diff));
+					tile.PutItemStack(new ItemStack(carryItem.GetResource(), diff));
 				}
 				return true;
 			}
@@ -61,7 +60,7 @@ namespace ProjectOnion
 				{
 					int diff = carryItem.GetAmount() - amount;
 					carryItem.SetAmount(amount);
-					tile.PutItemStack(new ItemStack(carryItem.ResourceData.ToString(), diff));
+					tile.PutItemStack(new ItemStack(carryItem.GetResource(), diff));
 				}
 				return true;
 			}
@@ -138,7 +137,7 @@ namespace ProjectOnion
 						{
 							if (path == null || path.Count == 0)
 								GetPath();
-							if ((dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile)))
+							if (dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile))
 							{
 								currentJob.Supply(carryItem);
 								carryItem = null;

@@ -13,11 +13,25 @@ namespace ProjectOnion
 		}
 		public static Resource GetResource(string key)
 		{
-			return resources[key];
+			if (resources.ContainsKey(key))
+			{
+				return resources[key];
+			}
+			else
+			{
+				return Resource.Empty;
+			}
 		}
 	}
 	class Resource
 	{
+		public static Resource Empty
+		{
+			get
+			{
+				return new Resource(new Sprite("WhitePixel"));
+			}
+		}
 		Sprite sprite;
 		public Resource(Sprite sprite)
 		{

@@ -7,7 +7,7 @@ namespace ProjectOnion
 	class ItemStack : MBBSlib.MonoGame.IDrawable
 	{
 		Tile tile;
-		string resource;
+		readonly string resource;
 		int amount;
 		public Vector2 Position { get { return tile.Position; } }
 		public Resource ResourceData { get { return ResourceDataBase.GetResource(resource); } }

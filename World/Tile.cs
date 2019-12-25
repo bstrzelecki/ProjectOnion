@@ -82,11 +82,13 @@ namespace ProjectOnion
 		}
 		public List<Tile> GetNeighbourTiles(bool fourDirs = true)
 		{
-			List<Tile> tiles = new List<Tile>();
-			tiles.Add(MainScene.world.GetTile(X + 1, Y));
-			tiles.Add(MainScene.world.GetTile(X - 1, Y));
-			tiles.Add(MainScene.world.GetTile(X, Y + 1));
-			tiles.Add(MainScene.world.GetTile(X, Y - 1));
+			var tiles = new List<Tile>
+			{
+				MainScene.world.GetTile(X + 1, Y),
+				MainScene.world.GetTile(X - 1, Y),
+				MainScene.world.GetTile(X, Y + 1),
+				MainScene.world.GetTile(X, Y - 1)
+			};
 			if (fourDirs) return tiles;
 			tiles.Add(MainScene.world.GetTile(X + 1, Y + 1));
 			tiles.Add(MainScene.world.GetTile(X + 1, Y - 1));
@@ -110,8 +112,21 @@ namespace ProjectOnion
 		}
 		public void PutItemStacks(ItemStack[] stacks)
 		{
-			foreach (ItemStack s in mountedObject.resources)
+			foreach (ItemStack s in stacks)
 			{
+				bool breaked = false;
+				foreach (Tile tile in GetNeighbourTiles())
+				{
+					if (tile.stackItem != null && tile.stackItem.GetResource() == s.GetResource())
+					{
+						if (tile.PutItemStack(s))
+						{
+							breaked = true;
+							break;
+						}
+					}
+				}
+				if (breaked) continue;
 				if (!PutItemStack(s))
 				{
 					foreach (Tile tile in GetNeighbourTiles())
