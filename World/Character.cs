@@ -162,7 +162,7 @@ namespace ProjectOnion
 					}
 				}
 			}
-			if (currentJob != null && path != null && (from n in path where MainScene.world.GetTile(n.X, n.Y).IsInmovable select n).Count() > 0)
+			if (currentJob != null && path != null && (from n in path where (MainScene.world.GetTile(n.X, n.Y).IsInmovable && MainScene.world.GetTile(n.X, n.Y) != currentJob.tile) select n).Count() > 0)
 			{
 				path = null;
 				DisownJob();
@@ -196,7 +196,7 @@ namespace ProjectOnion
 		}
 		private bool Compare(ItemStack item)
 		{
-			if (item == null) return false;
+			if (item == null || currentJob == null) return false;
 			return (from n in currentJob.resources where n.ToString() == item.ToString() select n).Count() > 0;
 		}
 		private void MoveCharacter()

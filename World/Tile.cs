@@ -25,6 +25,7 @@ namespace ProjectOnion
 		}
 		public bool PutItemStack(ItemStack stack)
 		{
+			if (IsInmovable) return false;
 			if (stackItem == null)
 			{
 				stackItem = stack;
@@ -96,9 +97,9 @@ namespace ProjectOnion
 		}
 		public void DeconstructObject()
 		{
+			IsInmovable = false;
 			PutItemStacks(mountedObject.resources);
 			mountedObject = null;
-			IsInmovable = false;
 
 
 			foreach (Tile tile in GetNeighbourTiles())

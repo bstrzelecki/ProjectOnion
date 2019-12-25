@@ -10,7 +10,7 @@ namespace ProjectOnion
 		private static Dictionary<JobLayer, List<Job>> jobs = InitializeJobDictionary();
 		private static Dictionary<JobLayer, List<Job>> InitializeJobDictionary()
 		{
-			Dictionary<JobLayer, List<Job>> j = new Dictionary<JobLayer, List<Job>>();
+			var j = new Dictionary<JobLayer, List<Job>>();
 			foreach (string name in Enum.GetNames(typeof(JobLayer)))
 			{
 				j.Add((JobLayer)Enum.Parse(typeof(JobLayer), name), new List<Job>());
@@ -80,7 +80,7 @@ namespace ProjectOnion
 			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
 
 
-			List<MBBSlib.AI.Point> points = new List<MBBSlib.AI.Point>();
+			var points = new List<MBBSlib.AI.Point>();
 			foreach (Job job in jobs[jt])
 			{
 				points.Add(new MBBSlib.AI.Point(job.tile.X, job.tile.Y));

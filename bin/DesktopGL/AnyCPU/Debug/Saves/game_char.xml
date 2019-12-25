@@ -8,4 +8,12 @@
     <id>0</id>
     <name>Bob</name>
   </character>
+  <character>
+    <position>
+      <tile>12,8</tile>
+      <progress>0</progress>
+    </position>
+    <id>1</id>
+    <name>Bob</name>
+  </character>
 </root>
