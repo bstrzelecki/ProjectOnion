@@ -710,7 +710,7 @@
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>0</character>
+    <character></character>
     <resources />
     <jobs />
   </tile>
@@ -969,7 +969,7 @@
     <isFloor>true</isFloor>
     <objName></objName>
     <floorName>floor</floorName>
-    <character>1</character>
+    <character></character>
     <resources />
     <jobs />
   </tile>
@@ -1603,16 +1603,7 @@
     <floorName>floor</floorName>
     <character></character>
     <resources />
-    <jobs>
-      <job layer="2">
-        <events>FurniturePlaceJobEvent</events>
-        <eventArgs>
-          <a>wall</a>
-        </eventArgs>
-        <onTile>False</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="12" Y="6">
     <isFloor>true</isFloor>
@@ -1628,16 +1619,7 @@
     <floorName>floor</floorName>
     <character></character>
     <resources />
-    <jobs>
-      <job layer="2">
-        <events>FurniturePlaceJobEvent</events>
-        <eventArgs>
-          <a>wall</a>
-        </eventArgs>
-        <onTile>False</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="12" Y="8">
     <isFloor>false</isFloor>
@@ -1765,16 +1747,7 @@
     <floorName>floor</floorName>
     <character></character>
     <resources />
-    <jobs>
-      <job layer="2">
-        <events>FurniturePlaceJobEvent</events>
-        <eventArgs>
-          <a>wall</a>
-        </eventArgs>
-        <onTile>False</onTile>
-        <workTime>1</workTime>
-      </job>
-    </jobs>
+    <jobs />
   </tile>
   <tile X="13" Y="8">
     <isFloor>false</isFloor>

@@ -41,7 +41,10 @@ namespace ProjectOnion
 			}
 			foreach (Job job in t)
 			{
-				jobs[j].Remove(job);
+				foreach(JobLayer l in jobs.Keys)
+				{
+					jobs[l].Remove(job);
+				}
 			}
 		}
 		public static void AddJob(Job job, JobLayer jobType = JobLayer.Any)
@@ -77,7 +80,8 @@ namespace ProjectOnion
 			}
 			var path = pathfinding.GetPath(points, new MBBSlib.AI.Point(c.tile.X, c.tile.Y));
 			if (path == null) return null;
-			Job j = MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y).job[(int)jt];
+			Tile t = MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y);
+			Job j = t.job[(int)jt];
 			if (j != null) jobs[jt].Remove(j);
 			return j;
 		}

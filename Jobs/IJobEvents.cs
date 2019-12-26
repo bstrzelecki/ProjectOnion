@@ -15,6 +15,15 @@ namespace ProjectOnion
 
 	internal struct BlueprintData
 	{
+
+		public static BlueprintData None
+		{
+			get
+			{
+				return new BlueprintData(Vector2.Zero, new Sprite("WhitePixel"));
+			}
+		}
+
 		public Sprite objectSprite;
 		public List<Sprite> blips;
 		public Vector2 position;

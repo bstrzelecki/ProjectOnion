@@ -33,7 +33,7 @@ namespace ProjectOnion
 		#region JobData
 		List<Point> path;
 		Queue<Job> enqueuedJobs = new Queue<Job>();
-		Job currentJob;
+		public Job currentJob;
 		#endregion
 
 		public ItemStack carryItem;
@@ -120,6 +120,11 @@ namespace ProjectOnion
 			if ((path == null || path.Count == 0) && currentJob == null)
 			{
 				GetJob();
+			}
+			if(currentJob == null && carryItem != null)
+			{
+				tile.PutItemStacks(carryItem);
+				carryItem = null;
 			}
 			if (currentJob != null)
 			{

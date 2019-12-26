@@ -71,6 +71,11 @@ namespace ProjectOnion
 		public void Cancel()
 		{
 			GameMain.UnregisterRenderer(this);
+			if(Owner != null)
+			{
+				Owner.currentJob = null;
+				Owner = null;
+			}
 			tile.job[(int)jobLayer] = null;
 			IsCompleted = true;
 		}

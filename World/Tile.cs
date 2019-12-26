@@ -10,6 +10,7 @@ namespace ProjectOnion
 	{
 		public Sprite sprite;
 		public readonly int X, Y;
+		public const int SIZE_STACK_LIMIT = 95;
 		public Vector2 Position { get { return new Vector2(X, Y); } }
 		public float movementCost = new TimeUnit(1f);
 		public bool IsFloor = false;
@@ -34,10 +35,14 @@ namespace ProjectOnion
 			}
 			if (stackItem.ToString() == stack.ToString())
 			{
-				stackItem.AddToStack(stack.GetAmount());
-				stackItem.SetTile(this);
-				return true;
+				if(stack.GetAmount() + stackItem.GetAmount() > SIZE_STACK_LIMIT)
+				{
+					stackItem.AddToStack(stack.GetAmount());
+					stackItem.SetTile(this);
+					return true;
+				}//TODO fix for splitting too large staacks
 			}
+
 			return false;
 		}
 		public Tile(int x, int y)
@@ -110,7 +115,7 @@ namespace ProjectOnion
 				tile.mountedObject.objectEvents.OnNeighbourChanged(this);
 			}
 		}
-		public void PutItemStacks(ItemStack[] stacks)
+		public void PutItemStacks(params ItemStack[] stacks)
 		{
 			foreach (ItemStack s in stacks)
 			{

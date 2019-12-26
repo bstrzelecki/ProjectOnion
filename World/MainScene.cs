@@ -31,6 +31,8 @@ namespace ProjectOnion
 			GameMain.RegisterRenderer(c, 15);
 			GameMain.RegisterUpdate(c);
 			ResourceDataBase.Init();
+			new ZoneManager();
+			GameMain.RegisterUpdate(new HaulJobManager());
 			Debugger.OnCmd += Debugger_OnCmd;
 		}
 
@@ -70,6 +72,10 @@ namespace ProjectOnion
 			{
 				Serializer s = new Serializer("game");
 				s.Save(world.map);
+			}
+			if (Input.IsKeyClicked(Keys.G))
+			{
+				ZoneManager.AddZone(world.GetTile(5, 5));
 			}
 		}
 	}

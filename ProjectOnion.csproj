@@ -61,6 +61,7 @@
     <Compile Include="AIModel.cs" />
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
+    <Compile Include="HaulJobManager.cs" />
     <Compile Include="ResourceDataBase.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />
     <Compile Include="ItemStack.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="UI\UIController.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="Zone.cs" />
+    <Compile Include="ZoneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MBBSlib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

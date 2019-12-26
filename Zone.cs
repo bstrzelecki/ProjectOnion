@@ -2,7 +2,7 @@
 
 namespace ProjectOnion
 {
-	abstract class Zone
+	class Zone
 	{
 		protected Vector2 position;
 		protected Tile tile;
@@ -11,7 +11,9 @@ namespace ProjectOnion
 			this.tile = tile;
 			position = tile.Position;
 		}
-		public abstract Job GetZoneJob();
-		public abstract bool IsJobAvailable();
+		public Tile GetTile()
+		{
+			return tile;
+		}
 	}
 }
