@@ -6,6 +6,8 @@
   <SourceFiles>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/bp.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/button.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectOnion/Content/button_click.png</File>
+    <File>C:/Users/mabat/source/repos/ProjectOnion/Content/button_hover.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/concrete.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/door.png</File>
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/door_EW.png</File>
@@ -34,6 +36,8 @@
     <File>C:/Users/mabat/source/repos/ProjectOnion/Content/WhitePixel.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -1,6 +1,8 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/mabat/source/repos/ProjectOnion/Content/bp.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/bp.xnb","TextureProcessor","Texture2DContent",213,341,0.4380614
 "C:/Users/mabat/source/repos/ProjectOnion/Content/button.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/button.xnb","TextureProcessor","Texture2DContent",234,16469,0.0149999
+"C:/Users/mabat/source/repos/ProjectOnion/Content/button_click.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/button_click.xnb","TextureProcessor","Texture2DContent",1599,16469,0.1729996
+"C:/Users/mabat/source/repos/ProjectOnion/Content/button_hover.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/button_hover.xnb","TextureProcessor","Texture2DContent",1584,16469,0.0190001
 "C:/Users/mabat/source/repos/ProjectOnion/Content/concrete.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/concrete.xnb","TextureProcessor","Texture2DContent",131794,1048661,0.5289856
 "C:/Users/mabat/source/repos/ProjectOnion/Content/door.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/door.xnb","TextureProcessor","Texture2DContent",820,16469,0.0130022
 "C:/Users/mabat/source/repos/ProjectOnion/Content/door_EW.png","C:/Users/mabat/source/repos/ProjectOnion/Content/bin/DesktopGL/Content/door_EW.xnb","TextureProcessor","Texture2DContent",820,16469,0.0129995

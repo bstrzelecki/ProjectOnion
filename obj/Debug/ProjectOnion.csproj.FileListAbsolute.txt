@@ -75,3 +75,5 @@ C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\font
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\concrete.xnb
 C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\metal.xnb
 C:\Users\mabat\source\repos\ProjectOnion\obj\Debug\ProjectOnion.csprojAssemblyReference.cache
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\button_hover.xnb
+C:\Users\mabat\source\repos\ProjectOnion\bin\DesktopGL\AnyCPU\Debug\Content\button_click.xnb
