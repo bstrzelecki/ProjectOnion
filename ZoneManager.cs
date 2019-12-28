@@ -13,7 +13,6 @@ namespace ProjectOnion
 		static ZoneManager()
 		{
 			GameMain.RegisterRenderer(new ZoneRenderer());
-			AddZone(MainScene.world.GetTile(3, 3));
 		}
 		public static List<Zone> GetZones(string tag = "STOCKPILE")
 		{

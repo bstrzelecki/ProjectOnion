@@ -33,6 +33,28 @@ namespace ProjectOnion
 			QueueBuilder.jobOverride = DeconstructCreator;
 			BuildController.buildMode = BuildMode.Area;
 		}
+		public static void SetZonePainterJob()
+		{
+			QueueBuilder.buildMode = BuildMode.Area;
+			QueueBuilder.buildType = BuildType.Furniture;
+			QueueBuilder.toBuild = null;
+			QueueBuilder.TileValidator = ZonePaintValidation;
+			QueueBuilder.PlaceAction = ZonePlaceAction;
+			QueueBuilder.jobOverride = null;
+			BuildController.buildMode = BuildMode.Area;
+		}
+		static void ZonePlaceAction(Vector2 v)
+		{
+			Tile t = MainScene.world.GetTile(v);
+			ZoneManager.AddZone(t);
+		}
+		static bool ZonePaintValidation(Vector2 v)
+		{
+			Tile t = MainScene.world.GetTile(v);
+			if (t.IsFloor && t.mountedObject == null && !ZoneManager.IsZoneOnTile(t))
+				return true;
+			return false;
+		}
 		static bool DeconstructValidation(Vector2 v)
 		{
 			Tile t = MainScene.world.GetTile(v);

@@ -24,7 +24,7 @@ namespace ProjectOnion
 				return;
 			}
 			Job job = null;
-			if (jobOverride == null)
+			if (jobOverride == null && toBuild != null)
 			{
 				if (!TileValidator(pos)) return;
 
@@ -42,9 +42,15 @@ namespace ProjectOnion
 			else
 			{
 				if (TileValidator(pos))
-					job = jobOverride(pos);
+				{
+					if (jobOverride != null)
+					{
+						job = jobOverride(pos);
+					}
+				}
 			}
 			vectors.Add(pos);
+			if (job == null) return;
 			toAdd.Add(job);
 		}
 		private static Vector2 _start;
@@ -84,7 +90,10 @@ namespace ProjectOnion
 			{
 				_start = Vector2.Zero;
 				foreach (Vector2 pos in vectors)
-					PlaceAction?.Invoke(pos);
+				{
+					if(TileValidator?.Invoke(pos)??true)
+						PlaceAction?.Invoke(pos);
+				}
 				vectors.Clear();
 				if (buildType == BuildType.Other) return;
 				foreach (Job job in toAdd)

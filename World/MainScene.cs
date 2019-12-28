@@ -62,6 +62,8 @@ namespace ProjectOnion
 				JobManager.SetCancelJobMode();
 			if (Input.IsKeyClicked(Keys.D9))
 				JobManager.SetDeconstructJob();
+			if (Input.IsKeyClicked(Keys.Z))
+				JobManager.SetZonePainterJob();
 			if (Input.IsKeyClicked(Keys.D1))
 				Architect.SetBuildObject(BuildMode.Area, BuildType.Floor);
 			if (Input.IsKeyClicked(Keys.D2))
