@@ -71,7 +71,7 @@ namespace ProjectOnion
 		public void Cancel()
 		{
 			GameMain.UnregisterRenderer(this);
-			if(Owner != null)
+			if (Owner != null)
 			{
 				Owner.currentJob = null;
 				Owner = null;

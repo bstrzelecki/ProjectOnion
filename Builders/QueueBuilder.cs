@@ -91,7 +91,7 @@ namespace ProjectOnion
 				_start = Vector2.Zero;
 				foreach (Vector2 pos in vectors)
 				{
-					if(TileValidator?.Invoke(pos)??true)
+					if (TileValidator?.Invoke(pos) ?? true)
 						PlaceAction?.Invoke(pos);
 				}
 				vectors.Clear();

@@ -8,18 +8,18 @@ namespace ProjectOnion
 	{
 		public void Update()
 		{
-			foreach(Tile tile in MainScene.world)
+			foreach (Tile tile in MainScene.world)
 			{
 				if (IsZoneOnTile(tile))
 				{
 					continue;
 				}
-				if(tile.stackItem != null)
+				if (tile.stackItem != null)
 				{
-					foreach(Zone dest in GetZones())
+					foreach (Zone dest in GetZones())
 					{
 						if (dest.HasPendingJob) continue;
-						if(dest.GetTile().stackItem == null)
+						if (dest.GetTile().stackItem == null)
 						{
 							Job job = new Job(dest.GetTile(), new HaulJobEvent(dest.GetTile(), tile.stackItem), true, 1, JobLayer.Resource);
 							dest.InZoneJob = job;
@@ -52,12 +52,12 @@ namespace ProjectOnion
 
 		public string[] GetSerializationData()
 		{
-			return new string[]{string.Empty };
+			return new string[] { string.Empty };
 		}
 
 		public void OnJobCanceled()
 		{
-			
+
 		}
 
 		public void OnJobCompleted()

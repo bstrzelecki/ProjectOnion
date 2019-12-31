@@ -35,7 +35,7 @@ namespace ProjectOnion
 			}
 			if (stackItem.ToString() == stack.ToString())
 			{
-				if(stack.GetAmount() + stackItem.GetAmount() > SIZE_STACK_LIMIT)
+				if (stack.GetAmount() + stackItem.GetAmount() > SIZE_STACK_LIMIT)
 				{
 					stackItem.AddToStack(stack.GetAmount());
 					stackItem.SetTile(this);

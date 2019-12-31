@@ -121,7 +121,7 @@ namespace ProjectOnion
 			{
 				GetJob();
 			}
-			if(currentJob == null && carryItem != null)
+			if (currentJob == null && carryItem != null)
 			{
 				tile.PutItemStacks(carryItem);
 				carryItem = null;

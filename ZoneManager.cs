@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
 
 namespace ProjectOnion
 {
@@ -35,7 +35,7 @@ namespace ProjectOnion
 		{
 			public void Draw(SpriteBatch sprite)
 			{
-				foreach(Zone zone in zones)
+				foreach (Zone zone in zones)
 				{
 					sprite.Draw(new Sprite("WhitePixel"), new TileRectangle(zone.GetTile().Position), Color.Pink * .5f);
 				}

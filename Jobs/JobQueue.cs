@@ -41,7 +41,7 @@ namespace ProjectOnion
 			}
 			foreach (Job job in t)
 			{
-				foreach(JobLayer l in jobs.Keys)
+				foreach (JobLayer l in jobs.Keys)
 				{
 					jobs[l].Remove(job);
 				}
