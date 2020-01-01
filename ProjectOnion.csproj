@@ -93,8 +93,8 @@
     <Compile Include="TimeUnit.cs" />
     <Compile Include="UI\UIController.cs" />
     <Compile Include="World\World.cs" />
-    <Compile Include="Zone.cs" />
-    <Compile Include="ZoneManager.cs" />
+    <Compile Include="Zones\Zone.cs" />
+    <Compile Include="Zones\ZoneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MBBSlib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
