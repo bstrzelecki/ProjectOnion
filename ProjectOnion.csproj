@@ -61,10 +61,10 @@
     <Compile Include="AIModel.cs" />
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
-    <Compile Include="HaulJobManager.cs" />
-    <Compile Include="ResourceDataBase.cs" />
+    <Compile Include="Zones\HaulJobManager.cs" />
+    <Compile Include="Resources\ResourceDataBase.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />
-    <Compile Include="ItemStack.cs" />
+    <Compile Include="Resources\ItemStack.cs" />
     <Compile Include="UI\JobItem.cs" />
     <Compile Include="UI\MenuController.cs" />
     <Compile Include="Registry.cs" />
