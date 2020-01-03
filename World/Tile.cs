@@ -63,7 +63,10 @@ namespace ProjectOnion
 		internal void Draw(SpriteBatch sprite)
 		{
 			if (firstDraw)
+			{
 				mountedObject?.objectEvents?.OnNeighbourChanged(this);
+				firstDraw = false;
+			}
 			if (mountedObject != null)
 			{
 				if (!mountedObject.IsOpaque)

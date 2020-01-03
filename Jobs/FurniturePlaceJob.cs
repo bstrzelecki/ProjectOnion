@@ -9,7 +9,7 @@ namespace ProjectOnion
 {
 	class FurniturePlaceJob : Job
 	{
-		MountedObject mountedObject;
+		readonly MountedObject mountedObject;
 		public FurniturePlaceJob(Tile tile, MountedObject mo) : base(tile)
 		{
 			mountedObject = mo;

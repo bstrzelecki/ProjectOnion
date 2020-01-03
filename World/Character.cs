@@ -27,12 +27,11 @@ namespace ProjectOnion
 		public float WorkValue = 1f;
 
 		public float moveSpeed = 2f;
-
-		Sprite img;
+		readonly Sprite img;
 
 		#region JobData
 		List<Point> path;
-		Queue<Job> enqueuedJobs = new Queue<Job>();
+		readonly Queue<Job> enqueuedJobs = new Queue<Job>();
 		public Job currentJob;
 		#endregion
 
@@ -159,7 +158,7 @@ namespace ProjectOnion
 					{
 						if (path == null || path.Count == 0)
 							GetResourcePath();
-						if (!currentJob.HasFlag("haul") || !ZoneManager.IsZoneOnTile(tile))
+						if (!currentJob?.HasFlag("haul")??false || !ZoneManager.IsZoneOnTile(tile))
 						{
 							if (Compare(tile.stackItem))
 							{

@@ -30,7 +30,7 @@ namespace ProjectOnion
 
 	class WallEvent : IObjectEvents
 	{
-		MountedObject obj;
+		readonly MountedObject obj;
 		public WallEvent(MountedObject r)
 		{
 			obj = r;

@@ -10,7 +10,7 @@ namespace ProjectOnion
 {
 	class Serializer
 	{
-		string fileName;
+		readonly string fileName;
 		public static string lastName;
 		public Serializer(string fn)
 		{
@@ -84,7 +84,6 @@ namespace ProjectOnion
 			{
 				return null;
 			}
-			Assembly a = Assembly.GetCallingAssembly();
 			XDocument doc = XDocument.Load($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 			XElement root = doc.Root;
 
