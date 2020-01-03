@@ -65,6 +65,7 @@
     <Compile Include="Jobs\FloorPlaceJob.cs" />
     <Compile Include="Jobs\FurniturePlaceJob.cs" />
     <Compile Include="Jobs\HaulJob.cs" />
+    <Compile Include="TileInfo.cs" />
     <Compile Include="Zones\HaulJobManager.cs" />
     <Compile Include="Resources\ResourceDataBase.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />

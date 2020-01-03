@@ -22,6 +22,12 @@ namespace ProjectOnion
 		public Job(Tile tile)
 		{
 			this.tile = tile;
+			data = BlueprintData.None;
+		}
+		protected List<string> flags = new List<string>(); 
+		public bool HasFlag(string s)
+		{
+			return flags.Contains(s);
 		}
 		public abstract void OnComplete();
 		public abstract void OnWork();
@@ -44,7 +50,7 @@ namespace ProjectOnion
 		public virtual void Work(float deltaWork)
 		{
 			workTime -= deltaWork;
-			if (workTime < 0)
+			if (workTime <= 0)
 			{
 				Complete();
 				return;

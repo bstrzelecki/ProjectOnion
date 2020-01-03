@@ -159,10 +159,13 @@ namespace ProjectOnion
 					{
 						if (path == null || path.Count == 0)
 							GetResourcePath();
-						if (Compare(tile.stackItem))
+						if (!currentJob.HasFlag("haul") || !ZoneManager.IsZoneOnTile(tile))
 						{
-							PickupItemFromTile((from n in currentJob.resources where n.ToString() == tile.stackItem.ToString() select n).First().GetAmount());
-							path = null;
+							if (Compare(tile.stackItem))
+							{
+								PickupItemFromTile((from n in currentJob.resources where n.ToString() == tile.stackItem.ToString() select n).First().GetAmount());
+								path = null;
+							}
 						}
 					}
 				}
@@ -260,7 +263,15 @@ namespace ProjectOnion
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
 			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
-			Tile[] tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();
+			Tile[] tiles = new Tile[1];
+			if (!currentJob.HasFlag("haul"))
+			{
+				tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();
+			}
+			else
+			{
+				tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) && !ZoneManager.IsZoneOnTile(t) select t).ToArray();
+			}
 			if (tiles == null || tiles.Length == 0)
 			{
 				path = null;

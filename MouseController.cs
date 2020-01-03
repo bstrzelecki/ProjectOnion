@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
-	internal class MouseController
+	internal static class MouseController
 	{
 		private static Vector2 initialPosition;
 		public static void HandleDeltaMouse()
@@ -23,6 +23,10 @@ namespace ProjectOnion
 			World.TileSize -= diff * 6;
 			//FIXME
 			World.Offset += diff * 3 * MainScene.world.Width;
+		}
+		public static Vector2 GetMouseOnTilePosition()
+		{
+			return (Input.GetMousePosition() - Input.cameraOffset - new Vector2(World.Offset, World.Offset)) / World.TileSize;
 		}
 	}
 }

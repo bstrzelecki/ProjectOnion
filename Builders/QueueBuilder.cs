@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
-
+using static ProjectOnion.MouseController;
 namespace ProjectOnion
 {
 	internal class QueueBuilder
@@ -103,10 +103,7 @@ namespace ProjectOnion
 				toAdd.Clear();
 			}
 		}
-		private static Vector2 GetMouseOnTilePosition()
-		{
-			return (Input.GetMousePosition() - Input.cameraOffset - new Vector2(World.Offset, World.Offset)) / World.TileSize;
-		}
+
 	}
 	public enum BuildType
 	{
