@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace ProjectOnion
 {
-	internal class JobQueue
+	internal class JobQueue : MBBSlib.MonoGame.IDrawable
 	{
-		public static Queue<Job> jobQueue = new Queue<Job>();
-		private static Dictionary<JobLayer, List<Job>> jobs = InitializeJobDictionary();
+		private static readonly Dictionary<JobLayer, List<Job>> activeJobs = InitializeJobDictionary();
+		private static readonly Dictionary<JobLayer, List<Job>> pendingJobs = InitializeJobDictionary();
+
 		private static Dictionary<JobLayer, List<Job>> InitializeJobDictionary()
 		{
 			var j = new Dictionary<JobLayer, List<Job>>();
@@ -17,93 +21,87 @@ namespace ProjectOnion
 			}
 			return j;
 		}
-		private static void ValidateJobs(JobLayer j)
+		public JobQueue()
 		{
-			List<Job> t = new List<Job>();
-			if (j == JobLayer.Any)
-			{
-				foreach (JobLayer jt in jobs.Keys)
-				{
-					foreach (Job job in jobs[jt])
-					{
-						if (job.IsCompleted || job.Owner != null)
-							t.Add(job);
-					}
-				}
-			}
-			else
-			{
-				foreach (Job job in jobs[j])
-				{
-					if (job.IsCompleted || job.Owner != null)
-						t.Add(job);
-				}
-			}
-			foreach (Job job in t)
-			{
-				foreach (JobLayer l in jobs.Keys)
-				{
-					jobs[l].Remove(job);
-				}
-			}
+			GameMain.RegisterRenderer(this);
 		}
 		public static void AddJob(Job job, JobLayer jobType = JobLayer.Any)
 		{
-			ValidateJobs(jobType);
-			foreach (Job j in jobs[jobType])
-			{
-				if (j.Equals(job))
-				{
-					return;
-				}
-			}
 			if (job == null) return;
 
-			job.tile.job[(int)jobType] = job;
-			job.Register();
-			jobs[jobType].Add(job);
+			pendingJobs[jobType].Add(job);
 		}
-		public static List<Job> GetJobsAtPosition(Vector2 pos)
+		private static Job GetClosestJob(Vector2 pos, JobLayer jt)
 		{
-			return (from n in jobQueue where new Vector2(n.tile.X, n.tile.Y) == pos select n).ToList();
-		}
-		private static Job GetClosestJob(Character c, JobLayer jt)
-		{
-
 			var pathfinding = new MBBSlib.AI.Pathfinding(MainScene.world.GetPathfindingGraph());
 
-
 			var points = new List<MBBSlib.AI.Point>();
-			foreach (Job job in jobs[jt])
+			foreach (Job job in pendingJobs[jt])
 			{
 				points.Add(new MBBSlib.AI.Point(job.tile.X, job.tile.Y));
 			}
-			var path = pathfinding.GetPath(points, new MBBSlib.AI.Point(c.tile.X, c.tile.Y));
+			var path = pathfinding.GetPath(points, new MBBSlib.AI.Point((int)pos.X, (int)pos.Y));
 			if (path == null) return null;
 			Tile t = MainScene.world.GetTile(path[path.Count - 1].X, path[path.Count - 1].Y);
-			Job j = t.job[(int)jt];
-			if (j != null) jobs[jt].Remove(j);
+			Job j = (from n in pendingJobs[jt] where n.tile == t select n).First();
 			return j;
 		}
 		public static Job GetJob(Character ch, JobLayer jobType = JobLayer.Any)
 		{
-			ValidateJobs(jobType);
 			Job j = null;
 			if (jobType == JobLayer.Any)
 			{
-				foreach (JobLayer jt in jobs.Keys)
+				foreach (JobLayer jt in pendingJobs.Keys)
 				{
-					j = GetClosestJob(ch, jt);
+					j = GetClosestJob(ch.Position, jt);
 					if (j != null) break;
 				}
 			}
 			else
 			{
-				j = GetClosestJob(ch, jobType);
+				j = GetClosestJob(ch.Position, jobType);
 			}
 			if (j == null) return null;
+			if(jobType == JobLayer.Any)
+			{
+				foreach (JobLayer jt in pendingJobs.Keys)
+				{
+					if (pendingJobs.ContainsKey(jt))
+					{
+						if (pendingJobs[jt].Contains(j))
+						{
+							pendingJobs[jt].Remove(j);
+							activeJobs[jt].Add(j);
+						}
+					}
+				}
+			}
+			else
+			{
+				pendingJobs[jobType].Remove(j);
+				activeJobs[jobType].Add(j);
+			}
+			
 			j.Owner = ch;
 			return j;
+		}
+
+		public void Draw(SpriteBatch sprite)
+		{
+			foreach(JobLayer jl in pendingJobs.Keys)
+			{
+				foreach(Job j in pendingJobs[jl])
+				{
+					j.Draw(sprite);
+				}
+			}
+			foreach (JobLayer jl in activeJobs.Keys)
+			{
+				foreach (Job j in activeJobs[jl])
+				{
+					j.Draw(sprite);
+				}
+			}
 		}
 	}
 }

@@ -13,8 +13,8 @@ namespace ProjectOnion
 		public static BuildType buildType = BuildType.None;
 		public static Func<Vector2, bool> TileValidator { get; set; } = (v) => true;
 		public static Action<Vector2> PlaceAction { get; set; }
-		private static List<Job> toAdd = new List<Job>();
-		private static List<Vector2> vectors = new List<Vector2>();
+		private static readonly List<Job> toAdd = new List<Job>();
+		private static readonly List<Vector2> vectors = new List<Vector2>();
 		public static Func<Vector2, Job> jobOverride;
 		public static void PlaceObject(Vector2 pos)
 		{
@@ -31,12 +31,12 @@ namespace ProjectOnion
 				if (buildType == BuildType.Floor)
 				{
 					if (MainScene.world.GetTile(pos).IsFloor) return;//TODO: fix for more floor variants
-					job = new Job(MainScene.world.GetTile(pos), new FloorPlaceJobEvent(MainScene.world.GetTile(pos), new Sprite("floor")), jobLayer: JobLayer.Build);
+					job = new FloorPlaceJob(MainScene.world.GetTile(pos), new Sprite("floor"), 1);
 				}
 				else if (buildType == BuildType.Furniture)
 				{
 					if (toBuild != null && toBuild.Equals(MainScene.world.GetTile(pos).mountedObject)) return;
-					job = new Job(MainScene.world.GetTile(pos), new FurniturePlaceJobEvent(MainScene.world.GetTile(pos), toBuild.GetFurniture()), false, jobLayer: JobLayer.Build);
+					job = new FurniturePlaceJob(MainScene.world.GetTile(pos), toBuild.GetFurniture());
 				}
 			}
 			else

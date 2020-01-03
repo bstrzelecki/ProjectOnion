@@ -32,6 +32,7 @@ namespace ProjectOnion
 			GameMain.RegisterUpdate(c);
 			ResourceDataBase.Init();
 			new ZoneManager();
+			new JobQueue();
 			GameMain.RegisterUpdate(new HaulJobManager());
 			Debugger.OnCmd += Debugger_OnCmd;
 		}

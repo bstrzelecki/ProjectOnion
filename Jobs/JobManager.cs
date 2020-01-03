@@ -10,17 +10,17 @@ namespace ProjectOnion
 			QueueBuilder.buildType = BuildType.Other;
 			QueueBuilder.toBuild = null;
 			QueueBuilder.TileValidator = CancelValidation;
-			QueueBuilder.PlaceAction = (v) => { foreach (Job j in MainScene.world.GetTile(v).job) j?.Cancel(); };
+			//QueueBuilder.PlaceAction = (v) => { foreach (Job j in MainScene.world.GetTile(v).job) j?.Cancel(); };
 			QueueBuilder.jobOverride = null;
 			BuildController.buildMode = BuildMode.Area;
 		}
 		static bool CancelValidation(Vector2 v)
 		{
 			bool isJobOnTile = false;
-			foreach (Job t in MainScene.world.GetTile(v).job)
-			{
-				if (t != null) { isJobOnTile = true; break; }
-			}
+			//foreach (Job t in MainScene.world.GetTile(v).job)
+			//{
+			//	if (t != null) { isJobOnTile = true; break; }
+			//}
 			return isJobOnTile;
 		}
 		public static void SetDeconstructJob()
@@ -67,7 +67,7 @@ namespace ProjectOnion
 		static Job DeconstructCreator(Vector2 v)
 		{
 			Tile t = MainScene.world.GetTile(v);
-			Job j = new Job(t, new DeconstructJobEvent(t), (t.mountedObject == null || !t.IsInmovable), 1, JobLayer.Deconstruct);
+			Job j = new DeconstructJob(t);
 
 			return j;
 		}

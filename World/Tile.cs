@@ -17,7 +17,6 @@ namespace ProjectOnion
 		public bool IsInmovable = false;
 		public bool isCharOnTile = false;
 		public Character character;
-		public Job[] job = new Job[Enum.GetNames(typeof(JobLayer)).Length];
 		public MountedObject mountedObject { get; protected set; }
 		public ItemStack stackItem { get; protected set; }
 		public void RemoveItemStack()

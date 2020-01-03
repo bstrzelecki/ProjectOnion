@@ -45,24 +45,24 @@ namespace ProjectOnion
 				t.Add(r);
 
 				XElement j = new XElement("jobs");
-				for (int i = 0; i < tile.job.Length; i++)
-				{
-					Job job = tile.job[i];
-					if (job == null || job.IsCompleted) { continue; }
-					XElement jb = new XElement("job");
-					jb.SetAttributeValue("layer", (int)job.jobLayer);
-					jb.Add(new XElement("events", job.jobEvents.GetType().Name));
+				//for (int i = 0; i < tile.job.Length; i++)
+				//{
+				//	Job job = tile.job[i];
+				//	if (job == null || job.IsCompleted) { continue; }
+				//	XElement jb = new XElement("job");
+				//	jb.SetAttributeValue("layer", (int)job.jobLayer);
+				//	jb.Add(new XElement("events", job.jobEvents.GetType().Name));
 
-					XElement args = new XElement("eventArgs");
-					foreach (string s in job.jobEvents.GetSerializationData())
-					{
-						args.Add(new XElement("a", s));
-					}
-					jb.Add(args);
-					jb.Add(new XElement("onTile", job.onTile.ToString()));
-					jb.Add(new XElement("workTime", job.workTime));
-					j.Add(jb);
-				}
+				//	XElement args = new XElement("eventArgs");
+				//	foreach (string s in job.jobEvents.GetSerializationData())
+				//	{
+				//		args.Add(new XElement("a", s));
+				//	}
+				//	jb.Add(args);
+				//	jb.Add(new XElement("onTile", job.onTile.ToString()));
+				//	jb.Add(new XElement("workTime", job.workTime));
+				//	j.Add(jb);
+				//}
 				t.Add(j);
 				root.Add(t);
 			}
@@ -109,27 +109,31 @@ namespace ProjectOnion
 
 					t.PutItemStack(stack);
 				}
-				XElement jobs = tile.Element("jobs");
-				foreach (XElement job in jobs.Elements("job"))
-				{
-					string[] s = (from n in job.Element("eventArgs").Elements("a") select n.Value).ToArray();
 
-					object[] eventArgs = new object[1 + s.Length];
-					eventArgs[0] = t;
-					for (int i = 1; i < 1 + s.Length; i++)
-					{
-						eventArgs[i] = s[i - 1];
-					}
-					string typeName = job.Element("events").Value;
-					Type type = a.GetType("ProjectOnion." + typeName);
-					IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
-					bool onTile = bool.Parse(job.Element("onTile").Value);
-					int workTime = int.Parse(job.Element("workTime").Value);
-					JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
-					Job j = new Job(t, events, onTile, workTime, jb);
-					j.Register();
-					JobQueue.AddJob(j, j.jobLayer);
-				}
+				//FIXME
+				//XElement jobs = tile.Element("jobs");
+				//foreach (XElement job in jobs.Elements("job"))
+				//{
+				//	string[] s = (from n in job.Element("eventArgs").Elements("a") select n.Value).ToArray();
+
+				//	object[] eventArgs = new object[1 + s.Length];
+				//	eventArgs[0] = t;
+				//	for (int i = 1; i < 1 + s.Length; i++)
+				//	{
+				//		eventArgs[i] = s[i - 1];
+				//	}
+				//	string typeName = job.Element("events").Value;
+				//	Type type = a.GetType("ProjectOnion." + typeName);
+				//	IJobEvents events = (IJobEvents)Activator.CreateInstance(type, eventArgs);
+				//	bool onTile = bool.Parse(job.Element("onTile").Value);
+				//	int workTime = int.Parse(job.Element("workTime").Value);
+				//	JobLayer jb = (JobLayer)int.Parse(job.Attribute("layer").Value);
+				//	Job j = new Job(t, events, onTile, workTime, jb);
+				//	j.Register();
+				//	JobQueue.AddJob(j, j.jobLayer);
+				//}
+
+
 				map[t.X, t.Y] = t;
 			}
 			try

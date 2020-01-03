@@ -61,6 +61,10 @@
     <Compile Include="AIModel.cs" />
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
+    <Compile Include="Jobs\DeconstructJob.cs" />
+    <Compile Include="Jobs\FloorPlaceJob.cs" />
+    <Compile Include="Jobs\FurniturePlaceJob.cs" />
+    <Compile Include="Jobs\HaulJob.cs" />
     <Compile Include="Zones\HaulJobManager.cs" />
     <Compile Include="Resources\ResourceDataBase.cs" />
     <Compile Include="Serialization\ITagCompound.cs" />
@@ -75,15 +79,12 @@
     <Compile Include="UI\FurnitureItem.cs" />
     <Compile Include="UI\IUIItem.cs" />
     <Compile Include="Jobs\JobManager.cs" />
-    <Compile Include="Jobs\IJobEvents.cs" />
     <Compile Include="Jobs\Job.cs" />
-    <Compile Include="Jobs\JobEvents.cs" />
     <Compile Include="Jobs\JobQueue.cs" />
     <Compile Include="World\MainScene.cs" />
     <Compile Include="Furnitures\MountedObject.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="Furnitures\NewFurniture.cs" />
-    <Compile Include="Jobs\PlaceJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\QueueBuilder.cs" />

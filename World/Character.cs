@@ -115,6 +115,7 @@ namespace ProjectOnion
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
 		}
+		//FIXME
 		public void Update()
 		{
 			if ((path == null || path.Count == 0) && currentJob == null)
@@ -128,7 +129,7 @@ namespace ProjectOnion
 			}
 			if (currentJob != null)
 			{
-				if (currentJob.IsAvailable)
+				if (currentJob.IsAvailable())
 				{
 					if (path == null || path.Count == 0)
 						GetPath();
@@ -216,7 +217,7 @@ namespace ProjectOnion
 
 		private void DoWork()
 		{
-			if (currentJob == null || !currentJob.IsAvailable)
+			if (currentJob == null || !currentJob.IsAvailable())
 			{
 				return;
 			}

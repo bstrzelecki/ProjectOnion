@@ -1,85 +1,61 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
 {
-	internal class Job : IDrawable
+	abstract class Job : MBBSlib.MonoGame.IDrawable
 	{
 		public Tile tile;
 		public Character Owner { get; set; }
-		public bool IsAvailable { get { return (resources == null || resources.Length == 0) || (from n in resources where n.GetAmount() > 0 select n).Count() == 0; } }
-		public bool IsOnTile = true;
-		public float workTime;
-		public IJobEvents jobEvents;
+		public bool IsCompleted { get; protected set; }
+		public float workTime = 1f;
+		public float startWorkTime = 1f;
 		public JobLayer jobLayer;
-		public bool onTile;
-		public ItemStack[] resources;
-		public Job(Tile tile, IJobEvents jobEvents, ItemStack[] resources, bool onTile = true, float workTime = 1f, JobLayer jobLayer = JobLayer.Any)
+		public bool onTile = false;
+		public BlueprintData data;
+		public List<ItemStack> resources = new List<ItemStack>();
+		protected List<ItemStack> suppliedResources = new List<ItemStack>();
+		public Job(Tile tile)
 		{
 			this.tile = tile;
-			this.jobEvents = jobEvents;
-			this.workTime = workTime;
-			this.jobLayer = jobLayer;
-			this.onTile = onTile;
-			this.resources = resources ?? Array.Empty<ItemStack>();
 		}
-		public Job(Tile tile, IJobEvents jobEvents, bool onTile = true, float workTime = 1f, JobLayer jobLayer = JobLayer.Any)
-		{
-			this.tile = tile;
-			this.jobEvents = jobEvents;
-			this.workTime = workTime;
-			this.jobLayer = jobLayer;
-			this.onTile = onTile;
-			//this.resources = Array.Empty<ItemStack>();
-			if (jobLayer != JobLayer.Deconstruct)
-				this.resources = new ItemStack[] { new ItemStack("METAL", 10) };
-		}
-		public void Supply(ItemStack stack)
+		public abstract void OnComplete();
+		public abstract void OnWork();
+		public abstract void OnCancel();
+		
+		public virtual void Supply(ItemStack stack)
 		{
 			ItemStack r = (from n in resources where n.ResourceData == stack.ResourceData select n).First();
 			r.SetAmount(r.GetAmount() - stack.GetAmount());
+			suppliedResources.Add(stack);
+			if(r.GetAmount() == 0)
+			{
+				resources.Remove(r);
+			}
 		}
-
-		public Job()
+		public virtual bool IsAvailable()
 		{
-
+			return true;
 		}
-
-		internal void Register()
-		{
-			GameMain.RegisterRenderer(this, 6);
-		}
-
 		public virtual void Work(float deltaWork)
 		{
 			workTime -= deltaWork;
 			if (workTime < 0)
 			{
-				jobEvents.OnJobCompleted();
 				Complete();
+				return;
 			}
+			OnWork();
 		}
-		public bool IsCompleted { get; protected set; }
-		protected void Complete()
+		protected virtual void Complete()
 		{
-			GameMain.UnregisterRenderer(this);
-			tile.job[(int)jobLayer] = null;
+			OnComplete();
 			IsCompleted = true;
 		}
-		public void Cancel()
-		{
-			GameMain.UnregisterRenderer(this);
-			if (Owner != null)
-			{
-				Owner.currentJob = null;
-				Owner = null;
-			}
-			tile.job[(int)jobLayer] = null;
-			IsCompleted = true;
-		}
-		//FIXME
 		public override bool Equals(object obj)
 		{
 			if (obj is Job job)
@@ -96,33 +72,48 @@ namespace ProjectOnion
 		}
 		public void Draw(SpriteBatch sprite)
 		{
-			if (tile.mountedObject != null && jobLayer == JobLayer.Build) Cancel();
 			if (IsCompleted)
 			{
 				return;
 			}
-
-			BlueprintData data = jobEvents.GetBlueprintData();
-			sprite.Draw(data.objectSprite, new TileRectangle(data.position), Microsoft.Xna.Framework.Color.White);
+			sprite.Draw(data.objectSprite, new TileRectangle(data.position), Color.White);
 			DrawBlips(sprite, data);
 		}
 		private static void DrawBlips(SpriteBatch sprite, BlueprintData data)
 		{
-			Microsoft.Xna.Framework.Vector2 cornerPos = TileRectangle.GetCorner(data.position);
+			Vector2 cornerPos = TileRectangle.GetCorner(data.position);
 			int i = 0;
 			foreach (Sprite blip in data.blips)
 			{
-				sprite.Draw(blip, new Microsoft.Xna.Framework.Rectangle((int)cornerPos.X + blip.Texture.Width * i, (int)cornerPos.Y, 8, 8), Microsoft.Xna.Framework.Color.White);
+				sprite.Draw(blip, new Rectangle((int)cornerPos.X + blip.Texture.Width * i, (int)cornerPos.Y, 8, 8), Color.White);
 				i++;
 			}
 		}
-		#region side-overrides
+	}
+	struct BlueprintData
+	{
 
-		public override int GetHashCode()
+		public static BlueprintData None
 		{
-			return base.GetHashCode();
+			get
+			{
+				return new BlueprintData(Vector2.Zero, new Sprite("WhitePixel"));
+			}
 		}
-		#endregion
+
+		public Sprite objectSprite;
+		public List<Sprite> blips;
+		public Vector2 position;
+		public BlueprintData(Vector2 position, Sprite objectSprite, params Sprite[] blips)
+		{
+			this.position = position;
+			this.objectSprite = objectSprite;
+			this.blips = new List<Sprite>();
+			foreach (Sprite blip in blips)
+			{
+				this.blips.Add(blip);
+			}
+		}
 	}
 	enum JobLayer
 	{
