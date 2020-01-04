@@ -25,8 +25,8 @@ namespace ProjectOnion
 				return false;
 			}
 		}
-		static List<Button> buttons = new List<Button>();
-		static List<Button> sideMenu = new List<Button>();
+		readonly static List<Button> buttons = new List<Button>();
+		readonly static List<Button> sideMenu = new List<Button>();
 		public MenuController()
 		{
 			GameMain.RegisterRenderer(this, 10);
@@ -45,14 +45,14 @@ namespace ProjectOnion
 			{
 				sideMenu.Clear();
 				sideMenu.Add(new TextBox("", screenCenter + new Vector2(128, 0)));
-				if (Serializer.lastName != string.Empty)
+				if (GameSerializer.lastName != string.Empty)
 				{
-					string s = Serializer.lastName;
+					string s = GameSerializer.lastName;
 					Button btn = new Button(s, screenCenter + new Vector2(128, 32));
 					btn.OnClicked += () =>
 					{
-						Serializer ss = new Serializer(s);
-						ss.Save(MainScene.world.map);
+						GameSerializer ss = new GameSerializer(s);
+						ss.Save();
 					};
 					sideMenu.Add(btn);
 				}
@@ -63,13 +63,14 @@ namespace ProjectOnion
 			{
 				sideMenu.Clear();
 				int j = 0;
-				foreach (string s in Serializer.GetSaveStrings())
+				foreach (string s in GameSerializer.GetSaveStrings())
 				{
 					Button btn = new Button(s, screenCenter + new Vector2(128, 32 * j)); j++;
 					btn.OnClicked += () =>
 					{
-						Serializer ss = new Serializer(s);
-						MainScene.world.SetupMap(ss.Load());
+						GameSerializer ss = new GameSerializer(s);
+						//Legacy
+						ss.Load();
 					};
 					sideMenu.Add(btn);
 				}
@@ -132,8 +133,8 @@ namespace ProjectOnion
 		private void TextBox_OnClicked()
 		{
 			if (displayText == string.Empty) return;
-			Serializer s = new Serializer(displayText);
-			s.Save(MainScene.world.map);
+			GameSerializer s = new GameSerializer(displayText);
+			s.Save();
 		}
 
 		private void Window_TextInput(object sender, TextInputEventArgs e)

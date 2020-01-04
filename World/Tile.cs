@@ -78,14 +78,7 @@ namespace ProjectOnion
 			}
 			stackItem?.Draw(sprite);
 		}
-		public void OnTagLoad(TagCompound compound)
-		{
-			mountedObject.serializer?.OnLoad(compound);
-		}
-		public void OnTagSave(TagCompound compound)
-		{
-			mountedObject.serializer?.OnSave(compound);
-		}
+
 		public List<Tile> GetNeighbourTiles(bool fourDirs = true)
 		{
 			var tiles = new List<Tile>

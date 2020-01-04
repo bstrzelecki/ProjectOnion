@@ -74,8 +74,8 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
 			if (Input.IsKeyClicked(Keys.S))
 			{
-				Serializer s = new Serializer("game");
-				s.Save(world.map);
+				GameSerializer s = new GameSerializer("game");
+				s.Save();
 			}
 			if (Input.IsKeyClicked(Keys.G))
 			{
