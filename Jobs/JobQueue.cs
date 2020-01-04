@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework;
 using MBBSlib.MonoGame;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectOnion
@@ -62,7 +62,7 @@ namespace ProjectOnion
 				j = GetClosestJob(ch.Position, jobType);
 			}
 			if (j == null) return null;
-			if(jobType == JobLayer.Any)
+			if (jobType == JobLayer.Any)
 			{
 				foreach (JobLayer jt in pendingJobs.Keys)
 				{
@@ -81,16 +81,16 @@ namespace ProjectOnion
 				pendingJobs[jobType].Remove(j);
 				activeJobs[jobType].Add(j);
 			}
-			
+
 			j.Owner = ch;
 			return j;
 		}
 
 		public void Draw(SpriteBatch sprite)
 		{
-			foreach(JobLayer jl in pendingJobs.Keys)
+			foreach (JobLayer jl in pendingJobs.Keys)
 			{
-				foreach(Job j in pendingJobs[jl])
+				foreach (Job j in pendingJobs[jl])
 				{
 					j.Draw(sprite);
 				}

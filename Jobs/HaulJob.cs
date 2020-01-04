@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace ProjectOnion
 {
@@ -21,7 +17,7 @@ namespace ProjectOnion
 		}
 		public override void OnCancel()
 		{
-			
+
 		}
 
 		public override void OnComplete()
@@ -31,7 +27,7 @@ namespace ProjectOnion
 
 		public override void OnWork()
 		{
-			
+
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
@@ -24,7 +23,7 @@ namespace ProjectOnion
 			this.tile = tile;
 			data = BlueprintData.None;
 		}
-		protected List<string> flags = new List<string>(); 
+		protected List<string> flags = new List<string>();
 		public bool HasFlag(string s)
 		{
 			return flags.Contains(s);
@@ -32,13 +31,13 @@ namespace ProjectOnion
 		public abstract void OnComplete();
 		public abstract void OnWork();
 		public abstract void OnCancel();
-		
+
 		public virtual void Supply(ItemStack stack)
 		{
 			ItemStack r = (from n in resources where n.ResourceData == stack.ResourceData select n).First();
 			r.SetAmount(r.GetAmount() - stack.GetAmount());
 			suppliedResources.Add(stack);
-			if(r.GetAmount() == 0)
+			if (r.GetAmount() == 0)
 			{
 				resources.Remove(r);
 			}

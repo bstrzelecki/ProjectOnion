@@ -158,7 +158,7 @@ namespace ProjectOnion
 					{
 						if (path == null || path.Count == 0)
 							GetResourcePath();
-						if (!currentJob?.HasFlag("haul")??false || !ZoneManager.IsZoneOnTile(tile))
+						if (!currentJob?.HasFlag("haul") ?? false || !ZoneManager.IsZoneOnTile(tile))
 						{
 							if (Compare(tile.stackItem))
 							{
