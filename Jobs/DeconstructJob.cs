@@ -1,17 +1,19 @@
-﻿using MBBSlib.MonoGame;
+﻿using System.Xml.Linq;
+using MBBSlib.MonoGame;
 
 namespace ProjectOnion
 {
 	class DeconstructJob : Job
 	{
-		public DeconstructJob()
-		{
-
-		}
 		public DeconstructJob(Tile tile) : base(tile)
 		{
 			data = new BlueprintData(tile.Position, tile.mountedObject?.sprite ?? tile.sprite, new Sprite("ds"));
 			jobLayer = JobLayer.Deconstruct;
+		}
+
+		public override XElement GetCtorData()
+		{
+			return new XElement("Ctor");
 		}
 
 		public override void OnCancel()

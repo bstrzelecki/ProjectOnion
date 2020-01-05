@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using MBBSlib.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,10 +24,7 @@ namespace ProjectOnion
 			this.tile = tile;
 			data = BlueprintData.None;
 		}
-		public Job()
-		{
-
-		}
+		public abstract XElement GetCtorData();
 		protected List<string> flags = new List<string>();
 		public bool HasFlag(string s)
 		{

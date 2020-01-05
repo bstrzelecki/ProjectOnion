@@ -27,7 +27,6 @@ namespace ProjectOnion
 		public ItemStack[] resources;
 		public void AssignPosition(Vector2 pos)
 		{
-			if (pos == Vector2.Zero) Debug.WriteLine("!!!");
 			position = pos;
 			tile = MainScene.world.GetTile(position);
 		}

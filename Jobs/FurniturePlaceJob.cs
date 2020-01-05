@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Xml.Linq;
 using MBBSlib.MonoGame;
 
 namespace ProjectOnion
@@ -14,6 +15,14 @@ namespace ProjectOnion
 			resources = mountedObject.resources.ToList();
 			onTile = false;
 		}
+
+		public override XElement GetCtorData()
+		{
+			XElement c = new XElement("Ctor");
+			c.SetAttributeValue("MountedObject", mountedObject.registryName);
+			return c;
+		}
+
 		public override bool IsAvailable()
 		{
 			return (resources == null || resources.Count == 0) || (from n in resources where n.GetAmount() > 0 select n).Count() == 0;

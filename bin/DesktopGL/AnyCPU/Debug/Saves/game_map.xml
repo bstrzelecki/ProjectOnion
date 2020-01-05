@@ -1813,8 +1813,8 @@
     <character>
       <position>
         <tile>4,6</tile>
-        <dest>4,6</dest>
-        <progress>0.666</progress>
+        <dest>4,5</dest>
+        <progress>0.632</progress>
       </position>
       <id>0</id>
       <name>Bob</name>
@@ -1826,8 +1826,8 @@
     <character>
       <position>
         <tile>6,6</tile>
-        <dest>6,6</dest>
-        <progress>0.666</progress>
+        <dest>6,5</dest>
+        <progress>0.632</progress>
       </position>
       <id>1</id>
       <name>Bob</name>
@@ -1844,10 +1844,11 @@
       <StartWorkTime>1</StartWorkTime>
       <WorkTime>1</WorkTime>
       <Position>
-        <X>6</X>
+        <X>7</X>
         <Y>2</Y>
       </Position>
       <JobData>FurniturePlaceJob</JobData>
+      <Ctor MountedObject="wall" />
       <Resources>
         <Resource>
           <Name>METAL</Name>
@@ -1870,6 +1871,7 @@
         <Y>2</Y>
       </Position>
       <JobData>FurniturePlaceJob</JobData>
+      <Ctor MountedObject="wall" />
       <Resources>
         <Resource>
           <Name>METAL</Name>
@@ -1892,6 +1894,7 @@
         <Y>2</Y>
       </Position>
       <JobData>FurniturePlaceJob</JobData>
+      <Ctor MountedObject="wall" />
       <Resources>
         <Resource>
           <Name>METAL</Name>
@@ -1914,6 +1917,7 @@
         <Y>2</Y>
       </Position>
       <JobData>FurniturePlaceJob</JobData>
+      <Ctor MountedObject="wall" />
       <Resources>
         <Resource>
           <Name>METAL</Name>
@@ -1932,10 +1936,11 @@
       <StartWorkTime>1</StartWorkTime>
       <WorkTime>1</WorkTime>
       <Position>
-        <X>7</X>
+        <X>6</X>
         <Y>2</Y>
       </Position>
       <JobData>FurniturePlaceJob</JobData>
+      <Ctor MountedObject="wall" />
       <Resources>
         <Resource>
           <Name>METAL</Name>

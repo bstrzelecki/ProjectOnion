@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Xml.Linq;
 
 namespace ProjectOnion
 {
@@ -11,6 +12,17 @@ namespace ProjectOnion
 			jobLayer = JobLayer.Resource;
 			flags.Add("haul");
 		}
+		public HaulJob(Tile tile) : base(tile)
+		{
+			onTile = true;
+			jobLayer = JobLayer.Resource;
+			flags.Add("haul");
+		}
+		public override XElement GetCtorData()
+		{
+			return new XElement("Ctor");
+		}
+
 		public override bool IsAvailable()
 		{
 			return (resources == null || resources.Count == 0) || (from n in resources where n.GetAmount() > 0 select n).Count() == 0;
