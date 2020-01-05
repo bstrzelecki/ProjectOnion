@@ -20,7 +20,7 @@ namespace ProjectOnion
 			fileName = fn;
 			lastName = fn;
 
-			serializers.AddRange(new ISerializable[]{ new SettingsSerializer(), new WorldMapSerializer(), new CharacterSerializer()});
+			serializers.AddRange(new ISerializable[]{ new SettingsSerializer(), new WorldMapSerializer(), new CharacterSerializer(), new JobSerializer()});
 		}
 		public void Save()
 		{

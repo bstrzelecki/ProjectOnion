@@ -42,7 +42,7 @@ namespace ProjectOnion
 					pos.X = int.Parse(p.Split(',')[0]);
 					pos.Y = int.Parse(p.Split(',')[1]);
 					cc.dest = MainScene.world.GetTile(pos);
-					cc.moveCompleted = int.Parse(c.Element("position").Element("progress").Value);
+					cc.moveCompleted = float.Parse(c.Element("position").Element("progress").Value);
 				}
 				cc.id = int.Parse(c.Element("id").Value);
 				cc.Name = c.Element("name").Value;

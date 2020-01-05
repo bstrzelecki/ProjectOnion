@@ -6,6 +6,10 @@ namespace ProjectOnion
 	{
 		readonly Sprite img;
 		readonly float moveSpeed;
+		public FloorPlaceJob()
+		{
+
+		}
 		public FloorPlaceJob(Tile tile, Sprite sprite, float moveSpeed) : base(tile)
 		{
 			img = sprite;

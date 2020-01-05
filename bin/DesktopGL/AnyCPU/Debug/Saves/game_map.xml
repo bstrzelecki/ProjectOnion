@@ -507,11 +507,8 @@
       <isFloor>true</isFloor>
       <objName></objName>
       <floorName>floor</floorName>
-      <character></character>
-      <resources>
-        <id>METAL</id>
-        <amount>10</amount>
-      </resources>
+      <character>0</character>
+      <resources />
     </tile>
     <tile X="4" Y="7">
       <isFloor>true</isFloor>
@@ -737,11 +734,8 @@
       <isFloor>false</isFloor>
       <objName></objName>
       <floorName>grid</floorName>
-      <character></character>
-      <resources>
-        <id>CONCRETE</id>
-        <amount>25</amount>
-      </resources>
+      <character>1</character>
+      <resources />
     </tile>
     <tile X="6" Y="7">
       <isFloor>true</isFloor>
@@ -1818,23 +1812,141 @@
   <chars>
     <character>
       <position>
-        <tile>5,6</tile>
-        <dest>5,6</dest>
-        <progress>0</progress>
+        <tile>4,6</tile>
+        <dest>4,6</dest>
+        <progress>0.666</progress>
       </position>
       <id>0</id>
       <name>Bob</name>
-      <resources />
+      <resources>
+        <id>METAL</id>
+        <amount>10</amount>
+      </resources>
     </character>
     <character>
       <position>
-        <tile>7,6</tile>
-        <dest>7,6</dest>
-        <progress>0</progress>
+        <tile>6,6</tile>
+        <dest>6,6</dest>
+        <progress>0.666</progress>
       </position>
       <id>1</id>
       <name>Bob</name>
-      <resources />
+      <resources>
+        <id>CONCRETE</id>
+        <amount>25</amount>
+      </resources>
     </character>
   </chars>
+  <jobs>
+    <job>
+      <JobLayer>Build</JobLayer>
+      <IsOnTile>false</IsOnTile>
+      <StartWorkTime>1</StartWorkTime>
+      <WorkTime>1</WorkTime>
+      <Position>
+        <X>6</X>
+        <Y>2</Y>
+      </Position>
+      <JobData>FurniturePlaceJob</JobData>
+      <Resources>
+        <Resource>
+          <Name>METAL</Name>
+          <Amount>10</Amount>
+        </Resource>
+        <Resource>
+          <Name>CONCRETE</Name>
+          <Amount>25</Amount>
+        </Resource>
+      </Resources>
+      <SuppliedResorce />
+    </job>
+    <job>
+      <JobLayer>Build</JobLayer>
+      <IsOnTile>false</IsOnTile>
+      <StartWorkTime>1</StartWorkTime>
+      <WorkTime>1</WorkTime>
+      <Position>
+        <X>8</X>
+        <Y>2</Y>
+      </Position>
+      <JobData>FurniturePlaceJob</JobData>
+      <Resources>
+        <Resource>
+          <Name>METAL</Name>
+          <Amount>10</Amount>
+        </Resource>
+        <Resource>
+          <Name>CONCRETE</Name>
+          <Amount>25</Amount>
+        </Resource>
+      </Resources>
+      <SuppliedResorce />
+    </job>
+    <job>
+      <JobLayer>Build</JobLayer>
+      <IsOnTile>false</IsOnTile>
+      <StartWorkTime>1</StartWorkTime>
+      <WorkTime>1</WorkTime>
+      <Position>
+        <X>9</X>
+        <Y>2</Y>
+      </Position>
+      <JobData>FurniturePlaceJob</JobData>
+      <Resources>
+        <Resource>
+          <Name>METAL</Name>
+          <Amount>10</Amount>
+        </Resource>
+        <Resource>
+          <Name>CONCRETE</Name>
+          <Amount>25</Amount>
+        </Resource>
+      </Resources>
+      <SuppliedResorce />
+    </job>
+    <job OwnerId="0">
+      <JobLayer>Build</JobLayer>
+      <IsOnTile>false</IsOnTile>
+      <StartWorkTime>1</StartWorkTime>
+      <WorkTime>1</WorkTime>
+      <Position>
+        <X>5</X>
+        <Y>2</Y>
+      </Position>
+      <JobData>FurniturePlaceJob</JobData>
+      <Resources>
+        <Resource>
+          <Name>METAL</Name>
+          <Amount>10</Amount>
+        </Resource>
+        <Resource>
+          <Name>CONCRETE</Name>
+          <Amount>25</Amount>
+        </Resource>
+      </Resources>
+      <SuppliedResorce />
+    </job>
+    <job OwnerId="1">
+      <JobLayer>Build</JobLayer>
+      <IsOnTile>false</IsOnTile>
+      <StartWorkTime>1</StartWorkTime>
+      <WorkTime>1</WorkTime>
+      <Position>
+        <X>7</X>
+        <Y>2</Y>
+      </Position>
+      <JobData>FurniturePlaceJob</JobData>
+      <Resources>
+        <Resource>
+          <Name>METAL</Name>
+          <Amount>10</Amount>
+        </Resource>
+        <Resource>
+          <Name>CONCRETE</Name>
+          <Amount>25</Amount>
+        </Resource>
+      </Resources>
+      <SuppliedResorce />
+    </job>
+  </jobs>
 </root>

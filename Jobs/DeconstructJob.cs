@@ -4,6 +4,10 @@ namespace ProjectOnion
 {
 	class DeconstructJob : Job
 	{
+		public DeconstructJob()
+		{
+
+		}
 		public DeconstructJob(Tile tile) : base(tile)
 		{
 			data = new BlueprintData(tile.Position, tile.mountedObject?.sprite ?? tile.sprite, new Sprite("ds"));

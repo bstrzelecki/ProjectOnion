@@ -12,6 +12,15 @@ namespace ProjectOnion
 		private static readonly Dictionary<JobLayer, List<Job>> activeJobs = InitializeJobDictionary();
 		private static readonly Dictionary<JobLayer, List<Job>> pendingJobs = InitializeJobDictionary();
 
+		public static Dictionary<JobLayer, List<Job>> GetActiveJobs()
+		{
+			return activeJobs;
+		}
+		public static Dictionary<JobLayer, List<Job>> GetPendingJobs()
+		{
+			return pendingJobs;
+		}
+
 		private static Dictionary<JobLayer, List<Job>> InitializeJobDictionary()
 		{
 			var j = new Dictionary<JobLayer, List<Job>>();
@@ -24,6 +33,12 @@ namespace ProjectOnion
 		public JobQueue()
 		{
 			GameMain.RegisterRenderer(this);
+		}
+		public static void AddActiveJob(Job job, Character owner, JobLayer jobType = JobLayer.Any)
+		{
+			if (job == null) return;
+
+			activeJobs[jobType].Add(job);
 		}
 		public static void AddJob(Job job, JobLayer jobType = JobLayer.Any)
 		{

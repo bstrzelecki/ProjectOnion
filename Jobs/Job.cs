@@ -17,11 +17,15 @@ namespace ProjectOnion
 		public bool onTile = false;
 		public BlueprintData data;
 		public List<ItemStack> resources = new List<ItemStack>();
-		protected List<ItemStack> suppliedResources = new List<ItemStack>();
+		public List<ItemStack> suppliedResources = new List<ItemStack>();
 		public Job(Tile tile)
 		{
 			this.tile = tile;
 			data = BlueprintData.None;
+		}
+		public Job()
+		{
+
 		}
 		protected List<string> flags = new List<string>();
 		public bool HasFlag(string s)

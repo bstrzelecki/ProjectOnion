@@ -67,6 +67,7 @@
     <Compile Include="Jobs\HaulJob.cs" />
     <Compile Include="Serialization\CharacterSerializer.cs" />
     <Compile Include="Serialization\GameSerializer.cs" />
+    <Compile Include="Serialization\JobSerializer.cs" />
     <Compile Include="Serialization\SettingsSerializer.cs" />
     <Compile Include="Serialization\WorldMapSerializer.cs" />
     <Compile Include="Settings.cs" />
