@@ -70,6 +70,7 @@
     <Compile Include="Serialization\JobSerializer.cs" />
     <Compile Include="Serialization\SettingsSerializer.cs" />
     <Compile Include="Serialization\WorldMapSerializer.cs" />
+    <Compile Include="Serialization\ZoneSerializer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TileInfo.cs" />
     <Compile Include="Zones\HaulJobManager.cs" />

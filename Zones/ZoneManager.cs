@@ -8,7 +8,7 @@ namespace ProjectOnion
 {
 	class ZoneManager
 	{
-		static List<Zone> zones = new List<Zone>();
+		public static List<Zone> zones = new List<Zone>();
 
 		static ZoneManager()
 		{
