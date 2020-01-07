@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using Microsoft.Xna.Framework;
 
 namespace ProjectOnion
 {
@@ -20,7 +17,7 @@ namespace ProjectOnion
 			fileName = fn;
 			lastName = fn;
 
-			serializers.AddRange(new ISerializable[]{ new SettingsSerializer(), new WorldMapSerializer(), new CharacterSerializer(), new JobSerializer(), new ZoneSerializer()});
+			serializers.AddRange(new ISerializable[] { new SettingsSerializer(), new WorldMapSerializer(), new CharacterSerializer(), new JobSerializer(), new ZoneSerializer() });
 		}
 		public void Save()
 		{
@@ -47,7 +44,7 @@ namespace ProjectOnion
 		{
 			XDocument doc = XDocument.Load($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 
-			foreach(var s in serializers)
+			foreach (var s in serializers)
 			{
 				s.Load(doc.Root.Element(s.GetHeader()));
 			}

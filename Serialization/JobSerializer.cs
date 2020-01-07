@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using MBBSlib.MonoGame;
 
@@ -17,13 +13,13 @@ namespace ProjectOnion
 		}
 		public void Load(XElement data)
 		{
-			foreach(XElement e in data.Elements("job"))
+			foreach (XElement e in data.Elements("job"))
 			{
 				Type type = Type.GetType("ProjectOnion." + e.Element("JobData").Value);
 
 				List<object> objs = new List<object>();
 				objs.Add(MainScene.world.GetTile(int.Parse(e.Element("Position").Element("X").Value), int.Parse(e.Element("Position").Element("Y").Value)));
-				foreach(XAttribute a in e.Element("Ctor").Attributes())
+				foreach (XAttribute a in e.Element("Ctor").Attributes())
 				{
 					switch (a.Name.ToString())
 					{
@@ -37,8 +33,8 @@ namespace ProjectOnion
 							objs.Add(float.Parse(a.Value));
 							break;
 					}
-				}	
-				
+				}
+
 				Job job = (Job)Activator.CreateInstance(type, objs.ToArray());
 
 				job.jobLayer = (JobLayer)Enum.Parse(typeof(JobLayer), e.Element("JobLayer").Value);
@@ -46,14 +42,14 @@ namespace ProjectOnion
 				job.startWorkTime = int.Parse(e.Element("StartWorkTime").Value);
 				job.workTime = int.Parse(e.Element("WorkTime").Value);
 				job.tile = MainScene.world.GetTile(int.Parse(e.Element("Position").Element("X").Value), int.Parse(e.Element("Position").Element("Y").Value));
-				if (e.Element("Resources")?.HasElements??false)
+				if (e.Element("Resources")?.HasElements ?? false)
 				{
 					foreach (XElement r in e.Element("Resources").Elements("Resources"))
 					{
 						job.resources.Add(new ItemStack(r.Element("Name").Value, int.Parse(r.Element("Amount").Value)));
 					}
 				}
-				if (e.Element("SuppliedResources")?.HasElements??false)
+				if (e.Element("SuppliedResources")?.HasElements ?? false)
 				{
 					foreach (XElement r in e.Element("SuppliedResources").Elements("Resources"))
 					{
@@ -75,9 +71,9 @@ namespace ProjectOnion
 		{
 			XElement e = new XElement("jobs");
 
-			foreach(JobLayer l in JobQueue.GetPendingJobs().Keys)
+			foreach (JobLayer l in JobQueue.GetPendingJobs().Keys)
 			{
-				foreach(Job j in JobQueue.GetPendingJobs()[l])
+				foreach (Job j in JobQueue.GetPendingJobs()[l])
 				{
 					XElement entry = new XElement("job");
 					entry.Add(new XElement("JobLayer", j.jobLayer));
@@ -88,13 +84,13 @@ namespace ProjectOnion
 					entry.Add(new XElement("JobData", j.GetType().Name));
 					entry.Add(j.GetCtorData());
 					XElement r = new XElement("Resources");
-					foreach(ItemStack stack in j.resources)
+					foreach (ItemStack stack in j.resources)
 					{
 						r.Add(new XElement("Resource", new XElement("Name", stack.GetResource()), new XElement("Amount", stack.GetAmount())));
 					}
 					entry.Add(r);
 					XElement sr = new XElement("SuppliedResuorces");
-					foreach(ItemStack stack in j.suppliedResources)
+					foreach (ItemStack stack in j.suppliedResources)
 					{
 						r.Add(new XElement("Resource", new XElement("Name", stack.GetResource()), new XElement("Amount", stack.GetAmount())));
 					}
