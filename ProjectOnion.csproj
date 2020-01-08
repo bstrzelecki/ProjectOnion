@@ -58,7 +58,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AIModel.cs" />
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
     <Compile Include="Jobs\DeconstructJob.cs" />
