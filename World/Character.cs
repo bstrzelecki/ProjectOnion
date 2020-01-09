@@ -157,7 +157,9 @@ namespace ProjectOnion
 					else
 					{
 						if (path == null || path.Count == 0)
+						{
 							GetResourcePath();
+						}
 						if (!currentJob?.HasFlag("haul") ?? false || !ZoneManager.IsZoneOnTile(tile))
 						{
 							if (Compare(tile.stackItem))
@@ -197,8 +199,7 @@ namespace ProjectOnion
 		#region private members
 		private void DisownJob()
 		{
-			currentJob.Owner = null;
-			JobQueue.AddJob(currentJob, currentJob.jobLayer);
+			JobQueue.SuspendJob(currentJob);
 			currentJob = null;
 		}
 		private bool Compare(ItemStack item)
@@ -262,7 +263,7 @@ namespace ProjectOnion
 			var p = new Pathfinding(MainScene.world.GetPathfindingGraph());
 
 			Resource[] r = (from n in currentJob.resources select n.ResourceData).ToArray();
-			Tile[] tiles = new Tile[1];
+			Tile[] tiles = new Tile[0];
 			if (!currentJob.HasFlag("haul"))
 			{
 				tiles = (from t in MainScene.world where t != null && r.Contains(t.stackItem?.ResourceData) select t).ToArray();

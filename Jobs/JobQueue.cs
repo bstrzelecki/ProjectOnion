@@ -34,6 +34,19 @@ namespace ProjectOnion
 		{
 			GameMain.RegisterRenderer(this);
 		}
+		public static void ReplaceJob(Character ch, JobLayer jobType = JobLayer.Any)
+		{
+			Job j = ch.currentJob;
+			ch.currentJob = GetJob(ch, jobType);
+			SuspendJob(j);
+		}
+		public static void SuspendJob(Job job)
+		{
+			if (job == null) return;
+			job.Owner = null;
+			activeJobs[job.jobLayer].Remove(job);
+			pendingJobs[job.jobLayer].Add(job);
+		}
 		public static void AddActiveJob(Job job, Character owner, JobLayer jobType = JobLayer.Any)
 		{
 			if (job == null) return;

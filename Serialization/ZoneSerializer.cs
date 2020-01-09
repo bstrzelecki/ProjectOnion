@@ -11,6 +11,7 @@ namespace ProjectOnion
 
 		public void Load(XElement data)
 		{
+			if (data == null || !data.HasElements) return;
 			foreach (XElement zone in data.Elements("Zone"))
 			{
 				ZoneManager.AddZone(MainScene.world.GetTile(int.Parse(zone.Element("X").Value), int.Parse(zone.Element("Y").Value)));
