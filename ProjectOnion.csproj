@@ -70,14 +70,14 @@
     <Compile Include="Serialization\SettingsSerializer.cs" />
     <Compile Include="Serialization\WorldMapSerializer.cs" />
     <Compile Include="Serialization\ZoneSerializer.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="DataStorage\Settings.cs" />
     <Compile Include="TileInfo.cs" />
     <Compile Include="Zones\HaulJobManager.cs" />
     <Compile Include="Resources\ResourceDataBase.cs" />
     <Compile Include="Resources\ItemStack.cs" />
     <Compile Include="UI\JobItem.cs" />
     <Compile Include="UI\MenuController.cs" />
-    <Compile Include="Registry.cs" />
+    <Compile Include="DataStorage\Registry.cs" />
     <Compile Include="Serialization\ISerializable.cs" />
     <Compile Include="World\Character.cs" />
     <Compile Include="Furnitures\Door.cs" />
