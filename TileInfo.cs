@@ -23,7 +23,6 @@ namespace ProjectOnion
 			Tile tile = MainScene.world.GetTile(mousePos);
 
 			data = string.Empty;
-
 			data += tile?.sprite.ToString() + ", " + tile?.mountedObject?.registryName + "\n";
 			data += tile?.stackItem?.GetResource() + ": " + tile?.stackItem?.GetAmount() + "\n";
 			data += tile?.character?.Name + ": " + tile?.character?.currentJob?.ToString() + "\n";
