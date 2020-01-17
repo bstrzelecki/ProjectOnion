@@ -12,9 +12,15 @@ namespace ProjectOnion
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		private static void Main()
+		private static void Main(string[] args)
 		{
-			using (var game = new GameMain(new MainScene()))
+			string f = string.Empty;
+			if(args.Length > 0) 
+			{
+				f = args[0];
+			}
+
+			using (var game = new GameMain(new MainScene(f)))
 			{
 				game.Run();
 			}

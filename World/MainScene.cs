@@ -11,6 +11,12 @@ namespace ProjectOnion
 		public static GameMain Game { get; set; }
 		public static World world;
 		public static Random rng = new Random();
+
+		string file = string.Empty;
+		public MainScene(string f)
+		{
+			file = f;
+		}
 		public void Start(GameMain game)
 		{
 			Game = game;
@@ -36,6 +42,11 @@ namespace ProjectOnion
 			new TileInfo();
 			GameMain.RegisterUpdate(new HaulJobManager());
 			Debugger.OnCmd += Debugger_OnCmd;
+			
+			if(file != string.Empty)
+			{
+				new GameSerializer(file).Load();
+			}
 		}
 
 		private void Debugger_OnCmd(CommandCompund cmd)
@@ -72,15 +83,6 @@ namespace ProjectOnion
 				Architect.SetBuildObject(BuildMode.Line, BuildType.Furniture, new Wall());
 			if (Input.IsKeyClicked(Keys.D3))
 				Architect.SetBuildObject(BuildMode.Single, BuildType.Furniture, new Door());
-			if (Input.IsKeyClicked(Keys.S))
-			{
-				GameSerializer s = new GameSerializer("game");
-				s.Save();
-			}
-			if (Input.IsKeyClicked(Keys.G))
-			{
-				ZoneManager.AddZone(world.GetTile(5, 5));
-			}
 		}
 	}
 }

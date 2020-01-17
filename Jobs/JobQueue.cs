@@ -40,6 +40,20 @@ namespace ProjectOnion
 			ch.currentJob = GetJob(ch, jobType);
 			SuspendJob(j);
 		}
+		public static void CancelJob(Job job)
+		{
+			if (job == null) return;
+			if (job.Owner != null)
+			{
+				job.Owner.currentJob = null;
+				job.Owner = null;
+			}
+			job.OnCancel();
+			if(activeJobs[job.jobLayer].Contains(job))
+				activeJobs[job.jobLayer].Remove(job);
+			if (pendingJobs[job.jobLayer].Contains(job))
+				pendingJobs[job.jobLayer].Remove(job);
+		}
 		public static void SuspendJob(Job job)
 		{
 			if (job == null) return;

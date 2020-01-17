@@ -9,7 +9,6 @@ namespace ProjectOnion
 		Tile tile;
 		readonly string resource;
 		int amount;
-		public Vector2 Position { get { return tile.Position; } }
 		public Resource ResourceData { get { return ResourceDataBase.GetResource(resource); } }
 		public ItemStack(Tile tile, string resource, int amount)
 		{
@@ -30,6 +29,10 @@ namespace ProjectOnion
 		{
 			this.tile = tile;
 		}
+		public void DetachFromFile()
+		{
+			this.tile = null;
+		}
 		public void AddToStack(int am)
 		{
 			amount += am;
@@ -47,7 +50,7 @@ namespace ProjectOnion
 		public void Draw(SpriteBatch sprite)
 		{
 			if (tile == null) return;
-			TileRectangle tilePos = new TileRectangle(Position);
+			TileRectangle tilePos = new TileRectangle(tile.Position);
 			Rectangle rect = new Rectangle(((Rectangle)tilePos).Location + new Point(16, 16), ((Rectangle)tilePos).Size - new Point(16, 16));
 			sprite.Draw(ResourceData.GetSprite(), rect, Color.White);
 			if (World.TileSize > 47)

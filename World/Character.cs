@@ -113,6 +113,14 @@ namespace ProjectOnion
 		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
+		
+			if(path != null)
+			{
+				foreach(var b in path)
+				{
+					sprite.Draw(new Sprite("blip"), new TileRectangle(b.X,b.Y), Microsoft.Xna.Framework.Color.Gray);
+				}
+			}
 		}
 		//FIXME
 		public void Update()
@@ -145,6 +153,7 @@ namespace ProjectOnion
 							if (dest == currentJob.tile || tile.GetNeighbourTiles().Contains(currentJob.tile))
 							{
 								currentJob.Supply(carryItem);
+								path = null;
 								carryItem = null;
 							}
 						}
@@ -231,7 +240,7 @@ namespace ProjectOnion
 			}
 			if (currentJob.onTile && tile == currentJob.tile)
 			{
-				currentJob.Work(1);
+				currentJob.Work(WorkValue);
 			}
 			if (currentJob.IsCompleted)
 			{

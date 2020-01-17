@@ -10,18 +10,51 @@ namespace ProjectOnion
 			QueueBuilder.buildType = BuildType.Other;
 			QueueBuilder.toBuild = null;
 			QueueBuilder.TileValidator = CancelValidation;
-			//QueueBuilder.PlaceAction = (v) => { foreach (Job j in MainScene.world.GetTile(v).job) j?.Cancel(); };
+			QueueBuilder.PlaceAction = (v) => {
+				foreach (var j in JobQueue.GetPendingJobs().Keys)
+				{
+					foreach (var job in JobQueue.GetPendingJobs()[j])
+					{
+						if (job.tile == MainScene.world.GetTile(v))
+						{
+							JobQueue.CancelJob(job);
+							break;
+						}
+					}
+				}
+				foreach (var j in JobQueue.GetActiveJobs().Keys)
+				{
+					foreach (Job job in JobQueue.GetActiveJobs()[j])
+					{
+						if (job.tile == MainScene.world.GetTile(v)) 
+						{
+							JobQueue.CancelJob(job);
+							break;
+						}
+					}
+				}
+
+			};
 			QueueBuilder.jobOverride = null;
 			BuildController.buildMode = BuildMode.Area;
 		}
 		static bool CancelValidation(Vector2 v)
 		{
-			bool isJobOnTile = false;
-			//foreach (Job t in MainScene.world.GetTile(v).job)
-			//{
-			//	if (t != null) { isJobOnTile = true; break; }
-			//}
-			return isJobOnTile;
+			foreach(var j in JobQueue.GetPendingJobs().Keys)
+			{
+				foreach(var job in JobQueue.GetPendingJobs()[j])
+				{
+					if (job.tile == MainScene.world.GetTile(v)) return true;
+				}
+			}
+			foreach (var j in JobQueue.GetActiveJobs().Keys)
+			{
+				foreach (Job job in JobQueue.GetActiveJobs()[j])
+				{
+					if (job.tile == MainScene.world.GetTile(v)) return true;
+				}
+			}
+			return false;
 		}
 		public static void SetDeconstructJob()
 		{

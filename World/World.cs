@@ -51,7 +51,6 @@ namespace ProjectOnion
 		{
 			if (x < 0 || y < 0 || x >= Width || y >= Height)
 			{
-				Debug.WriteLine($"Returning null at {x}, {y}");
 				return null;
 			}
 
