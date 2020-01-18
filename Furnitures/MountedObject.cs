@@ -22,6 +22,7 @@ namespace ProjectOnion
 		public IUseable objectUseEvent;
 		public MBBSlib.MonoGame.IUpdateable objectUpdate;
 		public ISerializable serializer;
+		public MBBSlib.MonoGame.IUpdateable update;
 		public List<string> flags = new List<string>();
 		public ItemStack[] resources;
 		public void AssignPosition(Vector2 pos)

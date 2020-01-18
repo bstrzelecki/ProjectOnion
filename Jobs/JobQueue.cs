@@ -34,6 +34,19 @@ namespace ProjectOnion
 		{
 			GameMain.RegisterRenderer(this);
 		}
+		public static void RemoveJob(Job job)
+		{
+			if (job == null) return;
+			if (job.Owner != null)
+			{
+				job.Owner.currentJob = null;
+				job.Owner = null;
+			}
+			if (activeJobs[job.jobLayer].Contains(job))
+				activeJobs[job.jobLayer].Remove(job);
+			if (pendingJobs[job.jobLayer].Contains(job))
+				pendingJobs[job.jobLayer].Remove(job);
+		}
 		public static void ReplaceJob(Character ch, JobLayer jobType = JobLayer.Any)
 		{
 			Job j = ch.currentJob;

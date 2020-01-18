@@ -29,6 +29,7 @@ namespace ProjectOnion
 		}
 		public override void OnCancel()
 		{
+			if (IsCompleted) return;
 			tile.PutItemStacks(suppliedResources.ToArray());
 		}
 

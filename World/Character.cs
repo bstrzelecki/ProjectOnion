@@ -238,11 +238,11 @@ namespace ProjectOnion
 				path = null;
 				currentJob.Work(WorkValue);
 			}
-			if (currentJob.onTile && tile == currentJob.tile)
+			else if (currentJob.onTile && tile == currentJob.tile)
 			{
 				currentJob.Work(WorkValue);
 			}
-			if (currentJob.IsCompleted)
+			if (currentJob == null || currentJob.IsCompleted)
 			{
 				dest = null;
 				path = null;

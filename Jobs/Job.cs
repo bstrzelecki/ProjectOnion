@@ -61,6 +61,9 @@ namespace ProjectOnion
 		protected virtual void Complete()
 		{
 			OnComplete();
+
+			JobQueue.RemoveJob(this);
+
 			IsCompleted = true;
 		}
 		public override bool Equals(object obj)

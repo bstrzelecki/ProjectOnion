@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Builders\Architect.cs" />
     <Compile Include="Builders\BuildController.cs" />
+    <Compile Include="Furnitures\Fabricator.cs" />
     <Compile Include="Jobs\DeconstructJob.cs" />
     <Compile Include="Jobs\FloorPlaceJob.cs" />
     <Compile Include="Jobs\FurniturePlaceJob.cs" />
