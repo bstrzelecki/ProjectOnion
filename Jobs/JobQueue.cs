@@ -74,17 +74,17 @@ namespace ProjectOnion
 			activeJobs[job.jobLayer].Remove(job);
 			pendingJobs[job.jobLayer].Add(job);
 		}
-		public static void AddActiveJob(Job job, Character owner, JobLayer jobType = JobLayer.Any)
+		public static void AddActiveJob(Job job, Character owner)
 		{
 			if (job == null) return;
-
-			activeJobs[jobType].Add(job);
+			owner.currentJob = job;
+			activeJobs[job.jobLayer].Add(job);
 		}
-		public static void AddJob(Job job, JobLayer jobType = JobLayer.Any)
+		public static void AddJob(Job job)
 		{
 			if (job == null) return;
 
-			pendingJobs[jobType].Add(job);
+			pendingJobs[job.jobLayer].Add(job);
 		}
 		private static Job GetClosestJob(Vector2 pos, JobLayer jt)
 		{

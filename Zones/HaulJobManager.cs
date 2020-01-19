@@ -22,13 +22,13 @@ namespace ProjectOnion
 						{
 							Job job = new HaulJob(dest.GetTile(), tile.stackItem);
 							dest.InZoneJob = job;
-							JobQueue.AddJob(job, JobLayer.Resource);
+							JobQueue.AddJob(job);
 						}
 						else if (dest.GetTile().stackItem.GetResource() == tile.stackItem.GetResource() && dest.GetTile().stackItem.GetAmount() + tile.stackItem.GetAmount() <= Tile.SIZE_STACK_LIMIT)
 						{
 							Job job = new HaulJob(dest.GetTile(), tile.stackItem);
 							dest.InZoneJob = job;
-							JobQueue.AddJob(job, JobLayer.Resource);
+							JobQueue.AddJob(job);
 						}
 					}
 				}

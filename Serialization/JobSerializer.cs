@@ -58,11 +58,11 @@ namespace ProjectOnion
 				}
 				if (e.HasAttributes)
 				{
-					JobQueue.AddActiveJob(job, Registry.characters[int.Parse(e.Attribute("OwnerId").Value)], job.jobLayer);
+					JobQueue.AddActiveJob(job, Registry.characters[int.Parse(e.Attribute("OwnerId").Value)]);
 				}
 				else
 				{
-					JobQueue.AddJob(job, job.jobLayer);
+					JobQueue.AddJob(job);
 				}
 			}
 		}
