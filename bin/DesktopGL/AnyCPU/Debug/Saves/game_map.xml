@@ -1859,7 +1859,7 @@
           <Amount>25</Amount>
         </Resource>
       </Resources>
-      <SuppliedResorce />
+      <SuppliedResources />
     </job>
     <job>
       <JobLayer>Build</JobLayer>
@@ -1882,7 +1882,7 @@
           <Amount>25</Amount>
         </Resource>
       </Resources>
-      <SuppliedResorce />
+      <SuppliedResources />
     </job>
     <job>
       <JobLayer>Build</JobLayer>
@@ -1905,7 +1905,7 @@
           <Amount>25</Amount>
         </Resource>
       </Resources>
-      <SuppliedResorce />
+      <SuppliedResources />
     </job>
     <job OwnerId="0">
       <JobLayer>Build</JobLayer>
@@ -1928,7 +1928,7 @@
           <Amount>25</Amount>
         </Resource>
       </Resources>
-      <SuppliedResorce />
+      <SuppliedResources />
     </job>
     <job OwnerId="1">
       <JobLayer>Build</JobLayer>
@@ -1951,7 +1951,7 @@
           <Amount>25</Amount>
         </Resource>
       </Resources>
-      <SuppliedResorce />
+      <SuppliedResources />
     </job>
   </jobs>
 </root>
