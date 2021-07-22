@@ -26,13 +26,13 @@ namespace ProjectOnion
 			}
 		}
 		static Dictionary<int, string> categories = new Dictionary<int, string>();
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			int i = 0;
 			foreach (string c in Items.Keys)
 			{
 				sprite.Draw(new Sprite("button"), new Vector2(0, 32 * i), Color.White);
-				sprite.DrawString(GameMain.fonts["font"], c, new Vector2(16, 8 + 32 * i), Color.White);
+				sprite.DrawString(GameMain.Instance.GetFont("font"), c, new Vector2(16, 8 + 32 * i), Color.White);
 				i++;
 			}
 			if (displayedCategory != string.Empty)
@@ -42,7 +42,7 @@ namespace ProjectOnion
 				{
 					string text = c.GetDisplayName();
 					sprite.Draw(new Sprite("button"), new Vector2(128, 32 * (i + displayedOffset)), Color.White);
-					sprite.DrawString(GameMain.fonts["font"], text, new Vector2(144, 8 + 32 * (i + displayedOffset)), Color.White);
+					sprite.DrawString(GameMain.Instance.GetFont("font"), text, new Vector2(144, 8 + 32 * (i + displayedOffset)), Color.White);
 					i++;
 				}
 			}

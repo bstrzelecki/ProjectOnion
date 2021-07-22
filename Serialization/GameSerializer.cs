@@ -42,11 +42,11 @@ namespace ProjectOnion
 		}
 		public void Load()
 		{
-			XDocument doc = XDocument.Load($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
+			//XDocument doc = XDocument.Load($"{Environment.CurrentDirectory}/Saves/{fileName}_map.xml");
 
 			foreach (var s in serializers)
 			{
-				s.Load(doc.Root.Element(s.GetHeader()));
+				//s.Load(doc.Root.Element(s.GetHeader()));
 			}
 		}
 

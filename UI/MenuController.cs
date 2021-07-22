@@ -79,12 +79,12 @@ namespace ProjectOnion
 			Button exit = new Button("Exit", screenCenter + new Vector2(0, 32 * i));
 			exit.OnClicked += () =>
 			{
-				GameMain.lastCopy.Exit();
+				GameMain.Instance.Exit();
 			};
 			buttons.Add(exit);
 		}
 
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			if (!IsMenuOpened) return;
 			foreach (Button btn in buttons)
@@ -125,7 +125,7 @@ namespace ProjectOnion
 	{
 		public TextBox(string text, Vector2 pos, MultiSprite sprite = null) : base(text, pos, sprite)
 		{
-			GameMain.lastCopy.Window.TextInput += Window_TextInput;
+			GameMain.Instance.Window.TextInput += Window_TextInput;
 			OnClicked += TextBox_OnClicked;
 			displayText = string.Empty;
 		}
@@ -151,7 +151,7 @@ namespace ProjectOnion
 			}
 			displayText += e.Character;
 		}
-		public override void Draw(SpriteBatch sprite)
+		public override void Draw(RenderBatch sprite)
 		{
 			sprite.Draw(image, position, Color.White);
 			if (size.Location == Point.Zero || size.Size == Point.Zero)
@@ -161,7 +161,7 @@ namespace ProjectOnion
 			}
 			try
 			{
-				sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
+				sprite.DrawString(GameMain.Instance.GetFont("font"), displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 			}
 			catch (Exception e)
 			{
@@ -219,7 +219,7 @@ namespace ProjectOnion
 		{
 			get; set;
 		}
-		public virtual void Draw(SpriteBatch sprite)
+		public virtual void Draw(RenderBatch sprite)
 		{
 			sprite.Draw(image, position, Color.White);
 			if (size.Location == Point.Zero || size.Size == Point.Zero)
@@ -228,7 +228,7 @@ namespace ProjectOnion
 				size.Size = image.Texture.Bounds.Size;
 			}
 			if (displayText == null) return;
-			sprite.DrawString(GameMain.fonts["font"], displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
+			sprite.DrawString(GameMain.Instance.GetFont("font"), displayText, position + new Vector2(0.1f * size.Width, 0.25f * size.Height), color);
 		}
 
 		public void Update()

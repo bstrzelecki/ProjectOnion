@@ -29,7 +29,7 @@ namespace ProjectOnion
 			}
 		}
 
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			foreach (Vector2 blip in blips)
 			{

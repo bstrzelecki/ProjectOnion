@@ -141,7 +141,7 @@ namespace ProjectOnion
 			return j;
 		}
 
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			foreach (JobLayer jl in pendingJobs.Keys)
 			{

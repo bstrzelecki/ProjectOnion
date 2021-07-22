@@ -47,14 +47,14 @@ namespace ProjectOnion
 			if (amount < 0)
 				amount = 0;
 		}
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			if (tile == null) return;
 			TileRectangle tilePos = new TileRectangle(tile.Position);
 			Rectangle rect = new Rectangle(((Rectangle)tilePos).Location + new Point(16, 16), ((Rectangle)tilePos).Size - new Point(16, 16));
 			sprite.Draw(ResourceData.GetSprite(), rect, Color.White);
 			if (World.TileSize > 47)
-				sprite.DrawString(GameMain.fonts["font"], amount.ToString(), ((Rectangle)tilePos).Location.ToVector2() + new Vector2(8, 8), Color.White);
+				sprite.DrawString(GameMain.Instance.GetFont("font"), amount.ToString(), ((Rectangle)tilePos).Location.ToVector2() + new Vector2(8, 8), Color.White);
 		}
 		public override string ToString()
 		{

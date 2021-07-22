@@ -110,7 +110,7 @@ namespace ProjectOnion
 		}
 
 		#region Interface implementation
-		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			sprite.Draw(img, new Microsoft.Xna.Framework.Rectangle((dest != null) ? (Microsoft.Xna.Framework.Vector2.Lerp(TileRectangle.GetCorner(Position), TileRectangle.GetCorner(dest.Position), moveCompleted)).ToPoint() : TileRectangle.GetCorner(Position).ToPoint(), TileRectangle.GetSize().ToPoint()), Microsoft.Xna.Framework.Color.White);
 		

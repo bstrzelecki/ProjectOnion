@@ -33,7 +33,7 @@ namespace ProjectOnion
 
 		private class ZoneRenderer : MBBSlib.MonoGame.IDrawable
 		{
-			public void Draw(SpriteBatch sprite)
+			public void Draw(RenderBatch sprite)
 			{
 				foreach (Zone zone in zones)
 				{

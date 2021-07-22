@@ -20,7 +20,7 @@ namespace ProjectOnion
 		public void Start(GameMain game)
 		{
 			Game = game;
-			Game.LoadFont("font");
+			//Game.LoadFont("font");
 			GameMain.graphics.PreferredBackBufferWidth = 1280;
 			GameMain.graphics.PreferredBackBufferHeight = 720;
 			GameMain.graphics.ApplyChanges();

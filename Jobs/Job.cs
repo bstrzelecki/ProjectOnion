@@ -80,14 +80,14 @@ namespace ProjectOnion
 			}
 			return false;
 		}
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			if (IsCompleted)
 			{
 				return;
 			}
 			sprite.Draw(data.objectSprite, new TileRectangle(data.position), Color.White);
-			DrawBlips(sprite, data);
+			DrawBlips((SpriteBatch)sprite, data);
 		}
 		private static void DrawBlips(SpriteBatch sprite, BlueprintData data)
 		{

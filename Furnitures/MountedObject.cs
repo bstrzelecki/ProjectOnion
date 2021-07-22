@@ -30,7 +30,7 @@ namespace ProjectOnion
 			position = pos;
 			tile = MainScene.world.GetTile(position);
 		}
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			Rectangle rect = new Rectangle(((Rectangle)new TileRectangle(position)).Location + tileOffset, ((Rectangle)new TileRectangle(position)).Size);
 			sprite.Draw(this.sprite, rect, Color.White);

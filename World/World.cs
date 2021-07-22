@@ -57,7 +57,7 @@ namespace ProjectOnion
 			return map[x, y];
 		}
 
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
 			foreach (Tile tile in map)
 			{

@@ -59,7 +59,7 @@ namespace ProjectOnion
 			return movementCost + (float)(mountedObject?.moveCost ?? 0f);
 		}
 		private bool firstDraw = true;
-		internal void Draw(SpriteBatch sprite)
+		internal void Draw(RenderBatch sprite)
 		{
 			if (firstDraw)
 			{

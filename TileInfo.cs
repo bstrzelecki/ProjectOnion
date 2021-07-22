@@ -12,9 +12,9 @@ namespace ProjectOnion
 			GameMain.RegisterUpdate(this);
 		}
 		string data;
-		public void Draw(SpriteBatch sprite)
+		public void Draw(RenderBatch sprite)
 		{
-			sprite.DrawString(GameMain.fonts["font"], data, new Vector2(0, GameMain.lastCopy.GraphicsDevice.Viewport.Height / 2), Color.White);
+			sprite.DrawString(GameMain.Instance.GetFont("font"), data, new Vector2(0, GameMain.Instance.GraphicsDevice.Viewport.Height / 2), Color.White);
 		}
 
 		public void Update()
